@@ -12,15 +12,19 @@ namespace kalkulator
 {
     public partial class Form1 : Form
     {
+        private Control[] choosablePanels;
+
+
         public Form1()
         {
             InitializeComponent();
+            choosablePanels = new Control[] { panelBasic, panelAdvanced, panelCurrency };
         }
 
 
-        void SwitchToPanel(Panel panel)
+        void SwitchToLayout(Panel panel)
         {
-            foreach(var p in Controls.Cast<Control>().Where(c => (string)c.Tag == "switchPanel" ) )
+            foreach(var p in choosablePanels)
             {
                 p.Visible = false;
             }
@@ -28,33 +32,25 @@ namespace kalkulator
         }
 
 
-        //gdy dowolny przycisk numeryczny zostanie ciśnięty wykonaj tą funkcje
-        //
-        void onClick_btnNum(object sender, EventArgs args)
+        private void btnNum_Click(object sender, EventArgs e)
         {
             int digit = int.Parse((string)((Button)sender).Tag);
             textboxValue.Text += digit;
         }
-
-
-        void onClick_btnZnak(object sender, EventArgs args)
+        private void btnOperation_Click(object sender, EventArgs e)
         {
             string operation = (string)((Button)sender).Tag;
             textboxValue.Text += " " + operation + " ";
         }
-
-        void onClick_btnComma(object sender, EventArgs args)
+        private void btnComma_Click(object sender, EventArgs e)
         {
-
             textboxValue.Text += ",";
         }
-
-
         private void btnEvaluate_Click(object sender, EventArgs e) //oblicz
         {
             try
             {
-                float resoult = new Calcualtion(textboxValue.Text).NoWezIOblicz();
+                double resoult = new Calcualtion(textboxValue.Text).NoWezIOblicz();
                 textboxValue.Text = resoult.ToString();
             }
             catch (Calcualtion.CalculationException ex)
@@ -62,32 +58,24 @@ namespace kalkulator
                 MessageBox.Show(ex.Message, "Calculator", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void button2_Click(object sender, EventArgs e) //button zaawansowane
-        {
-            panelBasic.Visible = false;
-            panelAdvanced.Visible = true;
-            panelCurrency.Visible = false;
-
-        }
-
-        private void btn_basic_Click(object sender, EventArgs e) //button podstawowe
-        {
-            panelBasic.Visible = true;
-            panelAdvanced.Visible = false;
-            panelCurrency.Visible = false;
-        }
-
-        private void button43_Click(object sender, EventArgs e)
+        private void buttonClear_Click(object sender, EventArgs e)
         {
             textboxValue.Text = "";
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnLayoutBasic_Click(object sender, EventArgs e)
         {
-            panelBasic.Visible = false;
-            panelAdvanced.Visible = false;
-            panelCurrency.Visible = true;
+            SwitchToLayout(panelBasic);
         }
+        private void btnLayoutAdvanced_Click(object sender, EventArgs e)
+        {
+            SwitchToLayout(panelAdvanced);
+        }
+        private void btnLayoutCurrency_Click(object sender, EventArgs e)
+        {
+            SwitchToLayout(panelCurrency);
+        }
+
+       
     }
 }

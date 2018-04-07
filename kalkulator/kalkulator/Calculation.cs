@@ -16,7 +16,7 @@ namespace kalkulator
             this.str = str;
         }
 
-        public float NoWezIOblicz()
+        public double NoWezIOblicz()
         {
             Expression rootExpr = new Expression();
             Stack<Expression> exprStack = new Stack<Expression>(); //stos w którym nawiasie lub expreszynie jestesmy
@@ -29,7 +29,7 @@ namespace kalkulator
                 c = str[i];
                 if (char.IsDigit(c) || c == ',' || c == '.')
                 {
-                    float n = ProduceNumber(str, ref i);
+                    double n = ProduceNumber(str, ref i);
                     Expression e = new Expression(n);
                     exprStack.Peek().children.AddLast(e);
                     lastExprType = ExpressionType.Number;
@@ -105,7 +105,7 @@ namespace kalkulator
                         exprStack.Peek().children.AddLast(new Expression(3, true, true, (this_, left, right) => {
                             if (left.value.Value == 0 && right.value.Value == 0) throw new CalculationException("Operation 0^0 is undefinited!");
                             left.toRemove = right.toRemove = true;
-                            return (float)Math.Pow(left.value.Value, right.value.Value);
+                            return Math.Pow(left.value.Value, right.value.Value);
                         }));
                         lastExprType = ExpressionType.Operation;
                     }
@@ -116,7 +116,7 @@ namespace kalkulator
                             exprStack.Peek().children.AddLast(new Expression(3, false, true, (this_, left, right) =>
                             {
                                 right.toRemove = true;//obu ustawiamy true bo ich uzywa
-                                return (float)Math.Sqrt(right.value.Value);//linijka z dziaalaniem  podajemy najpierw wykladnik a potem liczbe
+                                return Math.Sqrt(right.value.Value);//linijka z dziaalaniem  podajemy najpierw wykladnik a potem liczbe
                             }));
 
                         }
@@ -127,7 +127,7 @@ namespace kalkulator
                             exprStack.Peek().children.AddLast(new Expression(3, true, true, (this_, left, right) =>
                             {
                                 left.toRemove = right.toRemove = true;//obu ustawiamy true bo ich uzywa
-                                return (float)Math.Pow(right.value.Value, (1 / left.value.Value));//linijka z dziaalaniem  podajemy najpierw wykladnik a potem liczbe
+                                return Math.Pow(right.value.Value, (1 / left.value.Value));//linijka z dziaalaniem  podajemy najpierw wykladnik a potem liczbe
                             }));
                         }
                         else
@@ -142,36 +142,32 @@ namespace kalkulator
                         {
                             exprStack.Peek().children.AddLast(new Expression(3, true, true, (this_, left, right) => {
 
-                                float a = left.value.Value;
-                                float b = right.value.Value;
+                                double a = left.value.Value;
+                                double b = right.value.Value;
                                 if (!(a > 0 && a != 1 && b > 0)) //warunek profesor Ciborowskiej
                                 {
                                     throw new CalculationException("A założeń się nie uczymy???");
                                 }
 
                                 left.toRemove = right.toRemove = true;//obu ustawiamy true bo ich uzywa
-                                return (float)Math.Log(b, a); //linijka z dzialaniem
+                                return Math.Log(b, a); //linijka z dzialaniem
                             }));
                         }
-
-
                         else if (lastExprType == ExpressionType.None)
                         {
                             exprStack.Peek().children.AddLast(new Expression(3, false, true, (this_, left, right) => {
 
 
-                                float b = right.value.Value;
+                                double b = right.value.Value;
                                 if (!(b > 0)) //warunek profesor Ciborowskiej
                                 {
                                     throw new CalculationException("A założeń się nie uczymy???");
                                 }
 
                                 right.toRemove = true;//obu ustawiamy true bo ich uzywa
-                                return (float)Math.Log10(b); //linijka z dzialaniem
+                                return Math.Log10(b); //linijka z dzialaniem
                             }));
                         }
-
-
                         lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja 
                     }
                     else if (c == '(')
@@ -189,7 +185,6 @@ namespace kalkulator
                         exprStack.Pop();
                         lastExprType = ExpressionType.Number;
                     }
-
                     else
                     {
                         throw new CalculationException("Invalid charracter: " + c);
@@ -197,15 +192,15 @@ namespace kalkulator
                 }
             }
 
-            float resoult = rootExpr.EvaluateChildren();
+            double resoult = rootExpr.EvaluateChildren();
             return resoult;
         }
 
-        float ProduceNumber(string str, ref int i, float digitSystem = 10)
+        double ProduceNumber(string str, ref int i, double digitSystem = 10)
         {
-            float n = 0;
+            double n = 0;
             bool fractionPart = false;
-            float fractionDigit = 0;
+            double fractionDigit = 0;
             for (; i < str.Length; i++)
             {
                 char c = str[i];
@@ -221,11 +216,11 @@ namespace kalkulator
                 if (!fractionPart)
                 {
                     n *= digitSystem;
-                    n += (float)char.GetNumericValue(c);
+                    n += (double)char.GetNumericValue(c);
                 }
                 else
                 {
-                    n += (float)char.GetNumericValue(c) * (float)Math.Pow(digitSystem, --fractionDigit);
+                    n += (double)char.GetNumericValue(c) * (double)Math.Pow(digitSystem, --fractionDigit);
                 }
             }
             return n;
@@ -239,23 +234,23 @@ namespace kalkulator
         }
         class Expression
         {
-            Func<Expression, Expression, Expression, float> f; // w c++ function<Number(Expression*, Expression*, Expression*)> f;
+            Func<Expression, Expression, Expression, double> f; // w c++ function<Number(Expression*, Expression*, Expression*)> f;
             public int evaluationOrder; //kolejność dzilan np dodawnie 1 mnozenie 2
             public bool usesLeft = false, usesRight = false;
             public bool toRemove = false;
             public LinkedList<Expression> children = new LinkedList<Expression>();
-            public float? value;
+            public double? value;
 
             public Expression()
             {
 
             }
-            public Expression(float value)
+            public Expression(double value)
             {
                 this.value = value;
                 evaluationOrder = 0;
             }
-            public Expression(int evaluationOrder, bool usesLeft, bool usesRight, Func<Expression, Expression, Expression, float> function)
+            public Expression(int evaluationOrder, bool usesLeft, bool usesRight, Func<Expression, Expression, Expression, double> function)
             {
                 this.evaluationOrder = evaluationOrder;
                 this.usesLeft = usesLeft;
@@ -268,7 +263,7 @@ namespace kalkulator
                 value = f(this_, left, right);
                 //value = new Number(f(this_, left, right));
             }
-            public float EvaluateChildren()
+            public double EvaluateChildren()
             {
                 while (children.Count > 1)
                 {
