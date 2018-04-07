@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace kalkulator
 {
+    //Przykładowa zmiana
+    
+    
     class Obliczenie
     {
         string str;
@@ -15,6 +18,12 @@ namespace kalkulator
         {
             this.str = str;
         }
+
+        //zmiana 2
+
+
+
+        //zmanaia 3 
 
         public float NoWezIOblicz()
         {
