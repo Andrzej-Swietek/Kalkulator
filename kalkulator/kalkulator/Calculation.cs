@@ -22,12 +22,82 @@ namespace kalkulator
             Stack<Expression> exprStack = new Stack<Expression>(); //stos w którym nawiasie lub expreszynie jestesmy
             exprStack.Push(rootExpr);
             ExpressionType lastExprType = ExpressionType.None;
+            string textExpr = "";
             char c;
 
             for (int i = 0; i < str.Length;)
             {
                 c = str[i];
-                if (char.IsDigit(c) || c == ',' || c == '.')
+                
+                if(char.IsLetter(c))
+                {
+                    i++;
+                    textExpr += char.ToLower(c);              
+                }
+                else if(!string.IsNullOrEmpty(textExpr))
+                {
+                    if (false) ;
+                    else if (textExpr == "log")
+                    {
+                        if (lastExprType == ExpressionType.Number)
+                        {
+                            exprStack.Peek().children.AddLast(new Expression(4, true, true, (this_, left, right) =>
+                            {
+                                double a = left.value.Value;
+                                double b = right.value.Value;
+                                if (!(a > 0 && a != 1.0 && b > 0)) //warunek profesor Ciborowskiej
+                                {
+                                    throw new CalculationException("A założeń się nie uczymy???");
+                                }
+
+                                left.toRemove = right.toRemove = true;//obu ustawiamy true bo ich uzywa
+                                return Math.Log(b, a); //linijka z dzialaniem
+                            }));
+                        }
+                        else if (lastExprType == ExpressionType.None)
+                        {
+                            exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) =>
+                            {
+                                double b = right.value.Value;
+                                if (!(b > 0)) //warunek profesor Ciborowskiej
+                                {
+                                    throw new CalculationException("A założeń się nie uczymy???");
+                                }
+
+                                right.toRemove = true;//obu ustawiamy true bo ich uzywa
+                                return Math.Log10(b); //linijka z dzialaniem
+                            }));
+                        }
+                        else throw new CalculationException("Format error!");
+                        lastExprType = ExpressionType.TextOperation;//ostatnia wyraz to opercja 
+                    }
+                    else if (textExpr == "mod")
+                    {
+                        if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");
+                        exprStack.Peek().children.AddLast(new Expression(2, true, true, (this_, left, right) =>
+                        {
+                            if (right.value.Value == 0) throw new CalculationException("Attemption to modulo by 0!");
+                            left.toRemove = right.toRemove = true;
+                            return left.value.Value % right.value.Value;
+                        }));
+                        lastExprType = ExpressionType.TextOperation;
+                    }
+                    else if (textExpr == "sin")
+                    {
+                        if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                         && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                        exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) =>
+                        {
+                            right.toRemove = true;
+                            return Math.Sin(right.value.Value);
+                        }));
+                        lastExprType = ExpressionType.TextOperation;
+                    }
+                    else throw new CalculationException("Operation " + textExpr + " not known");
+                   
+                    textExpr = "";
+                }
+                else if (char.IsDigit(c) || c == ',' || c == '.')
                 {
                     double n = ProduceNumber(str, ref i);
                     Expression e = new Expression(n);
@@ -44,7 +114,7 @@ namespace kalkulator
                     }
                     else if (c == '+')
                     {
-                        if (lastExprType == ExpressionType.None || lastExprType == ExpressionType.Operation) throw new CalculationException("Format error!");//sprawdza czy byla liczba ostatnia anie nic lub znak
+                        if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");//sprawdza czy byla liczba ostatnia anie nic lub znak
                         exprStack.Peek().children.AddLast(new Expression(1, true, true, (this_, left, right) => {
                             left.toRemove = right.toRemove = true;//obu ustawiamy true bo ich uzywa
                             return left.value.Value + right.value.Value;//linijka z dziaalaniem
@@ -55,7 +125,7 @@ namespace kalkulator
                     {
                         if (lastExprType == ExpressionType.None)
                         {
-                            exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) => {
+                            exprStack.Peek().children.AddLast(new Expression(5, false, true, (this_, left, right) => {
                                 right.toRemove = true;
                                 return -right.value.Value;
                             }));
@@ -72,7 +142,7 @@ namespace kalkulator
                     }
                     else if (c == '*')
                     {
-                        if (lastExprType == ExpressionType.None || lastExprType == ExpressionType.Operation) throw new CalculationException("Format error!");
+                        if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");
                         exprStack.Peek().children.AddLast(new Expression(2, true, true, (this_, left, right) => {
                             left.toRemove = right.toRemove = true;
                             return left.value.Value * right.value.Value;
@@ -81,27 +151,17 @@ namespace kalkulator
                     }
                     else if (c == '/')
                     {
-                        if (lastExprType == ExpressionType.None || lastExprType == ExpressionType.Operation) throw new CalculationException("Format error!");
+                        if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");
                         exprStack.Peek().children.AddLast(new Expression(2, true, true, (this_, left, right) => {
                             if (right.value.Value == 0) throw new CalculationException("Pamietiętaj Cholero Nie Dziel Przez 0!");
                             left.toRemove = right.toRemove = true;
                             return left.value.Value / right.value.Value;
                         }));
                         lastExprType = ExpressionType.Operation;
-                    }
-                    else if (c == '%')
-                    {
-                        if (lastExprType == ExpressionType.None || lastExprType == ExpressionType.Operation) throw new CalculationException("Format error!");
-                        exprStack.Peek().children.AddLast(new Expression(2, true, true, (this_, left, right) => {
-                            if (right.value.Value == 0) throw new CalculationException("Attemption to modulo by 0!");
-                            left.toRemove = right.toRemove = true;
-                            return left.value.Value % right.value.Value;
-                        }));
-                        lastExprType = ExpressionType.Operation;
-                    }
+                    }            
                     else if (c == '^')
                     {
-                        if (lastExprType == ExpressionType.None || lastExprType == ExpressionType.Operation) throw new CalculationException("Format error!");
+                        if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");
                         exprStack.Peek().children.AddLast(new Expression(3, true, true, (this_, left, right) => {
                             if (left.value.Value == 0 && right.value.Value == 0) throw new CalculationException("Operation 0^0 is undefinited!");
                             left.toRemove = right.toRemove = true;
@@ -136,42 +196,10 @@ namespace kalkulator
                         }
                         lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja
                     }
-                    else if (c == 'L')
-                    {
-                        if (lastExprType == ExpressionType.Number)
-                        {
-                            exprStack.Peek().children.AddLast(new Expression(3, true, true, (this_, left, right) => {
-
-                                double a = left.value.Value;
-                                double b = right.value.Value;
-                                if (!(a > 0 && a != 1 && b > 0)) //warunek profesor Ciborowskiej
-                                {
-                                    throw new CalculationException("A założeń się nie uczymy???");
-                                }
-
-                                left.toRemove = right.toRemove = true;//obu ustawiamy true bo ich uzywa
-                                return Math.Log(b, a); //linijka z dzialaniem
-                            }));
-                        }
-                        else if (lastExprType == ExpressionType.None)
-                        {
-                            exprStack.Peek().children.AddLast(new Expression(3, false, true, (this_, left, right) => {
-
-
-                                double b = right.value.Value;
-                                if (!(b > 0)) //warunek profesor Ciborowskiej
-                                {
-                                    throw new CalculationException("A założeń się nie uczymy???");
-                                }
-
-                                right.toRemove = true;//obu ustawiamy true bo ich uzywa
-                                return Math.Log10(b); //linijka z dzialaniem
-                            }));
-                        }
-                        lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja 
-                    }
                     else if (c == '(')
                     {
+                        if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                            && lastExprType != ExpressionType.Operation && lastExprType != ExpressionType.TextOperation) throw new CalculationException("Format error!");
                         Expression e = new Expression(10, true, true, (this_, left, right) => {
                             return this_.EvaluateChildren();
                         });
@@ -183,7 +211,7 @@ namespace kalkulator
                     {
                         if (lastExprType == ExpressionType.None || exprStack.Count == 1) throw new CalculationException("Brackets error!");
                         exprStack.Pop();
-                        lastExprType = ExpressionType.Number;
+                        lastExprType = ExpressionType.BracketsExpr;
                     }
                     else
                     {
@@ -230,7 +258,9 @@ namespace kalkulator
         {
             None,
             Number,
-            Operation
+            Operation,
+            TextOperation,
+            BracketsExpr
         }
         class Expression
         {

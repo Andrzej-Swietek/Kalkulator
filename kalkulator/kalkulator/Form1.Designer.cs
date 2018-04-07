@@ -404,7 +404,7 @@
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(80, 80);
             this.button21.TabIndex = 6;
-            this.button21.Tag = "L";
+            this.button21.Tag = "log";
             this.button21.Text = "log n";
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.btnOperation_Click);
@@ -440,6 +440,7 @@
             this.button56.Tag = "mod";
             this.button56.Text = "mod";
             this.button56.UseVisualStyleBackColor = true;
+            this.button56.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button5
             // 
