@@ -16,7 +16,17 @@ namespace kalkulator
         {
             InitializeComponent();
         }
-        
+
+
+        void SwitchToPanel(Panel panel)
+        {
+            foreach(var p in Controls.Cast<Control>().Where(c => (string)c.Tag == "switchPanel" ) )
+            {
+                p.Visible = false;
+            }
+            panel.Visible = true;
+        }
+
 
         //gdy dowolny przycisk numeryczny zostanie ciśnięty wykonaj tą funkcje
         //
@@ -30,8 +40,15 @@ namespace kalkulator
         void onClick_btnZnak(object sender, EventArgs args)
         {
             string operation = (string)((Button)sender).Tag;
-            textboxValue.Text += " "+ operation + " ";
+            textboxValue.Text += " " + operation + " ";
         }
+
+        void onClick_btnComma(object sender, EventArgs args)
+        {
+
+            textboxValue.Text += ",";
+        }
+
 
         private void btnEvaluate_Click(object sender, EventArgs e) //oblicz
         {
@@ -40,7 +57,7 @@ namespace kalkulator
                 float resoult = new Calcualtion(textboxValue.Text).NoWezIOblicz();
                 textboxValue.Text = resoult.ToString();
             }
-            catch(Calcualtion.CalculationException ex)
+            catch (Calcualtion.CalculationException ex)
             {
                 MessageBox.Show(ex.Message, "Calculator", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -50,16 +67,27 @@ namespace kalkulator
         {
             panelBasic.Visible = false;
             panelAdvanced.Visible = true;
-            //panelPrzelicznik.Visible = false;
-           
+            panelCurrency.Visible = false;
+
         }
 
         private void btn_basic_Click(object sender, EventArgs e) //button podstawowe
         {
             panelBasic.Visible = true;
             panelAdvanced.Visible = false;
+            panelCurrency.Visible = false;
         }
 
-        
+        private void button43_Click(object sender, EventArgs e)
+        {
+            textboxValue.Text = "";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            panelBasic.Visible = false;
+            panelAdvanced.Visible = false;
+            panelCurrency.Visible = true;
+        }
     }
 }

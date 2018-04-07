@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btn_basic = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -54,6 +55,7 @@
             this.button21 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
+            this.button56 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.btnEvaluate = new System.Windows.Forms.Button();
@@ -84,19 +86,53 @@
             this.button33 = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
-            this.button36 = new System.Windows.Forms.Button();
             this.button37 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
             this.button40 = new System.Windows.Forms.Button();
             this.button41 = new System.Windows.Forms.Button();
             this.button42 = new System.Windows.Forms.Button();
+            this.button36 = new System.Windows.Forms.Button();
+            this.button43 = new System.Windows.Forms.Button();
+            this.panelCurrency = new System.Windows.Forms.Panel();
+            this.button55 = new System.Windows.Forms.Button();
+            this.Wynik = new System.Windows.Forms.Label();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button44 = new System.Windows.Forms.Button();
+            this.button45 = new System.Windows.Forms.Button();
+            this.button46 = new System.Windows.Forms.Button();
+            this.button47 = new System.Windows.Forms.Button();
+            this.button48 = new System.Windows.Forms.Button();
+            this.button49 = new System.Windows.Forms.Button();
+            this.button50 = new System.Windows.Forms.Button();
+            this.button51 = new System.Windows.Forms.Button();
+            this.button52 = new System.Windows.Forms.Button();
+            this.button53 = new System.Windows.Forms.Button();
+            this.button54 = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panelBasic.SuspendLayout();
             this.panelAdvanced.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
+            this.panelCurrency.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_basic
@@ -127,6 +163,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Przelicznik";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -273,6 +310,7 @@
             this.btnComma.TabIndex = 10;
             this.btnComma.Text = ",";
             this.btnComma.UseVisualStyleBackColor = true;
+            this.btnComma.Click += new System.EventHandler(this.onClick_btnComma);
             // 
             // flowLayoutPanel2
             // 
@@ -285,6 +323,7 @@
             this.flowLayoutPanel2.Controls.Add(this.button21);
             this.flowLayoutPanel2.Controls.Add(this.button22);
             this.flowLayoutPanel2.Controls.Add(this.button23);
+            this.flowLayoutPanel2.Controls.Add(this.button56);
             this.flowLayoutPanel2.Controls.Add(this.button5);
             this.flowLayoutPanel2.Controls.Add(this.button6);
             this.flowLayoutPanel2.Controls.Add(this.btnEvaluate);
@@ -354,7 +393,7 @@
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(80, 80);
             this.button20.TabIndex = 5;
-            this.button20.Tag = "root";
+            this.button20.Tag = "√";
             this.button20.Text = "√";
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.onClick_btnZnak);
@@ -365,7 +404,7 @@
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(80, 80);
             this.button21.TabIndex = 6;
-            this.button21.Tag = "log";
+            this.button21.Tag = "L";
             this.button21.Text = "log n";
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.onClick_btnZnak);
@@ -385,12 +424,22 @@
             // 
             this.button23.Location = new System.Drawing.Point(3, 175);
             this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(166, 80);
+            this.button23.Size = new System.Drawing.Size(80, 80);
             this.button23.TabIndex = 8;
             this.button23.Tag = "%";
             this.button23.Text = "%";
             this.button23.UseVisualStyleBackColor = true;
             this.button23.Click += new System.EventHandler(this.onClick_btnZnak);
+            // 
+            // button56
+            // 
+            this.button56.Location = new System.Drawing.Point(89, 175);
+            this.button56.Name = "button56";
+            this.button56.Size = new System.Drawing.Size(80, 80);
+            this.button56.TabIndex = 12;
+            this.button56.Tag = "mod";
+            this.button56.Text = "mod";
+            this.button56.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
@@ -437,7 +486,7 @@
             // 
             this.panelBasic.Controls.Add(this.flowLayoutPanel1);
             this.panelBasic.Controls.Add(this.flowLayoutPanel2);
-            this.panelBasic.Location = new System.Drawing.Point(13, 104);
+            this.panelBasic.Location = new System.Drawing.Point(10, 103);
             this.panelBasic.Name = "panelBasic";
             this.panelBasic.Size = new System.Drawing.Size(709, 351);
             this.panelBasic.TabIndex = 13;
@@ -446,7 +495,7 @@
             // 
             this.panelAdvanced.Controls.Add(this.flowLayoutPanel3);
             this.panelAdvanced.Controls.Add(this.flowLayoutPanel4);
-            this.panelAdvanced.Location = new System.Drawing.Point(10, 100);
+            this.panelAdvanced.Location = new System.Drawing.Point(13, 104);
             this.panelAdvanced.Name = "panelAdvanced";
             this.panelAdvanced.Size = new System.Drawing.Size(709, 351);
             this.panelAdvanced.TabIndex = 14;
@@ -479,6 +528,7 @@
             this.button7.Tag = "1";
             this.button7.Text = "1";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.onClick_btnNum);
             // 
             // button8
             // 
@@ -489,6 +539,7 @@
             this.button8.Tag = "2";
             this.button8.Text = "2";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.onClick_btnNum);
             // 
             // button9
             // 
@@ -499,6 +550,7 @@
             this.button9.Tag = "3";
             this.button9.Text = "3";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.onClick_btnNum);
             // 
             // button10
             // 
@@ -509,6 +561,7 @@
             this.button10.Tag = "4";
             this.button10.Text = "4";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.onClick_btnNum);
             // 
             // button11
             // 
@@ -519,6 +572,7 @@
             this.button11.Tag = "5";
             this.button11.Text = "5";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.onClick_btnNum);
             // 
             // button12
             // 
@@ -529,6 +583,7 @@
             this.button12.Tag = "6";
             this.button12.Text = "6";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.onClick_btnNum);
             // 
             // button13
             // 
@@ -539,6 +594,7 @@
             this.button13.Tag = "7";
             this.button13.Text = "7";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.onClick_btnNum);
             // 
             // button14
             // 
@@ -549,6 +605,7 @@
             this.button14.Tag = "8";
             this.button14.Text = "8";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.onClick_btnNum);
             // 
             // button15
             // 
@@ -559,6 +616,7 @@
             this.button15.Tag = "9";
             this.button15.Text = "9";
             this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.onClick_btnNum);
             // 
             // button16
             // 
@@ -569,6 +627,7 @@
             this.button16.Tag = "0";
             this.button16.Text = "0";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.onClick_btnNum);
             // 
             // button24
             // 
@@ -578,6 +637,7 @@
             this.button24.TabIndex = 10;
             this.button24.Text = ",";
             this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.onClick_btnNum);
             // 
             // flowLayoutPanel4
             // 
@@ -592,13 +652,13 @@
             this.flowLayoutPanel4.Controls.Add(this.button33);
             this.flowLayoutPanel4.Controls.Add(this.button34);
             this.flowLayoutPanel4.Controls.Add(this.button35);
-            this.flowLayoutPanel4.Controls.Add(this.button36);
             this.flowLayoutPanel4.Controls.Add(this.button37);
             this.flowLayoutPanel4.Controls.Add(this.button38);
             this.flowLayoutPanel4.Controls.Add(this.button39);
             this.flowLayoutPanel4.Controls.Add(this.button40);
             this.flowLayoutPanel4.Controls.Add(this.button41);
             this.flowLayoutPanel4.Controls.Add(this.button42);
+            this.flowLayoutPanel4.Controls.Add(this.button36);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(289, 9);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(392, 319);
@@ -688,7 +748,7 @@
             // 
             this.button33.Location = new System.Drawing.Point(127, 68);
             this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(142, 59);
+            this.button33.Size = new System.Drawing.Size(118, 59);
             this.button33.TabIndex = 8;
             this.button33.Tag = "%";
             this.button33.Text = "%";
@@ -696,7 +756,7 @@
             // 
             // button34
             // 
-            this.button34.Location = new System.Drawing.Point(275, 68);
+            this.button34.Location = new System.Drawing.Point(251, 68);
             this.button34.Name = "button34";
             this.button34.Size = new System.Drawing.Size(56, 59);
             this.button34.TabIndex = 10;
@@ -706,7 +766,7 @@
             // 
             // button35
             // 
-            this.button35.Location = new System.Drawing.Point(3, 133);
+            this.button35.Location = new System.Drawing.Point(313, 68);
             this.button35.Name = "button35";
             this.button35.Size = new System.Drawing.Size(56, 59);
             this.button35.TabIndex = 11;
@@ -714,19 +774,9 @@
             this.button35.Text = ")";
             this.button35.UseVisualStyleBackColor = true;
             // 
-            // button36
-            // 
-            this.button36.Location = new System.Drawing.Point(65, 133);
-            this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(314, 37);
-            this.button36.TabIndex = 9;
-            this.button36.Tag = "%";
-            this.button36.Text = "=";
-            this.button36.UseVisualStyleBackColor = true;
-            // 
             // button37
             // 
-            this.button37.Location = new System.Drawing.Point(3, 198);
+            this.button37.Location = new System.Drawing.Point(3, 133);
             this.button37.Name = "button37";
             this.button37.Size = new System.Drawing.Size(56, 59);
             this.button37.TabIndex = 12;
@@ -736,7 +786,7 @@
             // 
             // button38
             // 
-            this.button38.Location = new System.Drawing.Point(65, 198);
+            this.button38.Location = new System.Drawing.Point(65, 133);
             this.button38.Name = "button38";
             this.button38.Size = new System.Drawing.Size(56, 59);
             this.button38.TabIndex = 13;
@@ -746,7 +796,7 @@
             // 
             // button39
             // 
-            this.button39.Location = new System.Drawing.Point(127, 198);
+            this.button39.Location = new System.Drawing.Point(127, 133);
             this.button39.Name = "button39";
             this.button39.Size = new System.Drawing.Size(56, 59);
             this.button39.TabIndex = 14;
@@ -756,7 +806,7 @@
             // 
             // button40
             // 
-            this.button40.Location = new System.Drawing.Point(189, 198);
+            this.button40.Location = new System.Drawing.Point(189, 133);
             this.button40.Name = "button40";
             this.button40.Size = new System.Drawing.Size(56, 59);
             this.button40.TabIndex = 15;
@@ -766,17 +816,17 @@
             // 
             // button41
             // 
-            this.button41.Location = new System.Drawing.Point(251, 198);
+            this.button41.Location = new System.Drawing.Point(251, 133);
             this.button41.Name = "button41";
             this.button41.Size = new System.Drawing.Size(56, 59);
             this.button41.TabIndex = 16;
             this.button41.Tag = ")";
-            this.button41.Text = "acsin α";
+            this.button41.Text = "arcsin α";
             this.button41.UseVisualStyleBackColor = true;
             // 
             // button42
             // 
-            this.button42.Location = new System.Drawing.Point(313, 198);
+            this.button42.Location = new System.Drawing.Point(313, 133);
             this.button42.Name = "button42";
             this.button42.Size = new System.Drawing.Size(56, 59);
             this.button42.TabIndex = 17;
@@ -784,13 +834,371 @@
             this.button42.Text = "arccos α";
             this.button42.UseVisualStyleBackColor = true;
             // 
+            // button36
+            // 
+            this.button36.Location = new System.Drawing.Point(3, 198);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(363, 37);
+            this.button36.TabIndex = 9;
+            this.button36.Tag = "%";
+            this.button36.Text = "=";
+            this.button36.UseVisualStyleBackColor = true;
+            // 
+            // button43
+            // 
+            this.button43.Location = new System.Drawing.Point(522, 58);
+            this.button43.Name = "button43";
+            this.button43.Size = new System.Drawing.Size(87, 39);
+            this.button43.TabIndex = 15;
+            this.button43.Text = "Clear";
+            this.button43.UseVisualStyleBackColor = true;
+            this.button43.Click += new System.EventHandler(this.button43_Click);
+            // 
+            // panelCurrency
+            // 
+            this.panelCurrency.Controls.Add(this.button55);
+            this.panelCurrency.Controls.Add(this.Wynik);
+            this.panelCurrency.Controls.Add(this.checkBox7);
+            this.panelCurrency.Controls.Add(this.checkBox8);
+            this.panelCurrency.Controls.Add(this.checkBox9);
+            this.panelCurrency.Controls.Add(this.checkBox10);
+            this.panelCurrency.Controls.Add(this.checkBox11);
+            this.panelCurrency.Controls.Add(this.checkBox12);
+            this.panelCurrency.Controls.Add(this.label2);
+            this.panelCurrency.Controls.Add(this.label1);
+            this.panelCurrency.Controls.Add(this.checkBox6);
+            this.panelCurrency.Controls.Add(this.checkBox5);
+            this.panelCurrency.Controls.Add(this.checkBox4);
+            this.panelCurrency.Controls.Add(this.checkBox3);
+            this.panelCurrency.Controls.Add(this.checkBox2);
+            this.panelCurrency.Controls.Add(this.checkBox1);
+            this.panelCurrency.Controls.Add(this.textBox1);
+            this.panelCurrency.Controls.Add(this.flowLayoutPanel5);
+            this.panelCurrency.Cursor = System.Windows.Forms.Cursors.Default;
+            this.panelCurrency.Location = new System.Drawing.Point(12, 103);
+            this.panelCurrency.Name = "panelCurrency";
+            this.panelCurrency.Size = new System.Drawing.Size(707, 372);
+            this.panelCurrency.TabIndex = 16;
+            this.panelCurrency.Visible = false;
+            // 
+            // button55
+            // 
+            this.button55.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button55.Location = new System.Drawing.Point(417, 281);
+            this.button55.Name = "button55";
+            this.button55.Size = new System.Drawing.Size(192, 43);
+            this.button55.TabIndex = 27;
+            this.button55.Text = "Przelicz";
+            this.button55.UseVisualStyleBackColor = true;
+            // 
+            // Wynik
+            // 
+            this.Wynik.AutoSize = true;
+            this.Wynik.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Wynik.Location = new System.Drawing.Point(300, 26);
+            this.Wynik.Name = "Wynik";
+            this.Wynik.Size = new System.Drawing.Size(88, 31);
+            this.Wynik.TabIndex = 26;
+            this.Wynik.Text = "Wynik";
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(573, 247);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(86, 17);
+            this.checkBox7.TabIndex = 25;
+            this.checkBox7.Text = "Juan Chiński";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(573, 224);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(114, 17);
+            this.checkBox8.TabIndex = 24;
+            this.checkBox8.Text = "Dolar Amerykański";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(573, 201);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(112, 17);
+            this.checkBox9.TabIndex = 23;
+            this.checkBox9.Text = "Frank Szwajcarski";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            // 
+            // checkBox10
+            // 
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Location = new System.Drawing.Point(573, 178);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(51, 17);
+            this.checkBox10.TabIndex = 22;
+            this.checkBox10.Text = "Złoty";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            // 
+            // checkBox11
+            // 
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Location = new System.Drawing.Point(573, 155);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(48, 17);
+            this.checkBox11.TabIndex = 21;
+            this.checkBox11.Text = "Euro";
+            this.checkBox11.UseVisualStyleBackColor = true;
+            // 
+            // checkBox12
+            // 
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Location = new System.Drawing.Point(573, 132);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(47, 17);
+            this.checkBox12.TabIndex = 20;
+            this.checkBox12.Text = "Funt";
+            this.checkBox12.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(570, 108);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(107, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Docelowa Jednostka";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(352, 108);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Obecna Jednostka";
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(355, 247);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(86, 17);
+            this.checkBox6.TabIndex = 11;
+            this.checkBox6.Text = "Juan Chiński";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(355, 224);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(114, 17);
+            this.checkBox5.TabIndex = 10;
+            this.checkBox5.Text = "Dolar Amerykański";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(355, 201);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(112, 17);
+            this.checkBox4.TabIndex = 9;
+            this.checkBox4.Text = "Frank Szwajcarski";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(355, 178);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(51, 17);
+            this.checkBox3.TabIndex = 8;
+            this.checkBox3.Text = "Złoty";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(355, 155);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(48, 17);
+            this.checkBox2.TabIndex = 7;
+            this.checkBox2.Text = "Euro";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(355, 132);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(47, 17);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "Funt";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox1.Location = new System.Drawing.Point(404, 25);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(252, 38);
+            this.textBox1.TabIndex = 0;
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.button44);
+            this.flowLayoutPanel5.Controls.Add(this.button45);
+            this.flowLayoutPanel5.Controls.Add(this.button46);
+            this.flowLayoutPanel5.Controls.Add(this.button47);
+            this.flowLayoutPanel5.Controls.Add(this.button48);
+            this.flowLayoutPanel5.Controls.Add(this.button49);
+            this.flowLayoutPanel5.Controls.Add(this.button50);
+            this.flowLayoutPanel5.Controls.Add(this.button51);
+            this.flowLayoutPanel5.Controls.Add(this.button52);
+            this.flowLayoutPanel5.Controls.Add(this.button53);
+            this.flowLayoutPanel5.Controls.Add(this.button54);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(19, 13);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(268, 345);
+            this.flowLayoutPanel5.TabIndex = 5;
+            // 
+            // button44
+            // 
+            this.button44.Location = new System.Drawing.Point(3, 3);
+            this.button44.Name = "button44";
+            this.button44.Size = new System.Drawing.Size(80, 80);
+            this.button44.TabIndex = 0;
+            this.button44.Tag = "1";
+            this.button44.Text = "1";
+            this.button44.UseVisualStyleBackColor = true;
+            this.button44.Click += new System.EventHandler(this.onClick_btnNum);
+            // 
+            // button45
+            // 
+            this.button45.Location = new System.Drawing.Point(89, 3);
+            this.button45.Name = "button45";
+            this.button45.Size = new System.Drawing.Size(80, 80);
+            this.button45.TabIndex = 1;
+            this.button45.Tag = "2";
+            this.button45.Text = "2";
+            this.button45.UseVisualStyleBackColor = true;
+            this.button45.Click += new System.EventHandler(this.onClick_btnNum);
+            // 
+            // button46
+            // 
+            this.button46.Location = new System.Drawing.Point(175, 3);
+            this.button46.Name = "button46";
+            this.button46.Size = new System.Drawing.Size(80, 80);
+            this.button46.TabIndex = 2;
+            this.button46.Tag = "3";
+            this.button46.Text = "3";
+            this.button46.UseVisualStyleBackColor = true;
+            this.button46.Click += new System.EventHandler(this.onClick_btnNum);
+            // 
+            // button47
+            // 
+            this.button47.Location = new System.Drawing.Point(3, 89);
+            this.button47.Name = "button47";
+            this.button47.Size = new System.Drawing.Size(80, 80);
+            this.button47.TabIndex = 3;
+            this.button47.Tag = "4";
+            this.button47.Text = "4";
+            this.button47.UseVisualStyleBackColor = true;
+            this.button47.Click += new System.EventHandler(this.onClick_btnNum);
+            // 
+            // button48
+            // 
+            this.button48.Location = new System.Drawing.Point(89, 89);
+            this.button48.Name = "button48";
+            this.button48.Size = new System.Drawing.Size(80, 80);
+            this.button48.TabIndex = 4;
+            this.button48.Tag = "5";
+            this.button48.Text = "5";
+            this.button48.UseVisualStyleBackColor = true;
+            this.button48.Click += new System.EventHandler(this.onClick_btnNum);
+            // 
+            // button49
+            // 
+            this.button49.Location = new System.Drawing.Point(175, 89);
+            this.button49.Name = "button49";
+            this.button49.Size = new System.Drawing.Size(80, 80);
+            this.button49.TabIndex = 5;
+            this.button49.Tag = "6";
+            this.button49.Text = "6";
+            this.button49.UseVisualStyleBackColor = true;
+            this.button49.Click += new System.EventHandler(this.onClick_btnNum);
+            // 
+            // button50
+            // 
+            this.button50.Location = new System.Drawing.Point(3, 175);
+            this.button50.Name = "button50";
+            this.button50.Size = new System.Drawing.Size(80, 80);
+            this.button50.TabIndex = 6;
+            this.button50.Tag = "7";
+            this.button50.Text = "7";
+            this.button50.UseVisualStyleBackColor = true;
+            this.button50.Click += new System.EventHandler(this.onClick_btnNum);
+            // 
+            // button51
+            // 
+            this.button51.Location = new System.Drawing.Point(89, 175);
+            this.button51.Name = "button51";
+            this.button51.Size = new System.Drawing.Size(80, 80);
+            this.button51.TabIndex = 7;
+            this.button51.Tag = "8";
+            this.button51.Text = "8";
+            this.button51.UseVisualStyleBackColor = true;
+            this.button51.Click += new System.EventHandler(this.onClick_btnNum);
+            // 
+            // button52
+            // 
+            this.button52.Location = new System.Drawing.Point(175, 175);
+            this.button52.Name = "button52";
+            this.button52.Size = new System.Drawing.Size(80, 80);
+            this.button52.TabIndex = 8;
+            this.button52.Tag = "9";
+            this.button52.Text = "9";
+            this.button52.UseVisualStyleBackColor = true;
+            this.button52.Click += new System.EventHandler(this.onClick_btnNum);
+            // 
+            // button53
+            // 
+            this.button53.Location = new System.Drawing.Point(3, 261);
+            this.button53.Name = "button53";
+            this.button53.Size = new System.Drawing.Size(166, 80);
+            this.button53.TabIndex = 9;
+            this.button53.Tag = "0";
+            this.button53.Text = "0";
+            this.button53.UseVisualStyleBackColor = true;
+            this.button53.Click += new System.EventHandler(this.onClick_btnNum);
+            // 
+            // button54
+            // 
+            this.button54.Location = new System.Drawing.Point(175, 261);
+            this.button54.Name = "button54";
+            this.button54.Size = new System.Drawing.Size(80, 80);
+            this.button54.TabIndex = 10;
+            this.button54.Text = ",";
+            this.button54.UseVisualStyleBackColor = true;
+            this.button54.Click += new System.EventHandler(this.onClick_btnNum);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 467);
-            this.Controls.Add(this.panelAdvanced);
+            this.Controls.Add(this.button43);
             this.Controls.Add(this.panelBasic);
+            this.Controls.Add(this.panelCurrency);
+            this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.textboxValue);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -804,6 +1212,9 @@
             this.panelAdvanced.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel4.ResumeLayout(false);
+            this.panelCurrency.ResumeLayout(false);
+            this.panelCurrency.PerformLayout();
+            this.flowLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -874,6 +1285,39 @@
         private System.Windows.Forms.Button button40;
         private System.Windows.Forms.Button button41;
         private System.Windows.Forms.Button button42;
+        private System.Windows.Forms.Button button43;
+        private System.Windows.Forms.Panel panelCurrency;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label Wynik;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.CheckBox checkBox11;
+        private System.Windows.Forms.CheckBox checkBox12;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.Button button44;
+        private System.Windows.Forms.Button button45;
+        private System.Windows.Forms.Button button46;
+        private System.Windows.Forms.Button button47;
+        private System.Windows.Forms.Button button48;
+        private System.Windows.Forms.Button button49;
+        private System.Windows.Forms.Button button50;
+        private System.Windows.Forms.Button button51;
+        private System.Windows.Forms.Button button52;
+        private System.Windows.Forms.Button button53;
+        private System.Windows.Forms.Button button54;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button button55;
+        private System.Windows.Forms.Button button56;
     }
 }
 
