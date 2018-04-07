@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 
 namespace kalkulator
 {
-    //Przykładowa zmiana
-    
-    
     class Obliczenie
     {
         string str;
@@ -19,16 +16,10 @@ namespace kalkulator
             this.str = str;
         }
 
-        //zmiana 2
-
-
-
-        //zmanaia 3 
-
         public float NoWezIOblicz()
         {
             Expression rootExpr = new Expression();
-            Stack<Expression> exprStack = new Stack<Expression>();
+            Stack<Expression> exprStack = new Stack<Expression>(); //stos w którym nawiasie lub expreszynie jestesmy
             exprStack.Push(rootExpr);
             ExpressionType lastExprType = ExpressionType.None;
             char c;
@@ -36,7 +27,7 @@ namespace kalkulator
             for (int i = 0; i < str.Length;)
             {
                 c = str[i];
-                if(char.IsDigit(c) || c == ',' || c == '.')
+                if (char.IsDigit(c) || c == ',' || c == '.')
                 {
                     float n = ProduceNumber(str, ref i);
                     Expression e = new Expression(n);
@@ -45,7 +36,7 @@ namespace kalkulator
                 }
                 else
                 {
-                    i++;                
+                    i++;
 
                     if (c == ' ')
                     {
@@ -53,27 +44,27 @@ namespace kalkulator
                     }
                     else if (c == '+')
                     {
-                        if (lastExprType == ExpressionType.None || lastExprType == ExpressionType.Operation) throw new CalculationException("Format error!");
+                        if (lastExprType == ExpressionType.None || lastExprType == ExpressionType.Operation) throw new CalculationException("Format error!");//sprawdza czy byla liczba ostatnia anie nic lub znak
                         exprStack.Peek().children.AddLast(new Expression(1, true, true, (this_, left, right) => {
-                            left.toRemove = right.toRemove = true;
-                            return left.value.Value + right.value.Value;
+                            left.toRemove = right.toRemove = true;//obu ustawiamy true bo ich uzywa
+                            return left.value.Value + right.value.Value;//linijka z dziaalaniem
                         }));
-                        lastExprType = ExpressionType.Operation;
+                        lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja
                     }
                     else if (c == '-')
-                    {             
-                        if(lastExprType == ExpressionType.None)
+                    {
+                        if (lastExprType == ExpressionType.None)
                         {
                             exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) => {
                                 right.toRemove = true;
                                 return -right.value.Value;
                             }));
                         }
-                        else if(lastExprType == ExpressionType.Number || lastExprType == ExpressionType.Operation)
+                        else if (lastExprType == ExpressionType.Number)
                         {
                             exprStack.Peek().children.AddLast(new Expression(1, true, true, (this_, left, right) => {
                                 left.toRemove = right.toRemove = true;
-                                return left.value.Value - right.value.Value;                            
+                                return left.value.Value - right.value.Value;
                             }));
                         }
                         else throw new CalculationException("Format error!");
@@ -92,7 +83,7 @@ namespace kalkulator
                     {
                         if (lastExprType == ExpressionType.None || lastExprType == ExpressionType.Operation) throw new CalculationException("Format error!");
                         exprStack.Peek().children.AddLast(new Expression(2, true, true, (this_, left, right) => {
-                            if (right.value.Value == 0) throw new CalculationException("Attemption to divide by 0!");
+                            if (right.value.Value == 0) throw new CalculationException("Pamietiętaj Cholero Nie Dziel Przez 0!");
                             left.toRemove = right.toRemove = true;
                             return left.value.Value / right.value.Value;
                         }));
@@ -118,6 +109,71 @@ namespace kalkulator
                         }));
                         lastExprType = ExpressionType.Operation;
                     }
+                    else if (c == '√')
+                    {
+                        if (lastExprType == ExpressionType.None) //jesli jedna liczba
+                        {
+                            exprStack.Peek().children.AddLast(new Expression(3, false, true, (this_, left, right) =>
+                            {
+                                right.toRemove = true;//obu ustawiamy true bo ich uzywa
+                                return (float)Math.Sqrt(right.value.Value);//linijka z dziaalaniem  podajemy najpierw wykladnik a potem liczbe
+                            }));
+
+                        }
+                        else if (lastExprType == ExpressionType.Number)//jesli 2 liczby
+                        {
+
+                            if (lastExprType == ExpressionType.Operation) throw new CalculationException("Format error!");//sprawdza czy byla liczba ostatnia anie nic lub znak
+                            exprStack.Peek().children.AddLast(new Expression(3, true, true, (this_, left, right) =>
+                            {
+                                left.toRemove = right.toRemove = true;//obu ustawiamy true bo ich uzywa
+                                return (float)Math.Pow(right.value.Value, (1 / left.value.Value));//linijka z dziaalaniem  podajemy najpierw wykladnik a potem liczbe
+                            }));
+                        }
+                        else
+                        {
+                            throw new CalculationException("FATAL ERROR 404");
+                        }
+                        lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja
+                    }
+                    else if (c == 'L')
+                    {
+                        if (lastExprType == ExpressionType.Number)
+                        {
+                            exprStack.Peek().children.AddLast(new Expression(3, true, true, (this_, left, right) => {
+
+                                float a = left.value.Value;
+                                float b = right.value.Value;
+                                if (!(a > 0 && a != 1 && b > 0)) //warunek profesor Ciborowskiej
+                                {
+                                    throw new CalculationException("A założeń się nie uczymy???");
+                                }
+
+                                left.toRemove = right.toRemove = true;//obu ustawiamy true bo ich uzywa
+                                return (float)Math.Log(b, a); //linijka z dzialaniem
+                            }));
+                        }
+
+
+                        else if (lastExprType == ExpressionType.None)
+                        {
+                            exprStack.Peek().children.AddLast(new Expression(3, false, true, (this_, left, right) => {
+
+
+                                float b = right.value.Value;
+                                if (!(b > 0)) //warunek profesor Ciborowskiej
+                                {
+                                    throw new CalculationException("A założeń się nie uczymy???");
+                                }
+
+                                right.toRemove = true;//obu ustawiamy true bo ich uzywa
+                                return (float)Math.Log10(b); //linijka z dzialaniem
+                            }));
+                        }
+
+
+                        lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja 
+                    }
                     else if (c == '(')
                     {
                         Expression e = new Expression(10, true, true, (this_, left, right) => {
@@ -127,12 +183,13 @@ namespace kalkulator
                         exprStack.Push(exprStack.Peek().children.Last.Value);
                         lastExprType = ExpressionType.None;
                     }
-                    else if(c == ')')
+                    else if (c == ')')
                     {
                         if (lastExprType == ExpressionType.None || exprStack.Count == 1) throw new CalculationException("Brackets error!");
                         exprStack.Pop();
                         lastExprType = ExpressionType.Number;
                     }
+
                     else
                     {
                         throw new CalculationException("Invalid charracter: " + c);
@@ -181,9 +238,9 @@ namespace kalkulator
             Operation
         }
         class Expression
-        {   
-	        Func<Expression, Expression, Expression, float> f; // function<Number(Expression*, Expression*, Expression*)> f;
-            public int evaluationOrder;
+        {
+            Func<Expression, Expression, Expression, float> f; // w c++ function<Number(Expression*, Expression*, Expression*)> f;
+            public int evaluationOrder; //kolejność dzilan np dodawnie 1 mnozenie 2
             public bool usesLeft = false, usesRight = false;
             public bool toRemove = false;
             public LinkedList<Expression> children = new LinkedList<Expression>();
@@ -213,7 +270,7 @@ namespace kalkulator
             }
             public float EvaluateChildren()
             {
-                while(children.Count > 1)
+                while (children.Count > 1)
                 {
                     var most = children.First;
                     for (var i = children.First; i != null; i = i.Next)
@@ -221,10 +278,10 @@ namespace kalkulator
                         if (most.Value.value.HasValue || (!i.Value.value.HasValue && i.Value.evaluationOrder > most.Value.evaluationOrder)) most = i;
                     }
                     Expression expr = most.Value;
-                    if(expr.value.HasValue)
+                    if (expr.value.HasValue)
                     {
                         var i = children.First.Next;
-                        for(;i != null; i = i.Next)
+                        for (; i != null; i = i.Next)
                         {
                             children.First.Value.value *= i.Value.value;
                         }
