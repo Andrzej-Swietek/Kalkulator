@@ -22,6 +22,9 @@ namespace kalkulator
         //zmiana 2
 
 
+
+        //zmanaia 3 
+
         public float NoWezIOblicz()
         {
             Expression rootExpr = new Expression();
