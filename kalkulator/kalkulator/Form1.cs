@@ -37,10 +37,10 @@ namespace kalkulator
         {
             try
             {
-                float resoult = new Obliczenie(textboxValue.Text).NoWezIOblicz();
+                float resoult = new Calcualtion(textboxValue.Text).NoWezIOblicz();
                 textboxValue.Text = resoult.ToString();
             }
-            catch(Obliczenie.CalculationException ex)
+            catch(Calcualtion.CalculationException ex)
             {
                 MessageBox.Show(ex.Message, "Calculator", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
