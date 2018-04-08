@@ -11,7 +11,7 @@ namespace kalkulator
     class CurrencyMenegercs
     {
 
-
+        // Zamiana walut
 
 
     }

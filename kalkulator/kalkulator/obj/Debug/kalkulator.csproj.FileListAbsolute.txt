@@ -31,3 +31,16 @@ C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.cs
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.csproj.CopyComplete
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.exe
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.pdb
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\bin\Debug\kalkulator.exe.config
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\bin\Debug\kalkulator.exe
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\bin\Debug\kalkulator.pdb
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.csprojResolveAssemblyReference.cache
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Form1.resources
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Properties.Resources.resources
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.csproj.GenerateResource.cache
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.csproj.CoreCompileInputs.cache
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.csproj.CopyComplete
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.exe
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.pdb
