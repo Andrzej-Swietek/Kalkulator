@@ -169,6 +169,15 @@ namespace kalkulator
                         }));
                         lastExprType = ExpressionType.TextOperation;
                     }
+                    else if (textExpr == "inv")
+                    {
+                        if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");//sprawdza czy byla liczba ostatnia anie nic lub znak
+                        exprStack.Peek().children.AddLast(new Expression(1, false, true, (this_, left, right) => {
+                            right.toRemove = true;//obu ustawiamy true bo ich uzywa
+                            return 1/right.value.Value;//linijka z dziaalaniem
+                        }));
+                        lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja
+                    }
                     else throw new CalculationException("Operation " + textExpr + " not known");
                    
                     textExpr = "";
