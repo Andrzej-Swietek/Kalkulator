@@ -11,9 +11,17 @@ namespace kalkulator
     {
         string str;
 
-        public Calcualtion(string str)
+        public Calcualtion(string str)//konstruktor
         {
             this.str = str;
+        }
+
+        public static double Factorial(double i) // funkcja silni
+        {
+            if (i < 1)  { return 1; }
+                
+            else { return (i * Factorial(i - 1)); }
+                
         }
 
         public double NoWezIOblicz()
@@ -126,7 +134,7 @@ namespace kalkulator
                         }));
                         lastExprType = ExpressionType.TextOperation;
                     }
-                    else if (textExpr == "arcsin")
+                    else if (textExpr == "asin")
                     {
                         if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
                     && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
@@ -137,7 +145,7 @@ namespace kalkulator
                         }));
                         lastExprType = ExpressionType.TextOperation;
                     }
-                    else if (textExpr == "arccos")
+                    else if (textExpr == "acos")
                     {
 
                         if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
@@ -149,6 +157,17 @@ namespace kalkulator
                         }));
                         lastExprType = ExpressionType.TextOperation;
 
+                    }
+                    else if (textExpr == "atg")
+                    {
+                        if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                     && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                        exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) =>
+                        {
+                            right.toRemove = true;
+                            return (Math.Atan(right.value.Value * Math.PI / 180));
+                        }));
+                        lastExprType = ExpressionType.TextOperation;
                     }
                     else throw new CalculationException("Operation " + textExpr + " not known");
                    
@@ -269,6 +288,16 @@ namespace kalkulator
                         if (lastExprType == ExpressionType.None || exprStack.Count == 1) throw new CalculationException("Brackets error!");
                         exprStack.Pop();
                         lastExprType = ExpressionType.BracketsExpr;
+                    }
+                    else if (c == '!')
+                    {
+                        
+                        if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");//sprawdza czy byla liczba ostatnia anie nic lub znak
+                        exprStack.Peek().children.AddLast(new Expression(1, false, true, (this_, left, right) => {
+                            right.toRemove = true;//obu ustawiamy true bo ich uzywa
+                            return Factorial(right.value.Value);
+                        }));
+                        lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja
                     }
                     else
                     {

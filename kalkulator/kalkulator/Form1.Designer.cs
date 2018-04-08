@@ -128,6 +128,7 @@
             this.button43 = new System.Windows.Forms.Button();
             this.button57 = new System.Windows.Forms.Button();
             this.button58 = new System.Windows.Forms.Button();
+            this.button59 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panelBasic.SuspendLayout();
@@ -669,6 +670,7 @@
             this.flowLayoutPanel4.Controls.Add(this.button2);
             this.flowLayoutPanel4.Controls.Add(this.button57);
             this.flowLayoutPanel4.Controls.Add(this.button58);
+            this.flowLayoutPanel4.Controls.Add(this.button59);
             this.flowLayoutPanel4.Controls.Add(this.button36);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(289, 9);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
@@ -846,8 +848,8 @@
             this.button41.Name = "button41";
             this.button41.Size = new System.Drawing.Size(56, 59);
             this.button41.TabIndex = 16;
-            this.button41.Tag = "arcsin";
-            this.button41.Text = "arcsin α";
+            this.button41.Tag = "asin";
+            this.button41.Text = "asin α";
             this.button41.UseVisualStyleBackColor = true;
             this.button41.Click += new System.EventHandler(this.btnOperation_Click);
             // 
@@ -857,8 +859,8 @@
             this.button42.Name = "button42";
             this.button42.Size = new System.Drawing.Size(56, 59);
             this.button42.TabIndex = 17;
-            this.button42.Tag = "arccos";
-            this.button42.Text = "arccos α";
+            this.button42.Tag = "acos";
+            this.button42.Text = "acos α";
             this.button42.UseVisualStyleBackColor = true;
             this.button42.Click += new System.EventHandler(this.btnOperation_Click);
             // 
@@ -1224,6 +1226,7 @@
             this.button2.Tag = "|x|";
             this.button2.Text = "|x|";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button3
             // 
@@ -1234,6 +1237,7 @@
             this.button3.Tag = "!";
             this.button3.Text = "!";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button43
             // 
@@ -1241,9 +1245,10 @@
             this.button43.Name = "button43";
             this.button43.Size = new System.Drawing.Size(56, 59);
             this.button43.TabIndex = 20;
-            this.button43.Tag = "arctg";
-            this.button43.Text = "arctg";
+            this.button43.Tag = "atg";
+            this.button43.Text = "atg";
             this.button43.UseVisualStyleBackColor = true;
+            this.button43.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button57
             // 
@@ -1254,6 +1259,7 @@
             this.button57.Tag = "π";
             this.button57.Text = " π";
             this.button57.UseVisualStyleBackColor = true;
+            this.button57.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button58
             // 
@@ -1264,6 +1270,17 @@
             this.button58.Tag = "e";
             this.button58.Text = " e";
             this.button58.UseVisualStyleBackColor = true;
+            this.button58.Click += new System.EventHandler(this.btnOperation_Click);
+            // 
+            // button59
+            // 
+            this.button59.Location = new System.Drawing.Point(313, 198);
+            this.button59.Name = "button59";
+            this.button59.Size = new System.Drawing.Size(56, 59);
+            this.button59.TabIndex = 23;
+            this.button59.Tag = "exp";
+            this.button59.Text = " exp";
+            this.button59.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1397,6 +1414,7 @@
         private System.Windows.Forms.Button button43;
         private System.Windows.Forms.Button button57;
         private System.Windows.Forms.Button button58;
+        private System.Windows.Forms.Button button59;
     }
 }
 
