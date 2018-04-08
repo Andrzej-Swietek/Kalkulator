@@ -858,10 +858,10 @@
             this.button36.Name = "button36";
             this.button36.Size = new System.Drawing.Size(363, 37);
             this.button36.TabIndex = 9;
-            this.button36.Tag = "%";
+            this.button36.Tag = "";
             this.button36.Text = "=";
             this.button36.UseVisualStyleBackColor = true;
-            this.button36.Click += new System.EventHandler(this.btnOperation_Click);
+            this.button36.Click += new System.EventHandler(this.btnEvaluate_Click);
             // 
             // buttonClear
             // 
