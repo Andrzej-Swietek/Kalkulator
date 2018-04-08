@@ -497,7 +497,7 @@
             // 
             this.panelAdvanced.Controls.Add(this.flowLayoutPanel3);
             this.panelAdvanced.Controls.Add(this.flowLayoutPanel4);
-            this.panelAdvanced.Location = new System.Drawing.Point(13, 104);
+            this.panelAdvanced.Location = new System.Drawing.Point(7, 100);
             this.panelAdvanced.Name = "panelAdvanced";
             this.panelAdvanced.Size = new System.Drawing.Size(709, 351);
             this.panelAdvanced.TabIndex = 14;
@@ -676,6 +676,7 @@
             this.button25.Tag = "+";
             this.button25.Text = "+";
             this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button26
             // 
@@ -686,6 +687,7 @@
             this.button26.Tag = "-";
             this.button26.Text = "-";
             this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button27
             // 
@@ -696,6 +698,7 @@
             this.button27.Tag = "*";
             this.button27.Text = "*";
             this.button27.UseVisualStyleBackColor = true;
+            this.button27.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button28
             // 
@@ -706,6 +709,7 @@
             this.button28.Tag = "/";
             this.button28.Text = "/";
             this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button29
             // 
@@ -716,6 +720,7 @@
             this.button29.Tag = "^";
             this.button29.Text = "x^n";
             this.button29.UseVisualStyleBackColor = true;
+            this.button29.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button30
             // 
@@ -726,6 +731,7 @@
             this.button30.Tag = "root";
             this.button30.Text = "√";
             this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button31
             // 
@@ -736,6 +742,7 @@
             this.button31.Tag = "log";
             this.button31.Text = "log n";
             this.button31.UseVisualStyleBackColor = true;
+            this.button31.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button32
             // 
@@ -746,6 +753,7 @@
             this.button32.Tag = "inv";
             this.button32.Text = "1/x";
             this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button33
             // 
@@ -756,6 +764,7 @@
             this.button33.Tag = "%";
             this.button33.Text = "%";
             this.button33.UseVisualStyleBackColor = true;
+            this.button33.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button34
             // 
@@ -766,6 +775,7 @@
             this.button34.Tag = "(";
             this.button34.Text = "(";
             this.button34.UseVisualStyleBackColor = true;
+            this.button34.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button35
             // 
@@ -776,6 +786,7 @@
             this.button35.Tag = ")";
             this.button35.Text = ")";
             this.button35.UseVisualStyleBackColor = true;
+            this.button35.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button37
             // 
@@ -786,6 +797,7 @@
             this.button37.Tag = ")";
             this.button37.Text = "sin α";
             this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button38
             // 
@@ -796,6 +808,7 @@
             this.button38.Tag = ")";
             this.button38.Text = "cos α";
             this.button38.UseVisualStyleBackColor = true;
+            this.button38.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button39
             // 
@@ -806,6 +819,7 @@
             this.button39.Tag = ")";
             this.button39.Text = "tg α";
             this.button39.UseVisualStyleBackColor = true;
+            this.button39.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button40
             // 
@@ -816,6 +830,7 @@
             this.button40.Tag = ")";
             this.button40.Text = "ctg α";
             this.button40.UseVisualStyleBackColor = true;
+            this.button40.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button41
             // 
@@ -826,6 +841,7 @@
             this.button41.Tag = ")";
             this.button41.Text = "arcsin α";
             this.button41.UseVisualStyleBackColor = true;
+            this.button41.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button42
             // 
@@ -836,6 +852,7 @@
             this.button42.Tag = ")";
             this.button42.Text = "arccos α";
             this.button42.UseVisualStyleBackColor = true;
+            this.button42.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // button36
             // 
@@ -846,6 +863,7 @@
             this.button36.Tag = "%";
             this.button36.Text = "=";
             this.button36.UseVisualStyleBackColor = true;
+            this.button36.Click += new System.EventHandler(this.btnOperation_Click);
             // 
             // buttonClear
             // 
@@ -1200,9 +1218,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 467);
             this.Controls.Add(this.buttonClear);
+            this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.panelBasic);
             this.Controls.Add(this.panelCurrency);
-            this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.textboxValue);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnLayoutCurrency);
