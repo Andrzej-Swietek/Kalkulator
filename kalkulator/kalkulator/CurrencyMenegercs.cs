@@ -12,7 +12,7 @@ namespace kalkulator
     {
 
         // Zamiana walut
-
+        // zmiana 2
 
     }
 }
