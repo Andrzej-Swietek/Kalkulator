@@ -93,6 +93,28 @@ namespace kalkulator
                         }));
                         lastExprType = ExpressionType.TextOperation;
                     }
+                    else if (textExpr == "cos")
+                    {
+                        if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                        && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                        exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) =>
+                        {
+                            right.toRemove = true;
+                            return (Math.Cos(right.value.Value*Math.PI/180));
+                        }));
+                        lastExprType = ExpressionType.TextOperation;
+                    }
+                    else if (textExpr == "tg")
+                    {
+                        if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                       && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                        exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) =>
+                        {
+                            right.toRemove = true;
+                            return (Math.Tan(right.value.Value*Math.PI/180));
+                        }));
+                        lastExprType = ExpressionType.TextOperation;
+                    }
                     else throw new CalculationException("Operation " + textExpr + " not known");
                    
                     textExpr = "";
