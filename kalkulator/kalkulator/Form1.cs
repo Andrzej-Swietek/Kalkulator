@@ -56,7 +56,7 @@ namespace kalkulator
         {
             textboxValue.Text += ",";
         }
-        private void btnEvaluate_Click(object sender, EventArgs e) //oblicz
+        private void btnEvaluate_Click(object sender, EventArgs e)
         {
             Calculate();
         }

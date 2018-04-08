@@ -16,14 +16,7 @@ namespace kalkulator
             this.str = str;
         }
 
-        public static double Factorial(double i) // funkcja silni
-        {
-            if (i < 1)  { return 1; }
-                
-            else { return (i * Factorial(i - 1)); }
-                
-        }
-
+        
         public double NoWezIOblicz()
         {
             Expression rootExpr = new Expression();
@@ -341,14 +334,22 @@ namespace kalkulator
                 if (!fractionPart)
                 {
                     n *= digitSystem;
-                    n += (double)char.GetNumericValue(c);
+                    n += char.GetNumericValue(c);
                 }
                 else
                 {
-                    n += (double)char.GetNumericValue(c) * (double)Math.Pow(digitSystem, --fractionDigit);
+                    n += char.GetNumericValue(c) * Math.Pow(digitSystem, --fractionDigit);
                 }
             }
             return n;
+        }
+        static double Factorial(double i) // funkcja silni
+        {
+            if (i < 1) return 1;
+            else
+            {
+                return (i * Factorial(i - 1));
+            }
         }
 
         enum ExpressionType
