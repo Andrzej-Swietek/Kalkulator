@@ -171,10 +171,12 @@ namespace kalkulator
                     }
                     else if (textExpr == "inv")
                     {
-                        if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");//sprawdza czy byla liczba ostatnia anie nic lub znak
-                        exprStack.Peek().children.AddLast(new Expression(1, false, true, (this_, left, right) => {
-                            right.toRemove = true;//obu ustawiamy true bo ich uzywa
-                            return 1/right.value.Value;//linijka z dziaalaniem
+                        if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                           && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                        exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) =>
+                        {
+                            right.toRemove = true;
+                            return (1/right.value.Value);
                         }));
                         lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja
                     }
@@ -302,9 +304,9 @@ namespace kalkulator
                     {
                         
                         if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");//sprawdza czy byla liczba ostatnia anie nic lub znak
-                        exprStack.Peek().children.AddLast(new Expression(1, false, true, (this_, left, right) => {
-                            right.toRemove = true;//obu ustawiamy true bo ich uzywa
-                            return Factorial(right.value.Value);
+                        exprStack.Peek().children.AddLast(new Expression(3, true, false, (this_, left, right) => {
+                            left.toRemove = true;//obu ustawiamy true bo ich uzywa
+                            return Factorial(left.value.Value);
                         }));
                         lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja
                     }
