@@ -89,7 +89,7 @@ namespace kalkulator
                         exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) =>
                         {
                             right.toRemove = true;
-                            return Math.Sin(right.value.Value);
+                            return (Math.Sin(right.value.Value*Math.PI/180));
                         }));
                         lastExprType = ExpressionType.TextOperation;
                     }
@@ -112,6 +112,17 @@ namespace kalkulator
                         {
                             right.toRemove = true;
                             return (Math.Tan(right.value.Value*Math.PI/180));
+                        }));
+                        lastExprType = ExpressionType.TextOperation;
+                    }
+                    else if (textExpr == "ctg")
+                    {
+                        if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                     && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                        exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) =>
+                        {
+                            right.toRemove = true;
+                            return 1/(Math.Tan(right.value.Value * Math.PI / 180));
                         }));
                         lastExprType = ExpressionType.TextOperation;
                     }
