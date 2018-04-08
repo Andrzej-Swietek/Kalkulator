@@ -7,3 +7,4 @@
 *.ide-shm
 *.ide-wal
 *.suo
+*.cache

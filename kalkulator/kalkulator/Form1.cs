@@ -21,7 +21,6 @@ namespace kalkulator
             choosablePanels = new Control[] { panelBasic, panelAdvanced, panelCurrency };
         }
 
-
         void SwitchToLayout(Panel panel)
         {
             foreach(var p in choosablePanels)
@@ -30,7 +29,18 @@ namespace kalkulator
             }
             panel.Visible = true;
         }
-
+        void Calculate()
+        {
+            try
+            {
+                double resoult = new Calcualtion(textboxValue.Text).NoWezIOblicz();
+                textboxValue.Text = resoult.ToString("0."+new string('#', 8));
+            }
+            catch (Calcualtion.CalculationException ex)
+            {
+                MessageBox.Show(ex.Message, "Calculator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void btnNum_Click(object sender, EventArgs e)
         {
@@ -48,15 +58,7 @@ namespace kalkulator
         }
         private void btnEvaluate_Click(object sender, EventArgs e) //oblicz
         {
-            try
-            {
-                double resoult = new Calcualtion(textboxValue.Text).NoWezIOblicz();
-                textboxValue.Text = resoult.ToString();
-            }
-            catch (Calcualtion.CalculationException ex)
-            {
-                MessageBox.Show(ex.Message, "Calculator", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Calculate();
         }
         private void buttonClear_Click(object sender, EventArgs e)
         {
