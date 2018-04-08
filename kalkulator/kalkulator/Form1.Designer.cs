@@ -792,7 +792,7 @@
             this.button37.Name = "button37";
             this.button37.Size = new System.Drawing.Size(56, 59);
             this.button37.TabIndex = 12;
-            this.button37.Tag = ")";
+            this.button37.Tag = "sin";
             this.button37.Text = "sin α";
             this.button37.UseVisualStyleBackColor = true;
             this.button37.Click += new System.EventHandler(this.btnOperation_Click);
@@ -803,7 +803,7 @@
             this.button38.Name = "button38";
             this.button38.Size = new System.Drawing.Size(56, 59);
             this.button38.TabIndex = 13;
-            this.button38.Tag = ")";
+            this.button38.Tag = "cos";
             this.button38.Text = "cos α";
             this.button38.UseVisualStyleBackColor = true;
             this.button38.Click += new System.EventHandler(this.btnOperation_Click);
@@ -814,7 +814,7 @@
             this.button39.Name = "button39";
             this.button39.Size = new System.Drawing.Size(56, 59);
             this.button39.TabIndex = 14;
-            this.button39.Tag = ")";
+            this.button39.Tag = "tg";
             this.button39.Text = "tg α";
             this.button39.UseVisualStyleBackColor = true;
             this.button39.Click += new System.EventHandler(this.btnOperation_Click);
@@ -825,7 +825,7 @@
             this.button40.Name = "button40";
             this.button40.Size = new System.Drawing.Size(56, 59);
             this.button40.TabIndex = 15;
-            this.button40.Tag = ")";
+            this.button40.Tag = "ctg";
             this.button40.Text = "ctg α";
             this.button40.UseVisualStyleBackColor = true;
             this.button40.Click += new System.EventHandler(this.btnOperation_Click);
