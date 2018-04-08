@@ -126,6 +126,30 @@ namespace kalkulator
                         }));
                         lastExprType = ExpressionType.TextOperation;
                     }
+                    else if (textExpr == "arcsin")
+                    {
+                        if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                    && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                        exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) =>
+                        {
+                            right.toRemove = true;
+                            return (Math.Asin(right.value.Value * Math.PI / 180));
+                        }));
+                        lastExprType = ExpressionType.TextOperation;
+                    }
+                    else if (textExpr == "arccos")
+                    {
+
+                        if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                     && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                        exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) =>
+                        {
+                            right.toRemove = true;
+                            return (Math.Acos(right.value.Value * Math.PI / 180));
+                        }));
+                        lastExprType = ExpressionType.TextOperation;
+
+                    }
                     else throw new CalculationException("Operation " + textExpr + " not known");
                    
                     textExpr = "";
