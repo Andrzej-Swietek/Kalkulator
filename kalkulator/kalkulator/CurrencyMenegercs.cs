@@ -14,5 +14,6 @@ namespace kalkulator
         // Zamiana walut
         // zmiana 2
 
+        //moja zmiana
     }
 }
