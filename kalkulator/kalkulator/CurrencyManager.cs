@@ -20,7 +20,7 @@ namespace kalkulator
         }
         static CurrencyManager()
         {
-            hosts = new Host[] 
+            hosts = new Host[]
             {
                 new Host_FreeCurrencyConverterApi()
             };
@@ -30,13 +30,13 @@ namespace kalkulator
         public async Task<double?> GetFactor(string from, string to)
         {
             double? value = TryGetFromData(from, to);
-            if(value.HasValue)
+            if (value.HasValue)
             {
                 return value;
             }
             else
             {
-                foreach(Host h in hosts.OrderBy(x => x.order))
+                foreach (Host h in hosts.OrderBy(x => x.order))
                 {
                     try
                     {
@@ -57,10 +57,10 @@ namespace kalkulator
                         else if (h.avaivalbeAllValues)
                         {
                             Dictionary<string, ConvertionData> newData = await h.GetAll();
-                            foreach(var c in data.Where(d => newData.ContainsKey(d.Value.from + '-' + d.Value.to) || 
-                                                        newData.ContainsKey(d.Value.to + '-' + d.Value.from) || 
-                                                        newData.ContainsKey(d.Value.from) ||
-                                                        newData.ContainsKey(d.Value.to)).ToList())
+                            foreach (var c in data.Where(d => newData.ContainsKey(d.Value.from + '-' + d.Value.to) ||
+                                                         newData.ContainsKey(d.Value.to + '-' + d.Value.from) ||
+                                                         newData.ContainsKey(d.Value.from) ||
+                                                         newData.ContainsKey(d.Value.to)).ToList())
                             {
                                 data.Remove(c.Key);
                             }
@@ -69,7 +69,7 @@ namespace kalkulator
                                 data.Add(c.Key, c.Value);
                             }
                             value = TryGetFromData(from, to);
-                            
+
                             return value.Value;
                         }
                         else throw new NotImplementedException("Usless host???");
@@ -133,7 +133,7 @@ namespace kalkulator
             public override bool avaivalbeValue => false;
             public override bool avaivalbeAllValues => false;
 
-            
+
 
             public override async Task<ConvertionData> GetFromTo(string from, string to)
             {
