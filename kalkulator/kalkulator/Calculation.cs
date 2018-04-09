@@ -184,14 +184,15 @@ namespace kalkulator
                     exprStack.Peek().children.AddLast(e);
                     lastExprType = ExpressionType.Number;
                 }
+                else if(c == ' ')
+                {
+                    i++;
+                }
                 else
                 {
                     i++;
 
-                    if (c == ' ')
-                    {
-
-                    }
+                    if (false) ;
                     else if (c == '+')
                     {
                         if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");//sprawdza czy byla liczba ostatnia anie nic lub znak
@@ -276,6 +277,16 @@ namespace kalkulator
                         }
                         lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja
                     }
+                    else if (c == '!')
+                    {
+
+                        if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");//sprawdza czy byla liczba ostatnia anie nic lub znak
+                        exprStack.Peek().children.AddLast(new Expression(3, true, false, (this_, left, right) => {
+                            left.toRemove = true;//obu ustawiamy true bo ich uzywa
+                            return Factorial(left.value.Value);
+                        }));
+                        lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja
+                    }
                     else if (c == '(')
                     {
                         if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
@@ -293,20 +304,7 @@ namespace kalkulator
                         exprStack.Pop();
                         lastExprType = ExpressionType.BracketsExpr;
                     }
-                    else if (c == '!')
-                    {
-                        
-                        if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");//sprawdza czy byla liczba ostatnia anie nic lub znak
-                        exprStack.Peek().children.AddLast(new Expression(3, true, false, (this_, left, right) => {
-                            left.toRemove = true;//obu ustawiamy true bo ich uzywa
-                            return Factorial(left.value.Value);
-                        }));
-                        lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja
-                    }
-                    else if (c == '%')
-                    {
-
-                    }
+                    
                     else
                     {
                         throw new CalculationException("Invalid charracter: " + c);
@@ -368,7 +366,7 @@ namespace kalkulator
         {
             Func<Expression, Expression, Expression, double> f; // w c++ function<Number(Expression*, Expression*, Expression*)> f;
             public int evaluationOrder; //kolejność dzilan np dodawnie 1 mnozenie 2
-            public bool usesLeft = false, usesRight = false;
+            public bool requiredLeft = false, requiredRight = false;
             public bool toRemove = false;
             public LinkedList<Expression> children = new LinkedList<Expression>();
             public double? value;
@@ -385,8 +383,8 @@ namespace kalkulator
             public Expression(int evaluationOrder, bool usesLeft, bool usesRight, Func<Expression, Expression, Expression, double> function)
             {
                 this.evaluationOrder = evaluationOrder;
-                this.usesLeft = usesLeft;
-                this.usesRight = usesRight;
+                this.requiredLeft = usesLeft;
+                this.requiredRight = usesRight;
                 this.f = function;
             }
 
@@ -418,44 +416,20 @@ namespace kalkulator
                     {
                         var left = most.Previous;
                         var right = most.Next;
-                        expr.Evaluate(expr, (expr.usesLeft && left != null) ? left.Value : null, (expr.usesRight && right != null) ? right.Value : null);
+                        if (expr.requiredLeft && left == null) throw new CalculationException("Format error!");
+                        if (expr.requiredRight && right == null) throw new CalculationException("Format error!");
+                        expr.Evaluate(expr, left?.Value, right?.Value);
                         if (left != null && left.Value.toRemove) children.Remove(left);
                         if (right != null && right.Value.toRemove) children.Remove(right);
                     }
                 }
-                Expression only = children.First.Value;
-                if (!only.value.HasValue) only.Evaluate(only, null, null);
+                Expression only = children.First.Value;               
+                if (!only.value.HasValue)
+                {
+                    if (only.requiredLeft || only.requiredRight) throw new CalculationException("Format error!");
+                    only.Evaluate(only, null, null);
+                }
                 return only.value.Value;
-
-                //list<Expression>::iterator i, j;
-                //while ((i = j = children.begin(), ++j) != children.end())
-                //{
-                //    auto most = i;
-                //    for (; j != children.end(); ++j)
-                //    {
-                //        if (most->value != nullptr || (j->value == nullptr && j->evaluationOrder > most->evaluationOrder)) most = j;
-                //    }
-                //    Expression & expr = *most;
-                //    if (expr.value != nullptr) //all expressions have value
-                //    {
-                //        auto it = i;
-                //        for (++it; it != children.end(); ++it)
-                //        {
-                //            *i->value *= *it->value;
-                //        }
-                //        break;
-                //    }
-                //    else
-                //    {
-                //        ++i;
-                //        auto left = most, right = most;
-                //        expr.evaluate(&expr, (expr.usesLeft && left != children.begin()) ? &*--left : nullptr, (expr.usesRight && ++right != children.end()) ? &*right : nullptr);
-                //        if (left->toRemove) children.erase(left);
-                //        if (right->toRemove) children.erase(right);
-                //    }
-                //}
-                //if (i->value == nullptr) i->evaluate(&*i, nullptr, nullptr);
-                //return *i->value;
             }
         };
         public class CalculationException : Exception
