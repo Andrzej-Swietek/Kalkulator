@@ -303,6 +303,10 @@ namespace kalkulator
                         }));
                         lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja
                     }
+                    else if (c == '%')
+                    {
+
+                    }
                     else
                     {
                         throw new CalculationException("Invalid charracter: " + c);
