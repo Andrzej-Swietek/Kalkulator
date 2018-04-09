@@ -56,10 +56,46 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panels\NumpadBasic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\NumpadBasic.Designer.cs">
+      <DependentUpon>NumpadBasic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\PanelAdvanced.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PanelAdvanced.Designer.cs">
+      <DependentUpon>PanelAdvanced.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\PanelBasic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PanelBasic.Designer.cs">
+      <DependentUpon>PanelBasic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\PanelCurrencyConverter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PanelCurrencyConverter.Designer.cs">
+      <DependentUpon>PanelCurrencyConverter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\NumpadBasic.resx">
+      <DependentUpon>NumpadBasic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\PanelAdvanced.resx">
+      <DependentUpon>PanelAdvanced.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\PanelBasic.resx">
+      <DependentUpon>PanelBasic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\PanelCurrencyConverter.resx">
+      <DependentUpon>PanelCurrencyConverter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
