@@ -8,3 +8,5 @@
 *.ide-wal
 *.suo
 *.cache
+*.exe
+*.pdb

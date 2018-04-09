@@ -31,14 +31,18 @@ namespace kalkulator
         }
         void Calculate()
         {
-            try
+            string text = textboxValue.Text;
+            if (!string.IsNullOrWhiteSpace(text))
             {
-                double resoult = new Calcualtion(textboxValue.Text).NoWezIOblicz();
-                textboxValue.Text = resoult.ToString("0."+new string('#', 8));
-            }
-            catch (Calcualtion.CalculationException ex)
-            {
-                MessageBox.Show(ex.Message, "Calculator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    double resoult = new Calcualtion(textboxValue.Text).NoWezIOblicz();
+                    textboxValue.Text = resoult.ToString("0." + new string('#', 8));
+                }
+                catch (Calcualtion.CalculationException ex)
+                {
+                    MessageBox.Show(ex.Message, "Calculator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -56,7 +60,7 @@ namespace kalkulator
         {
             textboxValue.Text += ",";
         }
-        private void btnEvaluate_Click(object sender, EventArgs e) //oblicz
+        private void btnEvaluate_Click(object sender, EventArgs e)
         {
             Calculate();
         }
