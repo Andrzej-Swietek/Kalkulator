@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kalkulator.Panels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,10 +19,21 @@ namespace kalkulator
         public Form1()
         {
             InitializeComponent();
-            choosablePanels = new Control[] { panelBasic, panelAdvanced, panelCurrency };
+            panelBasic.numpad.NumberButtonClicked += NumberButtonClicked;
+            panelBasic.numpad.CommaButtonClicked += (s, e) => SymbolButtonClicked(s, new SymbolButtonClickedEventArgs(","));
+            panelBasic.SymbolButtonClicked += SymbolButtonClicked;
+            panelBasic.EvaluateButtonClicked += EvaluateButtonClicked;
+            panelAdvanced.numpad.NumberButtonClicked += NumberButtonClicked;
+            panelAdvanced.numpad.CommaButtonClicked += (s, e) => SymbolButtonClicked(s, new SymbolButtonClickedEventArgs(","));
+            panelAdvanced.SymbolButtonClicked += SymbolButtonClicked;
+            panelAdvanced.EvaluateButtonClicked += EvaluateButtonClicked;
+            panelCurrencyConverter.numpad.NumberButtonClicked += NumberButtonClicked;
+            panelCurrencyConverter.numpad.CommaButtonClicked += (s, e) => SymbolButtonClicked(s, new SymbolButtonClickedEventArgs(","));
+
+            choosablePanels = new Control[] { panelBasic, panelAdvanced, panelCurrencyConverter };
         }
 
-        void SwitchToLayout(Panel panel)
+        void SwitchToLayout(Control panel)
         {
             foreach(var p in choosablePanels)
             {
@@ -46,29 +58,24 @@ namespace kalkulator
             }
         }
 
-        private void btnNum_Click(object sender, EventArgs e)
+        
+        private void NumberButtonClicked(object sender, NumberButtonClickedEventArgs e)
         {
-            int digit = int.Parse((string)((Button)sender).Tag);
-            textboxValue.Text += digit;
+            textboxValue.Text += e.digit;
         }
-        private void btnOperation_Click(object sender, EventArgs e)
+        private void SymbolButtonClicked(object sender, SymbolButtonClickedEventArgs e)
         {
-            string operation = (string)((Button)sender).Tag;
-            textboxValue.Text += " " + operation + " ";
+            textboxValue.Text += " " + e.symbol + " ";
         }
-        private void btnComma_Click(object sender, EventArgs e)
-        {
-            textboxValue.Text += ",";
-        }
-        private void btnEvaluate_Click(object sender, EventArgs e)
+        private void EvaluateButtonClicked(object sender, EventArgs e)
         {
             Calculate();
         }
+
         private void buttonClear_Click(object sender, EventArgs e)
         {
             textboxValue.Text = "";
         }
-
         private void btnLayoutBasic_Click(object sender, EventArgs e)
         {
             SwitchToLayout(panelBasic);
@@ -79,9 +86,26 @@ namespace kalkulator
         }
         private void btnLayoutCurrency_Click(object sender, EventArgs e)
         {
-            SwitchToLayout(panelCurrency);
+            SwitchToLayout(panelCurrencyConverter);
         }
 
-       
+
+    }
+
+    public class NumberButtonClickedEventArgs : EventArgs
+    {
+        public int digit;
+        public NumberButtonClickedEventArgs(int digit) : base()
+        {
+            this.digit = digit;
+        }
+    }
+    public class SymbolButtonClickedEventArgs : EventArgs
+    {
+        public string symbol;
+        public SymbolButtonClickedEventArgs(string symbol) : base()
+        {
+            this.symbol = symbol;
+        }
     }
 }
