@@ -14,7 +14,7 @@ namespace kalkulator
     public partial class Form1 : Form
     {
         private Control[] choosablePanels;
-
+        CurrencyManager currencyManager;
 
         public Form1()
         {
@@ -31,6 +31,7 @@ namespace kalkulator
             panelCurrencyConverter.numpad.CommaButtonClicked += (s, e) => SymbolButtonClicked(s, new SymbolButtonClickedEventArgs(","));
 
             choosablePanels = new Control[] { panelBasic, panelAdvanced, panelCurrencyConverter };
+            currencyManager = new CurrencyManager();
         }
 
         void SwitchToLayout(Control panel)
@@ -89,7 +90,11 @@ namespace kalkulator
             SwitchToLayout(panelCurrencyConverter);
         }
 
-
+        private async void btnTest_Click(object sender, EventArgs e)
+        {
+            double? value = await currencyManager.GetFactor("PLN", "EUR");
+            textboxValue.Text = value.ToString();
+        }
     }
 
     public class NumberButtonClickedEventArgs : EventArgs

@@ -75,9 +75,9 @@ namespace kalkulator
                         else throw new NotImplementedException("Usless host???");
                         return value;
                     }
-                    catch
+                    catch(Exception e)
                     {
-
+                        System.Windows.Forms.MessageBox.Show(e.Message, "Calculator");
                     }
                 }
                 return null;
@@ -124,6 +124,14 @@ namespace kalkulator
             public string from, to;
             public double value;
             public DateTime acquireDate;
+
+            public ConvertionData(string from, string to, double value, DateTime acquireDate)
+            {
+                this.from = from;
+                this.to = to;
+                this.value = value;
+                this.acquireDate = acquireDate;
+            }
         }
 
         class Host_FreeCurrencyConverterApi : Host
@@ -138,8 +146,8 @@ namespace kalkulator
             public override async Task<ConvertionData> GetFromTo(string from, string to)
             {
                 WebClient wc = new WebClient();
-                string url = string.Format("free.currencyconverterapi.com/api/v3/convert?q={0}_{1}&compact=ultra", from, to);
-                byte[] data = await wc.DownloadDataTaskAsync(url);
+                string url = string.Format("http://free.currencyconverterapi.com/api/v3/convert?q={0}_{1}&compact=ultra", from, to);
+                byte[] data = Encoding.ASCII.GetBytes("{\"PLN_EUR\":0.238389}"); //await wc.DownloadDataTaskAsync(url);
                 string textData = Encoding.ASCII.GetString(data);
                 using (MemoryStream ms = new MemoryStream(data))
                 {
@@ -147,11 +155,16 @@ namespace kalkulator
                     {
                         using (JsonTextReader jsonReader = new JsonTextReader(sr))
                         {
-                            //while(jsonReader.Path)
+                            while(jsonReader.Path != from + '_' + to)
+                            {
+                                double? v = jsonReader.ReadAsDouble();
+                                if (!v.HasValue) throw new Exception("Couldn't read value");
+                                return new ConvertionData(from, to, v.Value, DateTime.Now);
+                            }
+                            throw new Exception("Couldn't read value");
                         }
                     }
-                }
-                return null;
+                }          
             }
 
             public override Task<ConvertionData> GetValue(string of)

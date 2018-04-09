@@ -37,6 +37,7 @@
             this.panelBasic = new kalkulator.Panels.PanelBasic();
             this.panelAdvanced = new kalkulator.Panels.PanelAdvanced();
             this.panelCurrencyConverter = new kalkulator.Panels.PanelCurrencyConverter();
+            this.btnTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLayoutBasic
@@ -117,11 +118,22 @@
             this.panelCurrencyConverter.Size = new System.Drawing.Size(674, 357);
             this.panelCurrencyConverter.TabIndex = 18;
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(615, 58);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 19;
+            this.btnTest.Text = "TEST";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 520);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.panelCurrencyConverter);
             this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.panelBasic);
@@ -149,6 +161,7 @@
         private Panels.PanelBasic panelBasic;
         private Panels.PanelAdvanced panelAdvanced;
         private Panels.PanelCurrencyConverter panelCurrencyConverter;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 
