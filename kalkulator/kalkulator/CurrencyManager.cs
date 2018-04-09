@@ -12,11 +12,14 @@ namespace kalkulator
     class CurrencyManager
     {
         Dictionary<string, ConvertionData> data;
+        HashSet<string> currencies;
         public static Host[] hosts;
 
         public CurrencyManager()
         {
             data = new Dictionary<string, ConvertionData>();
+            currencies = new HashSet<string>();
+            currencies.AddRange(File.ReadAllLines("currencies.txt"));
         }
         static CurrencyManager()
         {
@@ -29,6 +32,15 @@ namespace kalkulator
 
         public async Task<double?> GetFactor(string from, string to)
         {
+            if(!currencies.Contains(from) )
+            {
+                throw new Exception("No currency: " + from);
+            }
+            if (!currencies.Contains(to))
+            {
+                throw new Exception("No currency: " + to);
+            }
+
             double? value = TryGetFromData(from, to);
             if (value.HasValue)
             {
@@ -38,35 +50,28 @@ namespace kalkulator
             {
                 foreach (Host h in hosts.OrderBy(x => x.order))
                 {
-                    try
+                    //try
                     {
                         if (h.availableFromTo)
                         {
                             ConvertionData convertion = await h.GetFromTo(from, to);
-                            data.Add(from, convertion);
+                            AddEntry(convertion);
                             value = convertion.value;
                         }
                         else if (h.avaivalbeValue) // to pewnie źle. dodać wyszukiwanie połączeń i co jak podstawą nie jest USD
                         {
                             ConvertionData convertionFrom = await h.GetValue(from);
                             ConvertionData convertionTo = await h.GetValue(to);
-                            data.Add(from, convertionFrom);
-                            data.Add(to, convertionTo);
+                            AddEntry(convertionFrom);
+                            AddEntry(convertionTo);
                             value = convertionFrom.value / convertionTo.value;
                         }
                         else if (h.avaivalbeAllValues)
                         {
-                            Dictionary<string, ConvertionData> newData = await h.GetAll();
-                            foreach (var c in data.Where(d => newData.ContainsKey(d.Value.from + '-' + d.Value.to) ||
-                                                         newData.ContainsKey(d.Value.to + '-' + d.Value.from) ||
-                                                         newData.ContainsKey(d.Value.from) ||
-                                                         newData.ContainsKey(d.Value.to)).ToList())
+                            Dictionary<string, ConvertionData> newData = await h.GetAll();                         
+                            foreach (var c in newData.Values)
                             {
-                                data.Remove(c.Key);
-                            }
-                            foreach (var c in newData)
-                            {
-                                data.Add(c.Key, c.Value);
+                                AddEntry(c);
                             }
                             value = TryGetFromData(from, to);
 
@@ -75,10 +80,10 @@ namespace kalkulator
                         else throw new NotImplementedException("Usless host???");
                         return value;
                     }
-                    catch(Exception e)
-                    {
-                        System.Windows.Forms.MessageBox.Show(e.Message, "Calculator");
-                    }
+                    //catch(Exception e)
+                    //{
+                    //    System.Windows.Forms.MessageBox.Show(e.Message, "Calculator");
+                    //}
                 }
                 return null;
             }
@@ -100,8 +105,18 @@ namespace kalkulator
             //}
             else return null;
         }
-
-
+        void AddEntry(ConvertionData convertion)
+        {
+            if(data.ContainsKey(convertion.from + '-' + convertion.to))
+            {
+                data.Remove(convertion.from + '-' + convertion.to);
+            }
+            if (data.ContainsKey(convertion.to + '-' + convertion.from))
+            {
+                data.Remove(convertion.to + '-' + convertion.from);
+            }
+            data.Add(convertion.from + '-' + convertion.to, convertion);
+        }
 
         public enum UpdateHosts
         {
@@ -113,7 +128,7 @@ namespace kalkulator
             public abstract bool availableFromTo { get; }
             public abstract bool avaivalbeValue { get; }
             public abstract bool avaivalbeAllValues { get; }
-            public int order;
+            public int order = 0;
 
             public abstract Task<ConvertionData> GetFromTo(string from, string to);
             public abstract Task<ConvertionData> GetValue(string of);
@@ -142,7 +157,6 @@ namespace kalkulator
             public override bool avaivalbeAllValues => false;
 
 
-
             public override async Task<ConvertionData> GetFromTo(string from, string to)
             {
                 WebClient wc = new WebClient();
@@ -155,11 +169,15 @@ namespace kalkulator
                     {
                         using (JsonTextReader jsonReader = new JsonTextReader(sr))
                         {
-                            while(jsonReader.Path != from + '_' + to)
+                            while (jsonReader.Read())
                             {
-                                double? v = jsonReader.ReadAsDouble();
-                                if (!v.HasValue) throw new Exception("Couldn't read value");
-                                return new ConvertionData(from, to, v.Value, DateTime.Now);
+                                if (jsonReader.TokenType == JsonToken.PropertyName && (string)jsonReader.Value == from+'_'+to)
+                                {
+                                    //jsonReader.Read();
+                                    double? v = jsonReader.ReadAsDouble();
+                                    if (!v.HasValue) throw new Exception("Couldn't read value");
+                                    return new ConvertionData(from, to, v.Value, DateTime.Now);
+                                }
                             }
                             throw new Exception("Couldn't read value");
                         }

@@ -48,3 +48,4 @@ C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.cs
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.exe
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.pdb
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.csprojResolveAssemblyReference.cache
+C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\bin\Debug\currencies.txt
