@@ -80,6 +80,12 @@
     <Compile Include="Panels\PanelCurrencyConverter.Designer.cs">
       <DependentUpon>PanelCurrencyConverter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panels\PanelMatrix.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PanelMatrix.Designer.cs">
+      <DependentUpon>PanelMatrix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\PanelCurrencyConverter.resx">
       <DependentUpon>PanelCurrencyConverter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\PanelMatrix.resx">
+      <DependentUpon>PanelMatrix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
