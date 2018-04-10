@@ -92,8 +92,10 @@ namespace kalkulator
 
         private async void btnTest_Click(object sender, EventArgs e)
         {
-            double? value = await currencyManager.GetFactor("PLN", "EUR");
-            textboxValue.Text = value.ToString();
+            //double? value = await currencyManager.GetFactor("PLN", "EUR");
+            //textboxValue.Text = value.ToString();
+            //currencyManager.Convert("USD", "EUR", 1);
+            currencyManager.EuropeanCentralBank_GetFromTo("USD", "PLN");
         }
     }
 
