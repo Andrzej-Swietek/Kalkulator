@@ -12,9 +12,16 @@ namespace kalkulator.Panels
 {
     public partial class PanelCurrencyConverter : UserControl
     {
+        public EventHandler ButtonConvertCurrenciesClicked;
+
         public PanelCurrencyConverter()
         {
             InitializeComponent();
+        }
+
+        private void btnConvertCurrencies_Click(object sender, EventArgs e)
+        {
+            ButtonConvertCurrenciesClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }
