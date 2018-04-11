@@ -34,8 +34,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button6 = new System.Windows.Forms.Button();
+            this.macierzA = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox00a = new System.Windows.Forms.TextBox();
             this.textBox01a = new System.Windows.Forms.TextBox();
             this.textBox02a = new System.Windows.Forms.TextBox();
@@ -52,6 +51,7 @@
             this.textBox31a = new System.Windows.Forms.TextBox();
             this.textBox32a = new System.Windows.Forms.TextBox();
             this.textBox33a = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
@@ -76,7 +76,7 @@
             this.label_X = new System.Windows.Forms.Label();
             this.textBoxLambda = new System.Windows.Forms.TextBox();
             this.label_Wynik = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.macierzA.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -142,40 +142,29 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // flowLayoutPanel1
+            // macierzA
             // 
-            this.flowLayoutPanel1.Controls.Add(this.textBox00a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox01a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox02a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox03a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox10a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox11a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox12a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox13a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox20a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox21a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox22a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox23a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox30a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox31a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox32a);
-            this.flowLayoutPanel1.Controls.Add(this.textBox33a);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(189, 46);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(220, 104);
-            this.flowLayoutPanel1.TabIndex = 8;
-            this.flowLayoutPanel1.Tag = "A";
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button6.Location = new System.Drawing.Point(412, 155);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(126, 58);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Przelicz";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.macierzA.Controls.Add(this.textBox00a);
+            this.macierzA.Controls.Add(this.textBox01a);
+            this.macierzA.Controls.Add(this.textBox02a);
+            this.macierzA.Controls.Add(this.textBox03a);
+            this.macierzA.Controls.Add(this.textBox10a);
+            this.macierzA.Controls.Add(this.textBox11a);
+            this.macierzA.Controls.Add(this.textBox12a);
+            this.macierzA.Controls.Add(this.textBox13a);
+            this.macierzA.Controls.Add(this.textBox20a);
+            this.macierzA.Controls.Add(this.textBox21a);
+            this.macierzA.Controls.Add(this.textBox22a);
+            this.macierzA.Controls.Add(this.textBox23a);
+            this.macierzA.Controls.Add(this.textBox30a);
+            this.macierzA.Controls.Add(this.textBox31a);
+            this.macierzA.Controls.Add(this.textBox32a);
+            this.macierzA.Controls.Add(this.textBox33a);
+            this.macierzA.Location = new System.Drawing.Point(189, 46);
+            this.macierzA.Name = "macierzA";
+            this.macierzA.Size = new System.Drawing.Size(220, 104);
+            this.macierzA.TabIndex = 8;
+            this.macierzA.Tag = "A";
             // 
             // textBox00a
             // 
@@ -304,6 +293,17 @@
             this.textBox33a.Size = new System.Drawing.Size(47, 20);
             this.textBox33a.TabIndex = 15;
             this.textBox33a.Tag = "33";
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button6.Location = new System.Drawing.Point(412, 155);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(126, 58);
+            this.button6.TabIndex = 10;
+            this.button6.Text = "Przelicz";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // flowLayoutPanel2
             // 
@@ -543,7 +543,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.macierzA);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button4);
@@ -552,8 +552,8 @@
             this.Controls.Add(this.button1);
             this.Name = "PanelMatrix";
             this.Size = new System.Drawing.Size(553, 373);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.macierzA.ResumeLayout(false);
+            this.macierzA.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -569,7 +569,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel macierzA;
         private System.Windows.Forms.TextBox textBox00a;
         private System.Windows.Forms.TextBox textBox01a;
         private System.Windows.Forms.TextBox textBox02a;
