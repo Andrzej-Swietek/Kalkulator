@@ -84,15 +84,23 @@ namespace kalkulator.Panels
             matrixB = new double[4, 4];
             matrixSolution = new double[4, 4];
 
-            foreach (var t in macierzA.Controls.OfType<TextBox>())//wczytywanie
+            foreach (var t in macierzA.Controls.OfType<TextBox>())//wczytywanie A
             {
                 int x = int.Parse(((string)t.Tag).Substring(0, 1));
                 int y = int.Parse(((string)t.Tag).Substring(1, 1));
-                matrixA[x, y] = double.Parse(t.Text);
+                matrixA[x,y] = double.Parse(t.Text);
             }
 
 
-            if(checkBox1.Checked ==true)
+            foreach (var t in macierzB.Controls.OfType<TextBox>())//wczytywanie B
+            {
+                int x = int.Parse(((string)t.Tag).Substring(0, 1));
+                int y = int.Parse(((string)t.Tag).Substring(1, 1));
+                matrixB[x, y] = double.Parse(t.Text);
+            }
+
+
+            if (checkBox1.Checked ==true || OperationMatrix =="Obr")
             {
                 det =   1 * matrixA[0,0] * ((matrixA[1,1] * matrixA[2,2] * matrixA[3,3]) + (matrixA[1,2] * matrixA[2,3] * matrixA[3,1]) + (matrixA[1,3] * matrixA[2,1] * matrixA[3,2]) - (matrixA[3,1] * matrixA[2,2] * matrixA[1,3]) - (matrixA[3,2] * matrixA[2,3] * matrixA[1,1]) - (matrixA[3,3] * matrixA[2,1] * matrixA[1,2])) +
                                (-1) * matrixA[1,0] * ((matrixA[0,1] * matrixA[2,2] * matrixA[3,3]) + (matrixA[0,2] * matrixA[2,3] * matrixA[3,1]) + (matrixA[0,3] * matrixA[2,1] * matrixA[3,2]) - (matrixA[3,1] * matrixA[2,2] * matrixA[0,3]) - (matrixA[3,2] * matrixA[2,3] * matrixA[0,1]) -  (matrixA[2,1] * matrixA[0,2] * matrixA[3,3])) +
@@ -116,6 +124,8 @@ if (det == 0)
                     }
             }
     }
+
+                    //wyswietlanie wyznacznika
             }// wyznacznik
 
 
@@ -200,6 +210,56 @@ if (det == 0)
                     break;
 
                 case ("Odw"):
+
+                    //wers 1
+                    // matrixSolution[0,0]= matrixA[1,1] * matrixA[2,2] * matrixA[3,3] + matrixA[1,2] * matrixA[2,3] * matrixA[3,1] + matrixA[1,3] * matrixA[2,1] * matrixA[3,2] - matrixA[1,1] * matrixA[2,3] * matrixA[3,2] − matrixA[1,2] * matrixA[2,1] * matrixA[3,3] − matrixA[1,3] * matrixA[2,2] * matrixA[3,1];
+                    //a22a33a44                                                         +a23a34a42                                  +a24a32a43                                  −a22a34a43                                      −a23a32a44                                  −a24a33a42
+                    // matrixSolution[0,1]= matrixA[0,1] * matrixA[2,3] * matrixA[3,2] + matrixA[0,2] * matrixA[2,1] * matrixA[3,3] + matrixA[0,3] * matrixA[2,2] * matrixA[3,1] − matrixA[0,1] * matrixA[2,2] * matrixA[3,3] − matrixA[0,2] * matrixA[2,3] * matrixA[3,1] − matrixA[0,3] * matrixA[2,1] * matrixA[3,2];
+                    //matrixSolution[0,2]= matrixA[0,1] * matrixA[1,2] * matrixA[3,3] + matrixA[0,2] * matrixA[1,3] * matrixA[3,1] + matrixA[0,3] * matrixA[1,1] * matrixA[3,2] − matrixA[0,1] * matrixA[1,3] * matrixA[3,2] − matrixA[0,2] * matrixA[2,2] * matrixA[3,3] − matrixA[0,3] * matrixA[1,2] * matrixA[3,1];
+                    //matrixSolution[0,3]= matrixA[0,1] * matrixA[1,3] * matrixA[2,2] + matrixA[0,2] * matrixA[1,1] * matrixA[2,3] + matrixA[0,3] * matrixA[1,2] * matrixA[2,1] − matrixA[0,1] * matrixA[1,2] * matrixA[2,3] − matrixA[0,2] * matrixA[1,3] * matrixA[2,1] − matrixA[0,3] * matrixA[1,1] * matrixA[2,2];
+
+                    //wers 2
+                    //matrixSolution[1,0]= matrixA[1,0] * matrixA[2,3] * matrixA[3,2] + matrixA[1,2] * matrixA[2,0] * matrixA[3,3] + matrixA[1,3] * matrixA[2,2] * matrixA[3,0] - matrixA[1,0] * matrixA[2,2] * matrixA[3,3] - matrixA[1,2] * matrixA[2,3] * matrixA[3,0] - matrixA[1,3] * matrixA[2,0] * matrixA[3,2];
+
+                    //                          a21             a34             a43  +      a23             a31          a44          +a24           a33                a41    |||      −a21        a33         a44           −      a23           a34          a41             −a24            a31             a43
+
+                    //matrixSolution[1,1]= matrixA[0,0] * matrixA[2,2] * matrixA[3,3] + matrixA[0,2] * matrixA[2,3] * matrixA[3,0] + matrixA[0,3] * matrixA[2,0] * matrixA[3,2] - matrixA[0,0] * matrixA[2,3] * matrixA[3,2] - matrixA[0,2] * matrixA[2,0] * matrixA[3,3] - matrixA[0,3] * matrixA[2,2] * matrixA[3,0];
+                    //                          a11             a33             a44     +   a13              a34           a41  +       a14           a31               a43    |||      −a11        a34         a43         −        a13            a31         a44             −a14            a33             a41
+
+                    //matrixSolution[1,2]= matrixA[0,0] * matrixA[1,3] * matrixA[3,2] + matrixA[0,2] * matrixA[1,0] * matrixA[3,3] + matrixA[0,3] * matrixA[1,2] * matrixA[3,0] - matrixA[0,0] * matrixA[1,2] * matrixA[3,3] - matrixA[0,2] * matrixA[1,3] * matrixA[3,0] - matrixA[0,3] * matrixA[1,0] * matrixA[3,2];
+                    //                          a11             a24             a43     +   a13             a21             a44 +       a14             a23             a41    |||      −a11        a23         a44         −       a13             a24         a41             −a14            a21             a43
+
+                    //matrixSolution[1,3]= matrixA[0,0] * matrixA[1,2] * matrixA[2,3] + matrixA[0,2] * matrixA[1,3] * matrixA[2,0] + matrixA[0,3] * matrixA[1,0] * matrixA[2,2] - matrixA[0,0] * matrixA[1,3] * matrixA[2,2] - matrixA[0,2] * matrixA[1,0] * matrixA[2,3] - matrixA[0,3] * matrixA[1,2] * matrixA[2,0];
+
+                    //wers 3
+                    matrixSolution[2, 0] = matrixA[1,0] * matrixA[2,1] * matrixA[3,3] + matrixA[1,1] * matrixA[2,3] * matrixA[3,0] + matrixA[1,3] * matrixA[2,0] * matrixA[3,1] - matrixA[1,0] * matrixA[2,3] * matrixA[3,1] - matrixA[1,1] * matrixA[2,0] * matrixA[2,2] - (matrixA[1,3] * matrixA[2,1] * matrixA[3,0]);
+                    //a21a32a44                                                         +a22a34a41                                  +a24a31a42                                  −a21a34a42                                      −a22a31a44                                  −a24a32a41                                                                                                                                                                                                      
+                    matrixSolution[2, 1] = matrixA[0,0] * matrixA[2,3] * matrixA[3,1] + matrixA[0,1] * matrixA[2,0] * matrixA[3,3] + matrixA[0,3] * matrixA[2,1] * matrixA[3,0] - matrixA[0,0] * matrixA[2,1] * matrixA[3,3] - matrixA[0,1] * matrixA[2,3] * matrixA[3,0] - matrixA[0,3] * matrixA[2,0] * matrixA[3,1];
+                    // a11a34a42                                                    +a12a31a44                                      +a14a32a41                                                  −a11a32a44                                  −a12a34a41                          −a14a31a42
+                    matrixSolution[2, 2] = matrixA[0, 0] * matrixA[1,1] * matrixA[3,3] + matrixA[0,1] * matrixA[1,3] * matrixA[3,0] + matrixA[0,3] * matrixA[1,0] * matrixA[3,1] - matrixA[0,0] * matrixA[1,3] * matrixA[3,1] - matrixA[0,1] * matrixA[1,0] * matrixA[3,3] - matrixA[0,3] * matrixA[1,1] * matrixA[3,0];
+                    // a11a22a44                                                        +a12a24a41                                  +a14a21a42                                      −a11a24a42                                  −a12a21a44                                  −a14a22a41
+                    matrixSolution[2, 3] = matrixA[0, 0] * matrixA[1,3] * matrixA[2,1] + matrixA[0,1] * matrixA[1,0] * matrixA[2,3] + matrixA[0,3] * matrixA[1,1] * matrixA[2,0] - matrixA[0,0] * matrixA[1,1] * matrixA[2,3] - matrixA[0,1] * matrixA[1,3] * matrixA[2,0] - matrixA[0,3] * matrixA[1,0] * matrixA[2,1];
+                    //a11a24a32                                                         +a12a21a34                                  +a14a22a31                                      −a11a22a34                                  −a12a24a31                                  −a14a21a32
+
+                    // wers 4
+                    matrixSolution[3, 0] = matrixA[1, 0] * matrixA[2,2] * matrixA[3,1] + matrixA[1,1] * matrixA[2,0] * matrixA[3,2] + matrixA[1,2] * matrixA[2,1] * matrixA[3,0] - matrixA[1,0] * matrixA[2,1] * matrixA[3,2] - matrixA[1,1] * matrixA[2,2] * matrixA[3,0] - matrixA[1,2] * matrixA[2,0] * matrixA[3,1];
+                    //a21a33a42                                                         +a22a31a43                                  +a23a32a41                                      −a21a32a43                                  −a22a33a41                                  −a23a31a42
+                    matrixSolution[3, 1] = matrixA[0, 0] * matrixA[2,1] * matrixA[3,2] + matrixA[0,1] * matrixA[2,2] * matrixA[3,0] + matrixA[0,2] * matrixA[2,0] * matrixA[3,1] - matrixA[0,0] * matrixA[2,2] * matrixA[3,1] - matrixA[0,1] * matrixA[2,0] * matrixA[3,2] - matrixA[0,2] * matrixA[2,1] * matrixA[3,0];
+                    //a11a32a43                                                         +a12a33a41                                  +a13a31a42                                      −a11a33a42                                  −a12a31a43                                  −a13a32a41
+                    matrixSolution[3, 2] = matrixA[0, 0] * matrixA[1,2] * matrixA[3,1] + matrixA[0,1] * matrixA[1,0] * matrixA[3,2] + matrixA[0,2] * matrixA[1,1] * matrixA[3,0] - matrixA[0,0] * matrixA[1,1] * matrixA[3,2] - matrixA[0,1] * matrixA[1,2] * matrixA[3,0] - matrixA[0,2] * matrixA[1,0] * matrixA[3,1];
+                    // a11a23a42                                                        +a12a21a43                                  +a13a22a41                                      −a11a22a43                                  −a12a23a41                                  −a13a21a42
+                    matrixSolution[3, 3] = matrixA[0, 0] * matrixA[1,1] * matrixA[2,2] + matrixA[0,1] * matrixA[1,2] * matrixA[2,0] + matrixA[0,2] * matrixA[1,0] * matrixA[2,1] - matrixA[0,0] * matrixA[1,2] * matrixA[2,1] - matrixA[0,1] * matrixA[1,0] * matrixA[2,2] - matrixA[0,2] * matrixA[1,1] * matrixA[2,0];
+                    //a11a22a33                                                         +a12a23a31                                  +a13a21a32                                      −a11a23a32                                  −a12a21a33                                  −a13a22a31
+
+
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            matrixSolution[i, j] =matrixSolution[i,j] * (1/det);
+                        }
+                    }
 
                     break;
 

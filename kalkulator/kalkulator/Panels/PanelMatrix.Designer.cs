@@ -52,7 +52,7 @@
             this.textBox32a = new System.Windows.Forms.TextBox();
             this.textBox33a = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.macierzB = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
@@ -94,7 +94,7 @@
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.macierzA.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.macierzB.SuspendLayout();
             this.macierzWynik.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -323,29 +323,29 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // flowLayoutPanel2
+            // macierzB
             // 
-            this.flowLayoutPanel2.Controls.Add(this.textBox17);
-            this.flowLayoutPanel2.Controls.Add(this.textBox18);
-            this.flowLayoutPanel2.Controls.Add(this.textBox19);
-            this.flowLayoutPanel2.Controls.Add(this.textBox20);
-            this.flowLayoutPanel2.Controls.Add(this.textBox21);
-            this.flowLayoutPanel2.Controls.Add(this.textBox22);
-            this.flowLayoutPanel2.Controls.Add(this.textBox23);
-            this.flowLayoutPanel2.Controls.Add(this.textBox24);
-            this.flowLayoutPanel2.Controls.Add(this.textBox25);
-            this.flowLayoutPanel2.Controls.Add(this.textBox26);
-            this.flowLayoutPanel2.Controls.Add(this.textBox27);
-            this.flowLayoutPanel2.Controls.Add(this.textBox28);
-            this.flowLayoutPanel2.Controls.Add(this.textBox29);
-            this.flowLayoutPanel2.Controls.Add(this.textBox30);
-            this.flowLayoutPanel2.Controls.Add(this.textBox31);
-            this.flowLayoutPanel2.Controls.Add(this.textBox32);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(189, 216);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(220, 104);
-            this.flowLayoutPanel2.TabIndex = 11;
-            this.flowLayoutPanel2.Tag = "B";
+            this.macierzB.Controls.Add(this.textBox17);
+            this.macierzB.Controls.Add(this.textBox18);
+            this.macierzB.Controls.Add(this.textBox19);
+            this.macierzB.Controls.Add(this.textBox20);
+            this.macierzB.Controls.Add(this.textBox21);
+            this.macierzB.Controls.Add(this.textBox22);
+            this.macierzB.Controls.Add(this.textBox23);
+            this.macierzB.Controls.Add(this.textBox24);
+            this.macierzB.Controls.Add(this.textBox25);
+            this.macierzB.Controls.Add(this.textBox26);
+            this.macierzB.Controls.Add(this.textBox27);
+            this.macierzB.Controls.Add(this.textBox28);
+            this.macierzB.Controls.Add(this.textBox29);
+            this.macierzB.Controls.Add(this.textBox30);
+            this.macierzB.Controls.Add(this.textBox31);
+            this.macierzB.Controls.Add(this.textBox32);
+            this.macierzB.Location = new System.Drawing.Point(189, 216);
+            this.macierzB.Name = "macierzB";
+            this.macierzB.Size = new System.Drawing.Size(220, 104);
+            this.macierzB.TabIndex = 11;
+            this.macierzB.Tag = "B";
             // 
             // textBox17
             // 
@@ -711,7 +711,7 @@
             this.Controls.Add(this.button7);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.flowLayoutPanel2);
+            this.Controls.Add(this.macierzB);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.macierzA);
             this.Controls.Add(this.button5);
@@ -726,8 +726,8 @@
             this.Tag = "Wynik";
             this.macierzA.ResumeLayout(false);
             this.macierzA.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
+            this.macierzB.ResumeLayout(false);
+            this.macierzB.PerformLayout();
             this.macierzWynik.ResumeLayout(false);
             this.macierzWynik.PerformLayout();
             this.ResumeLayout(false);
@@ -761,7 +761,7 @@
         private System.Windows.Forms.TextBox textBox32a;
         private System.Windows.Forms.TextBox textBox33a;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel macierzB;
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.TextBox textBox19;

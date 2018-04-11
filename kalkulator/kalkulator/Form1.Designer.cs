@@ -34,11 +34,11 @@
             this.button4 = new System.Windows.Forms.Button();
             this.textboxValue = new System.Windows.Forms.TextBox();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.panelBasic = new kalkulator.Panels.PanelBasic();
-            this.panelAdvanced = new kalkulator.Panels.PanelAdvanced();
-            this.panelCurrencyConverter = new kalkulator.Panels.PanelCurrencyConverter();
             this.button1 = new System.Windows.Forms.Button();
             this.panelMatrix = new kalkulator.Panels.PanelMatrix();
+            this.panelCurrencyConverter = new kalkulator.Panels.PanelCurrencyConverter();
+            this.panelAdvanced = new kalkulator.Panels.PanelAdvanced();
+            this.panelBasic = new kalkulator.Panels.PanelBasic();
             this.SuspendLayout();
             // 
             // btnLayoutBasic
@@ -100,27 +100,6 @@
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
-            // panelBasic
-            // 
-            this.panelBasic.Location = new System.Drawing.Point(13, 104);
-            this.panelBasic.Name = "panelBasic";
-            this.panelBasic.Size = new System.Drawing.Size(650, 345);
-            this.panelBasic.TabIndex = 16;
-            // 
-            // panelAdvanced
-            // 
-            this.panelAdvanced.Location = new System.Drawing.Point(12, 103);
-            this.panelAdvanced.Name = "panelAdvanced";
-            this.panelAdvanced.Size = new System.Drawing.Size(694, 352);
-            this.panelAdvanced.TabIndex = 17;
-            // 
-            // panelCurrencyConverter
-            // 
-            this.panelCurrencyConverter.Location = new System.Drawing.Point(12, 103);
-            this.panelCurrencyConverter.Name = "panelCurrencyConverter";
-            this.panelCurrencyConverter.Size = new System.Drawing.Size(674, 357);
-            this.panelCurrencyConverter.TabIndex = 18;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(692, 12);
@@ -134,8 +113,30 @@
             // 
             this.panelMatrix.Location = new System.Drawing.Point(13, 104);
             this.panelMatrix.Name = "panelMatrix";
-            this.panelMatrix.Size = new System.Drawing.Size(553, 373);
+            this.panelMatrix.Size = new System.Drawing.Size(843, 373);
             this.panelMatrix.TabIndex = 20;
+            this.panelMatrix.Tag = "Wynik";
+            // 
+            // panelCurrencyConverter
+            // 
+            this.panelCurrencyConverter.Location = new System.Drawing.Point(12, 103);
+            this.panelCurrencyConverter.Name = "panelCurrencyConverter";
+            this.panelCurrencyConverter.Size = new System.Drawing.Size(674, 357);
+            this.panelCurrencyConverter.TabIndex = 18;
+            // 
+            // panelAdvanced
+            // 
+            this.panelAdvanced.Location = new System.Drawing.Point(12, 103);
+            this.panelAdvanced.Name = "panelAdvanced";
+            this.panelAdvanced.Size = new System.Drawing.Size(694, 352);
+            this.panelAdvanced.TabIndex = 17;
+            // 
+            // panelBasic
+            // 
+            this.panelBasic.Location = new System.Drawing.Point(13, 104);
+            this.panelBasic.Name = "panelBasic";
+            this.panelBasic.Size = new System.Drawing.Size(650, 345);
+            this.panelBasic.TabIndex = 16;
             // 
             // Form1
             // 
