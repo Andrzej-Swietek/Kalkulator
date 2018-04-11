@@ -16,7 +16,7 @@ namespace kalkulator.Panels
         public float[][] matrixA;
         public float[][] matrixB;
         public float[][] matrixSolution;
-
+        public float valueLambda = 0;
         public PanelMatrix()
         {
             InitializeComponent();
@@ -45,6 +45,8 @@ namespace kalkulator.Panels
             label2.Visible = false;
             label_Wynik.Visible = true;
             label_Wynik.Visible = true;
+           // valueLambda = (float)(textBoxLambda.Text)//zmiana
+            
             //ustawić razy i textboxa visible na true
         }
 
@@ -144,11 +146,21 @@ namespace kalkulator.Panels
                            // matrixSolution[i][j] = matrixA[i][j] * matrixB[i][j] + (matrixA[i][j+1] * matrixB[i+1][j]) + (matrixA[i][] * matrixB[][]) + matrixA[i][] * matrixB[][];
                         }
                              
-
-
-
-
                     }
+                    break;
+
+
+
+                case ("λ"):
+                    for (int i=0;i<4;i++)
+                    {
+                        for(int j=0;j<4;j++)
+                        {
+                            matrixSolution[i][j] = matrixA[i][j] * valueLambda;
+                        }
+                    }
+                    break;
+
 
 
 
