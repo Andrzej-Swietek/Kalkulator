@@ -38,6 +38,7 @@
             this.panelAdvanced = new kalkulator.Panels.PanelAdvanced();
             this.panelCurrencyConverter = new kalkulator.Panels.PanelCurrencyConverter();
             this.button1 = new System.Windows.Forms.Button();
+            this.panelMatrix = new kalkulator.Panels.PanelMatrix();
             this.SuspendLayout();
             // 
             // btnLayoutBasic
@@ -79,6 +80,7 @@
             this.button4.Tag = "Macierze";
             this.button4.Text = "Mcierze";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // textboxValue
             // 
@@ -128,11 +130,19 @@
             this.button1.Text = "Inne";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // panelMatrix
+            // 
+            this.panelMatrix.Location = new System.Drawing.Point(13, 104);
+            this.panelMatrix.Name = "panelMatrix";
+            this.panelMatrix.Size = new System.Drawing.Size(553, 373);
+            this.panelMatrix.TabIndex = 20;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 520);
+            this.Controls.Add(this.panelMatrix);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panelCurrencyConverter);
             this.Controls.Add(this.panelAdvanced);
@@ -162,6 +172,7 @@
         private Panels.PanelAdvanced panelAdvanced;
         private Panels.PanelCurrencyConverter panelCurrencyConverter;
         private System.Windows.Forms.Button button1;
+        private Panels.PanelMatrix panelMatrix;
     }
 }
 

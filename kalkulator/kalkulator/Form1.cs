@@ -23,14 +23,16 @@ namespace kalkulator
             panelBasic.numpad.CommaButtonClicked += (s, e) => SymbolButtonClicked(s, new SymbolButtonClickedEventArgs(","));
             panelBasic.SymbolButtonClicked += SymbolButtonClicked;
             panelBasic.EvaluateButtonClicked += EvaluateButtonClicked;
+
             panelAdvanced.numpad.NumberButtonClicked += NumberButtonClicked;
             panelAdvanced.numpad.CommaButtonClicked += (s, e) => SymbolButtonClicked(s, new SymbolButtonClickedEventArgs(","));
             panelAdvanced.SymbolButtonClicked += SymbolButtonClicked;
             panelAdvanced.EvaluateButtonClicked += EvaluateButtonClicked;
+
             panelCurrencyConverter.numpad.NumberButtonClicked += NumberButtonClicked;
             panelCurrencyConverter.numpad.CommaButtonClicked += (s, e) => SymbolButtonClicked(s, new SymbolButtonClickedEventArgs(","));
 
-            choosablePanels = new Control[] { panelBasic, panelAdvanced, panelCurrencyConverter };
+            choosablePanels = new Control[] { panelBasic, panelAdvanced, panelCurrencyConverter, panelMatrix };
         }
 
         void SwitchToLayout(Control panel)
@@ -89,7 +91,10 @@ namespace kalkulator
             SwitchToLayout(panelCurrencyConverter);
         }
 
-
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SwitchToLayout(panelMatrix);
+        }
     }
 
     public class NumberButtonClickedEventArgs : EventArgs

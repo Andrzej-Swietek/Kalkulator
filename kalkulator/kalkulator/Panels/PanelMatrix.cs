@@ -80,7 +80,11 @@ namespace kalkulator.Panels
 
             //zczytaj z textboxow na pozniej do zrobienia - upchaj do tablic lub wektora [][]
             // !!!!!!!!!!!!!! UWAGA DOPISZ WYNIKI DO TEXTBOXOW !!!!!!!!!!!!!!!!!!!!!!!!!!
-            foreach(var t in macierzA.Controls.OfType<TextBox>())
+            matrixA = new double[4, 4];
+            matrixB = new double[4, 4];
+            matrixSolution = new double[4, 4];
+
+            foreach (var t in macierzA.Controls.OfType<TextBox>())
             {
                 int x = int.Parse(((string)t.Tag).Substring(0, 1));
                 int y = int.Parse(((string)t.Tag).Substring(1, 1));
@@ -196,29 +200,7 @@ if (det == 0)
 
                 case ("Odw"):
 
-
-
-
                     break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             }
 
@@ -229,14 +211,6 @@ if (det == 0)
                 int y = int.Parse(((string)t.Tag).Substring(1, 1));
                 t.Text = matrixSolution[x, y].ToString();
             }
-
-
-
-
-
-
-
-
 
         }
     }
