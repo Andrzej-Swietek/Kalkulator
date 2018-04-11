@@ -52,3 +52,4 @@ C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkula
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelAdvanced.resources
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelBasic.resources
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelCurrencyConverter.resources
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelMatrix.resources
