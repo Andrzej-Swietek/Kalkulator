@@ -18,6 +18,7 @@ namespace kalkulator.Panels
         public double[,] matrixSolution;
         public double valueLambda = 0;
         int size = 4;
+        double det;
         public PanelMatrix()
         {
             InitializeComponent();
@@ -79,12 +80,44 @@ namespace kalkulator.Panels
 
             //zczytaj z textboxow na pozniej do zrobienia - upchaj do tablic lub wektora [][]
             // !!!!!!!!!!!!!! UWAGA DOPISZ WYNIKI DO TEXTBOXOW !!!!!!!!!!!!!!!!!!!!!!!!!!
-            
-            
+            foreach(var t in macierzA.Controls.OfType<TextBox>())
+            {
+                int x = int.Parse(((string)t.Tag).Substring(0, 1));
+                int y = int.Parse(((string)t.Tag).Substring(1, 1));
+                matrixA[x, y] = double.Parse(t.Text);
+            }
+
+
+            if(checkBox1.Checked ==true)
+            {
+                det =   1 * matrixA[0,0] * ((matrixA[1,1] * matrixA[2,2] * matrixA[3,3]) + (matrixA[1,2] * matrixA[2,3] * matrixA[3,1]) + (matrixA[1,3] * matrixA[2,1] * matrixA[3,2]) - (matrixA[3,1] * matrixA[2,2] * matrixA[1,3]) - (matrixA[3,2] * matrixA[2,3] * matrixA[1,1]) - (matrixA[3,3] * matrixA[2,1] * matrixA[1,2])) +
+                               (-1) * matrixA[1,0] * ((matrixA[0,1] * matrixA[2,2] * matrixA[3,3]) + (matrixA[0,2] * matrixA[2,3] * matrixA[3,1]) + (matrixA[0,3] * matrixA[2,1] * matrixA[3,2]) - (matrixA[3,1] * matrixA[2,2] * matrixA[0,3]) - (matrixA[3,2] * matrixA[2,3] * matrixA[0,1]) -  (matrixA[2,1] * matrixA[0,2] * matrixA[3,3])) +
+                                1*matrixA[2,0] * (  (matrixA[0,1] * matrixA[1,2] * matrixA[3,3]) + (matrixA[0,2] * matrixA[1,3] * matrixA[3,1]) + (matrixA[0,3] * matrixA[1,1] * matrixA[3,2]) - (matrixA[0,3] * matrixA[1,2] * matrixA[3,1]) - (matrixA[3,2] * matrixA[1,3] * matrixA[0,1]) -  (matrixA[3,3] * matrixA[1,1] * matrixA[0,2]))  +
+                                (-1) * matrixA[3,0] * ((matrixA[0,1] * matrixA[1,2] * matrixA[2,3]) + (matrixA[0,2] * matrixA[1,3] * matrixA[2,1]) + (matrixA[0,3] * matrixA[1,1] * matrixA[2,2]) - (matrixA[2,1] * matrixA[1,2] * matrixA[0,3]) - (matrixA[2,2] * matrixA[1,3] * matrixA[0,1]) -  (matrixA[2,3] * matrixA[1,1] * matrixA[1,2]));
+
+
+if (det == 0)
+    {
+            det = (matrixA[0,0] * matrixA[1,1] * matrixA[2,2]) + (matrixA[0,1] * matrixA[1,2] * matrixA[2,0]) + (matrixA[0,2] * matrixA[1,0] * matrixA[2,1]) - (matrixA[2,0] * matrixA[1,1] * matrixA[0,2]) - (matrixA[2,1] * matrixA[1,2] * matrixA[0,0]) - (matrixA[2,2] * matrixA[1,0] * matrixA[0,1]);
+
+        if (det==0)
+            {
+              det = matrixA[0,0] * matrixA[1,1] - matrixA[1,0] * matrixA[0,1];
+
+                    if(det==0)
+                    {
+                        det= matrixA[0,0];
+                       
+                        
+                    }
+            }
+    }
+            }
 
 
 
-            switch(OperationMatrix)
+
+            switch (OperationMatrix)
             {
                 case ("+"):                                       
                      for(int i=0;i<4;i++)
@@ -188,6 +221,16 @@ namespace kalkulator.Panels
 
 
             }
+
+
+            foreach (var t in macierzA.Controls.OfType<TextBox>())
+            {
+                int x = int.Parse(((string)t.Tag).Substring(0, 1));
+                int y = int.Parse(((string)t.Tag).Substring(1, 1));
+                t.Text = matrixSolution[x, y].ToString();
+            }
+
+
 
 
 

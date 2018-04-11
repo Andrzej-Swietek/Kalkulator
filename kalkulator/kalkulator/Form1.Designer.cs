@@ -37,6 +37,7 @@
             this.panelBasic = new kalkulator.Panels.PanelBasic();
             this.panelAdvanced = new kalkulator.Panels.PanelAdvanced();
             this.panelCurrencyConverter = new kalkulator.Panels.PanelCurrencyConverter();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLayoutBasic
@@ -75,7 +76,8 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(164, 39);
             this.button4.TabIndex = 3;
-            this.button4.Text = "Inne";
+            this.button4.Tag = "Macierze";
+            this.button4.Text = "Mcierze";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // textboxValue
@@ -117,11 +119,21 @@
             this.panelCurrencyConverter.Size = new System.Drawing.Size(674, 357);
             this.panelCurrencyConverter.TabIndex = 18;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(692, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(164, 39);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Inne";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 520);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panelCurrencyConverter);
             this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.panelBasic);
@@ -149,6 +161,7 @@
         private Panels.PanelBasic panelBasic;
         private Panels.PanelAdvanced panelAdvanced;
         private Panels.PanelCurrencyConverter panelCurrencyConverter;
+        private System.Windows.Forms.Button button1;
     }
 }
 
