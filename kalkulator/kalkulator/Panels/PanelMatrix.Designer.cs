@@ -76,8 +76,26 @@
             this.label_X = new System.Windows.Forms.Label();
             this.textBoxLambda = new System.Windows.Forms.TextBox();
             this.label_Wynik = new System.Windows.Forms.Label();
+            this.macierzWynik = new System.Windows.Forms.FlowLayoutPanel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
             this.macierzA.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.macierzWynik.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -523,12 +541,164 @@
             // 
             this.label_Wynik.AutoSize = true;
             this.label_Wynik.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label_Wynik.Location = new System.Drawing.Point(187, 188);
+            this.label_Wynik.Location = new System.Drawing.Point(564, 96);
             this.label_Wynik.Name = "label_Wynik";
             this.label_Wynik.Size = new System.Drawing.Size(82, 25);
             this.label_Wynik.TabIndex = 18;
             this.label_Wynik.Text = "Wynik";
             this.label_Wynik.Visible = false;
+            // 
+            // macierzWynik
+            // 
+            this.macierzWynik.Controls.Add(this.textBox1);
+            this.macierzWynik.Controls.Add(this.textBox2);
+            this.macierzWynik.Controls.Add(this.textBox3);
+            this.macierzWynik.Controls.Add(this.textBox4);
+            this.macierzWynik.Controls.Add(this.textBox5);
+            this.macierzWynik.Controls.Add(this.textBox6);
+            this.macierzWynik.Controls.Add(this.textBox7);
+            this.macierzWynik.Controls.Add(this.textBox8);
+            this.macierzWynik.Controls.Add(this.textBox9);
+            this.macierzWynik.Controls.Add(this.textBox10);
+            this.macierzWynik.Controls.Add(this.textBox11);
+            this.macierzWynik.Controls.Add(this.textBox12);
+            this.macierzWynik.Controls.Add(this.textBox13);
+            this.macierzWynik.Controls.Add(this.textBox14);
+            this.macierzWynik.Controls.Add(this.textBox15);
+            this.macierzWynik.Controls.Add(this.textBox16);
+            this.macierzWynik.Location = new System.Drawing.Point(566, 127);
+            this.macierzWynik.Name = "macierzWynik";
+            this.macierzWynik.Size = new System.Drawing.Size(220, 112);
+            this.macierzWynik.TabIndex = 16;
+            this.macierzWynik.Tag = "A";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(47, 20);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Tag = "00";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(56, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(47, 20);
+            this.textBox2.TabIndex = 1;
+            this.textBox2.Tag = "01";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(109, 3);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(47, 20);
+            this.textBox3.TabIndex = 2;
+            this.textBox3.Tag = "02";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(162, 3);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(47, 20);
+            this.textBox4.TabIndex = 3;
+            this.textBox4.Tag = "03";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(3, 29);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(47, 20);
+            this.textBox5.TabIndex = 4;
+            this.textBox5.Tag = "10";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(56, 29);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(47, 20);
+            this.textBox6.TabIndex = 5;
+            this.textBox6.Tag = "11";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(109, 29);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(47, 20);
+            this.textBox7.TabIndex = 6;
+            this.textBox7.Tag = "12";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(162, 29);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(47, 20);
+            this.textBox8.TabIndex = 7;
+            this.textBox8.Tag = "13";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(3, 55);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(47, 20);
+            this.textBox9.TabIndex = 8;
+            this.textBox9.Tag = "20";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(56, 55);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(47, 20);
+            this.textBox10.TabIndex = 9;
+            this.textBox10.Tag = "21";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(109, 55);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(47, 20);
+            this.textBox11.TabIndex = 10;
+            this.textBox11.Tag = "22";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(162, 55);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(47, 20);
+            this.textBox12.TabIndex = 11;
+            this.textBox12.Tag = "23";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(3, 81);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(47, 20);
+            this.textBox13.TabIndex = 12;
+            this.textBox13.Tag = "30";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(56, 81);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(47, 20);
+            this.textBox14.TabIndex = 13;
+            this.textBox14.Tag = "31";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(109, 81);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(47, 20);
+            this.textBox15.TabIndex = 14;
+            this.textBox15.Tag = "32";
+            // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(162, 81);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(47, 20);
+            this.textBox16.TabIndex = 15;
+            this.textBox16.Tag = "33";
             // 
             // PanelMatrix
             // 
@@ -550,12 +720,16 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.macierzWynik);
             this.Name = "PanelMatrix";
-            this.Size = new System.Drawing.Size(553, 373);
+            this.Size = new System.Drawing.Size(789, 373);
+            this.Tag = "Wynik";
             this.macierzA.ResumeLayout(false);
             this.macierzA.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
+            this.macierzWynik.ResumeLayout(false);
+            this.macierzWynik.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -611,5 +785,22 @@
         private System.Windows.Forms.Label label_X;
         private System.Windows.Forms.TextBox textBoxLambda;
         private System.Windows.Forms.Label label_Wynik;
+        private System.Windows.Forms.FlowLayoutPanel macierzWynik;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox textBox16;
     }
 }

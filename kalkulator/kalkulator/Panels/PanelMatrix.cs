@@ -47,7 +47,7 @@ namespace kalkulator.Panels
             label2.Visible = false;
             label_Wynik.Visible = true;
             label_Wynik.Visible = true;
-            valueLambda = double.Parse(textBoxLambda.Text);//zmiana
+            
             
             //ustawić razy i textboxa visible na true
         }
@@ -84,7 +84,7 @@ namespace kalkulator.Panels
             matrixB = new double[4, 4];
             matrixSolution = new double[4, 4];
 
-            foreach (var t in macierzA.Controls.OfType<TextBox>())
+            foreach (var t in macierzA.Controls.OfType<TextBox>())//wczytywanie
             {
                 int x = int.Parse(((string)t.Tag).Substring(0, 1));
                 int y = int.Parse(((string)t.Tag).Substring(1, 1));
@@ -116,7 +116,7 @@ if (det == 0)
                     }
             }
     }
-            }
+            }// wyznacznik
 
 
 
@@ -165,6 +165,7 @@ if (det == 0)
 
 
                 case ("λ"):
+                    valueLambda = double.Parse(textBoxLambda.Text);//zmiana
                     for (int i=0;i<4;i++)
                     {
                         for(int j=0;j<4;j++)
@@ -205,7 +206,7 @@ if (det == 0)
             }
 
 
-            foreach (var t in macierzA.Controls.OfType<TextBox>())
+            foreach (var t in macierzWynik.Controls.OfType<TextBox>())//wyswietlanie
             {
                 int x = int.Parse(((string)t.Tag).Substring(0, 1));
                 int y = int.Parse(((string)t.Tag).Substring(1, 1));
