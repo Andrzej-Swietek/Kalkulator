@@ -93,6 +93,8 @@
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.textBox16 = new System.Windows.Forms.TextBox();
+            this.textBoxDet = new System.Windows.Forms.TextBox();
+            this.labelDet = new System.Windows.Forms.Label();
             this.macierzA.SuspendLayout();
             this.macierzB.SuspendLayout();
             this.macierzWynik.SuspendLayout();
@@ -315,7 +317,7 @@
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button6.Location = new System.Drawing.Point(412, 155);
+            this.button6.Location = new System.Drawing.Point(420, 161);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(126, 58);
             this.button6.TabIndex = 10;
@@ -700,10 +702,32 @@
             this.textBox16.TabIndex = 15;
             this.textBox16.Tag = "33";
             // 
+            // textBoxDet
+            // 
+            this.textBoxDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxDet.Location = new System.Drawing.Point(447, 297);
+            this.textBoxDet.Name = "textBoxDet";
+            this.textBoxDet.Size = new System.Drawing.Size(328, 53);
+            this.textBoxDet.TabIndex = 19;
+            this.textBoxDet.Visible = false;
+            // 
+            // labelDet
+            // 
+            this.labelDet.AutoSize = true;
+            this.labelDet.Font = new System.Drawing.Font("Verdana", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelDet.Location = new System.Drawing.Point(442, 266);
+            this.labelDet.Name = "labelDet";
+            this.labelDet.Size = new System.Drawing.Size(145, 25);
+            this.labelDet.TabIndex = 20;
+            this.labelDet.Text = "Wyznacznik";
+            this.labelDet.Visible = false;
+            // 
             // PanelMatrix
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelDet);
+            this.Controls.Add(this.textBoxDet);
             this.Controls.Add(this.label_Wynik);
             this.Controls.Add(this.textBoxLambda);
             this.Controls.Add(this.label_X);
@@ -802,5 +826,7 @@
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox textBoxDet;
+        private System.Windows.Forms.Label labelDet;
     }
 }

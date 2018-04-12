@@ -88,7 +88,7 @@ namespace kalkulator.Panels
             {
                 int x = int.Parse(((string)t.Tag).Substring(0, 1));
                 int y = int.Parse(((string)t.Tag).Substring(1, 1));
-                matrixA[x,y] = double.Parse(t.Text);
+                matrixA[x,y] = string.IsNullOrWhiteSpace(t.Text) ? 0 : double.Parse(t.Text);
             }
 
 
@@ -96,12 +96,14 @@ namespace kalkulator.Panels
             {
                 int x = int.Parse(((string)t.Tag).Substring(0, 1));
                 int y = int.Parse(((string)t.Tag).Substring(1, 1));
-                matrixB[x, y] = double.Parse(t.Text);
+                matrixB[x, y] = string.IsNullOrWhiteSpace(t.Text) ? 0 : double.Parse(t.Text);
             }
 
 
-            if (checkBox1.Checked ==true || OperationMatrix =="Obr")
+            if (checkBox1.Checked ==true || OperationMatrix =="Obw")
             {
+                textBoxDet.Visible = true;
+                labelDet.Visible = true;
                 det =   1 * matrixA[0,0] * ((matrixA[1,1] * matrixA[2,2] * matrixA[3,3]) + (matrixA[1,2] * matrixA[2,3] * matrixA[3,1]) + (matrixA[1,3] * matrixA[2,1] * matrixA[3,2]) - (matrixA[3,1] * matrixA[2,2] * matrixA[1,3]) - (matrixA[3,2] * matrixA[2,3] * matrixA[1,1]) - (matrixA[3,3] * matrixA[2,1] * matrixA[1,2])) +
                                (-1) * matrixA[1,0] * ((matrixA[0,1] * matrixA[2,2] * matrixA[3,3]) + (matrixA[0,2] * matrixA[2,3] * matrixA[3,1]) + (matrixA[0,3] * matrixA[2,1] * matrixA[3,2]) - (matrixA[3,1] * matrixA[2,2] * matrixA[0,3]) - (matrixA[3,2] * matrixA[2,3] * matrixA[0,1]) -  (matrixA[2,1] * matrixA[0,2] * matrixA[3,3])) +
                                 1*matrixA[2,0] * (  (matrixA[0,1] * matrixA[1,2] * matrixA[3,3]) + (matrixA[0,2] * matrixA[1,3] * matrixA[3,1]) + (matrixA[0,3] * matrixA[1,1] * matrixA[3,2]) - (matrixA[0,3] * matrixA[1,2] * matrixA[3,1]) - (matrixA[3,2] * matrixA[1,3] * matrixA[0,1]) -  (matrixA[3,3] * matrixA[1,1] * matrixA[0,2]))  +
@@ -125,7 +127,8 @@ if (det == 0)
             }
     }
 
-                    //wyswietlanie wyznacznika
+                textBoxDet.Text += " det = ";
+                textBoxDet.Text += det.ToString();  //wyswietlanie wyznacznika
             }// wyznacznik
 
 
@@ -258,7 +261,15 @@ if (det == 0)
                     matrixSolution[3, 3] = matrixA[0, 0] * matrixA[1,1] * matrixA[2,2] + matrixA[0,1] * matrixA[1,2] * matrixA[2,0] + matrixA[0,2] * matrixA[1,0] * matrixA[2,1] - matrixA[0,0] * matrixA[1,2] * matrixA[2,1] - matrixA[0,1] * matrixA[1,0] * matrixA[2,2] - matrixA[0,2] * matrixA[1,1] * matrixA[2,0];
                     //a11a22a33                                                         +a12a23a31                                  +a13a21a32                                      −a11a23a32                                  −a12a21a33                                  −a13a22a31
 
+                    for (int i = 0; i < 4; i++)
+                    {
+                        for (int j = 0; j < 4; j++)
+                        {
+                            double tmp = matrixA[i, j];
+                            matrixSolution[j, i] = tmp;
+                        }
 
+                    }
 
                     for (int i = 0; i < 4; i++)
                     {
