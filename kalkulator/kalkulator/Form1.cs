@@ -31,9 +31,10 @@ namespace kalkulator
             panelCurrencyConverter.numpad.CommaButtonClicked += (s, e) => SymbolButtonClicked(s, new SymbolButtonClickedEventArgs(","));
             panelCurrencyConverter.ButtonConvertCurrenciesClicked += CurrencyConvertButtonClicked;
 
-            choosablePanels = new Control[] { panelBasic, panelAdvanced, panelCurrencyConverter };
+            choosablePanels = new Control[] { panelBasic, panelAdvanced, panelCurrencyConverter, panelMatrix };
             currencyManager = new CurrencyManager();
             currencyManager.ReadDataFromFile();
+
         }
 
         void SwitchToLayout(Control panel)
@@ -111,6 +112,7 @@ namespace kalkulator
             ConvertCurrency();
         }
 
+
         private void buttonClear_Click(object sender, EventArgs e)
         {
             textboxValue.Text = "";
@@ -128,12 +130,9 @@ namespace kalkulator
             SwitchToLayout(panelCurrencyConverter);
         }
 
-        private async void btnTest_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            //double? value = await currencyManager.GetFactor("PLN", "EUR");
-            //textboxValue.Text = value.ToString();
-            //currencyManager.Convert("USD", "EUR", 1);
-            ConvertCurrency();
+            SwitchToLayout(panelMatrix);
         }
     }
 

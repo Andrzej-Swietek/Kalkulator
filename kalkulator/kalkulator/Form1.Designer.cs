@@ -34,10 +34,11 @@
             this.button4 = new System.Windows.Forms.Button();
             this.textboxValue = new System.Windows.Forms.TextBox();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.panelBasic = new kalkulator.Panels.PanelBasic();
-            this.panelAdvanced = new kalkulator.Panels.PanelAdvanced();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panelMatrix = new kalkulator.Panels.PanelMatrix();
             this.panelCurrencyConverter = new kalkulator.Panels.PanelCurrencyConverter();
-            this.btnTest = new System.Windows.Forms.Button();
+            this.panelAdvanced = new kalkulator.Panels.PanelAdvanced();
+            this.panelBasic = new kalkulator.Panels.PanelBasic();
             this.SuspendLayout();
             // 
             // btnLayoutBasic
@@ -76,8 +77,10 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(164, 39);
             this.button4.TabIndex = 3;
-            this.button4.Text = "Inne";
+            this.button4.Tag = "Macierze";
+            this.button4.Text = "Mcierze";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // textboxValue
             // 
@@ -110,6 +113,22 @@
             this.panelAdvanced.Name = "panelAdvanced";
             this.panelAdvanced.Size = new System.Drawing.Size(694, 352);
             this.panelAdvanced.TabIndex = 17;
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(692, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(164, 39);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Inne";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // panelMatrix
+            // 
+            this.panelMatrix.Location = new System.Drawing.Point(13, 104);
+            this.panelMatrix.Name = "panelMatrix";
+            this.panelMatrix.Size = new System.Drawing.Size(843, 373);
+            this.panelMatrix.TabIndex = 20;
+            this.panelMatrix.Tag = "Wynik";
             // 
             // panelCurrencyConverter
             // 
@@ -118,22 +137,27 @@
             this.panelCurrencyConverter.Size = new System.Drawing.Size(674, 357);
             this.panelCurrencyConverter.TabIndex = 18;
             // 
-            // btnTest
+            // panelAdvanced
             // 
-            this.btnTest.Location = new System.Drawing.Point(615, 58);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(75, 23);
-            this.btnTest.TabIndex = 19;
-            this.btnTest.Text = "TEST";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            this.panelAdvanced.Location = new System.Drawing.Point(12, 103);
+            this.panelAdvanced.Name = "panelAdvanced";
+            this.panelAdvanced.Size = new System.Drawing.Size(694, 352);
+            this.panelAdvanced.TabIndex = 17;
+            // 
+            // panelBasic
+            // 
+            this.panelBasic.Location = new System.Drawing.Point(13, 104);
+            this.panelBasic.Name = "panelBasic";
+            this.panelBasic.Size = new System.Drawing.Size(650, 345);
+            this.panelBasic.TabIndex = 16;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 520);
-            this.Controls.Add(this.btnTest);
+            this.Controls.Add(this.panelMatrix);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panelCurrencyConverter);
             this.Controls.Add(this.panelAdvanced);
             this.Controls.Add(this.panelBasic);
@@ -161,7 +185,8 @@
         private Panels.PanelBasic panelBasic;
         private Panels.PanelAdvanced panelAdvanced;
         private Panels.PanelCurrencyConverter panelCurrencyConverter;
-        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button button1;
+        private Panels.PanelMatrix panelMatrix;
     }
 }
 
