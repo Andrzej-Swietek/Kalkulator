@@ -28,35 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button55 = new System.Windows.Forms.Button();
+            this.btnConvertCurrencies = new System.Windows.Forms.Button();
             this.Wynik = new System.Windows.Forms.Label();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.checkboxCurrTo5 = new System.Windows.Forms.CheckBox();
+            this.checkboxCurrTo4 = new System.Windows.Forms.CheckBox();
+            this.checkboxCurrTo3 = new System.Windows.Forms.CheckBox();
+            this.checkboxCurrTo2 = new System.Windows.Forms.CheckBox();
+            this.checkboxCurrTo1 = new System.Windows.Forms.CheckBox();
+            this.checkboxCurrTo0 = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.checkboxCurrFrom5 = new System.Windows.Forms.CheckBox();
+            this.checkboxCurrFrom4 = new System.Windows.Forms.CheckBox();
+            this.checkboxCurrFrom3 = new System.Windows.Forms.CheckBox();
+            this.checkboxCurrFrom2 = new System.Windows.Forms.CheckBox();
+            this.checkboxCurrFrom1 = new System.Windows.Forms.CheckBox();
+            this.checkboxCurrFrom0 = new System.Windows.Forms.CheckBox();
+            this.textboxCurrencyOutput = new System.Windows.Forms.TextBox();
             this.numpad = new kalkulator.Panels.NumpadBasic();
+            this.panelCurrencyFrom = new System.Windows.Forms.Panel();
+            this.panelCurrencyTo = new System.Windows.Forms.Panel();
+            this.panelCurrencyFrom.SuspendLayout();
+            this.panelCurrencyTo.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button55
+            // btnConvertCurrencies
             // 
-            this.button55.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button55.Location = new System.Drawing.Point(394, 261);
-            this.button55.Name = "button55";
-            this.button55.Size = new System.Drawing.Size(192, 43);
-            this.button55.TabIndex = 27;
-            this.button55.Text = "Przelicz";
-            this.button55.UseVisualStyleBackColor = true;
+            this.btnConvertCurrencies.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnConvertCurrencies.Location = new System.Drawing.Point(394, 261);
+            this.btnConvertCurrencies.Name = "btnConvertCurrencies";
+            this.btnConvertCurrencies.Size = new System.Drawing.Size(192, 43);
+            this.btnConvertCurrencies.TabIndex = 27;
+            this.btnConvertCurrencies.Text = "Przelicz";
+            this.btnConvertCurrencies.UseVisualStyleBackColor = true;
+            this.btnConvertCurrencies.Click += new System.EventHandler(this.btnConvertCurrencies_Click);
             // 
             // Wynik
             // 
@@ -68,65 +73,71 @@
             this.Wynik.TabIndex = 26;
             this.Wynik.Text = "Wynik";
             // 
-            // checkBox7
+            // checkboxCurrTo5
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(550, 227);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(86, 17);
-            this.checkBox7.TabIndex = 25;
-            this.checkBox7.Text = "Juan Chiński";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkboxCurrTo5.AutoSize = true;
+            this.checkboxCurrTo5.Location = new System.Drawing.Point(3, 115);
+            this.checkboxCurrTo5.Name = "checkboxCurrTo5";
+            this.checkboxCurrTo5.Size = new System.Drawing.Size(86, 17);
+            this.checkboxCurrTo5.TabIndex = 25;
+            this.checkboxCurrTo5.Tag = "CNY";
+            this.checkboxCurrTo5.Text = "Juan Chiński";
+            this.checkboxCurrTo5.UseVisualStyleBackColor = true;
             // 
-            // checkBox8
+            // checkboxCurrTo4
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(550, 204);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(114, 17);
-            this.checkBox8.TabIndex = 24;
-            this.checkBox8.Text = "Dolar Amerykański";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkboxCurrTo4.AutoSize = true;
+            this.checkboxCurrTo4.Location = new System.Drawing.Point(3, 92);
+            this.checkboxCurrTo4.Name = "checkboxCurrTo4";
+            this.checkboxCurrTo4.Size = new System.Drawing.Size(114, 17);
+            this.checkboxCurrTo4.TabIndex = 24;
+            this.checkboxCurrTo4.Tag = "USD";
+            this.checkboxCurrTo4.Text = "Dolar Amerykański";
+            this.checkboxCurrTo4.UseVisualStyleBackColor = true;
             // 
-            // checkBox9
+            // checkboxCurrTo3
             // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(550, 181);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(112, 17);
-            this.checkBox9.TabIndex = 23;
-            this.checkBox9.Text = "Frank Szwajcarski";
-            this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkboxCurrTo3.AutoSize = true;
+            this.checkboxCurrTo3.Location = new System.Drawing.Point(3, 69);
+            this.checkboxCurrTo3.Name = "checkboxCurrTo3";
+            this.checkboxCurrTo3.Size = new System.Drawing.Size(112, 17);
+            this.checkboxCurrTo3.TabIndex = 23;
+            this.checkboxCurrTo3.Tag = "CHF";
+            this.checkboxCurrTo3.Text = "Frank Szwajcarski";
+            this.checkboxCurrTo3.UseVisualStyleBackColor = true;
             // 
-            // checkBox10
+            // checkboxCurrTo2
             // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(550, 158);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(51, 17);
-            this.checkBox10.TabIndex = 22;
-            this.checkBox10.Text = "Złoty";
-            this.checkBox10.UseVisualStyleBackColor = true;
+            this.checkboxCurrTo2.AutoSize = true;
+            this.checkboxCurrTo2.Location = new System.Drawing.Point(3, 46);
+            this.checkboxCurrTo2.Name = "checkboxCurrTo2";
+            this.checkboxCurrTo2.Size = new System.Drawing.Size(51, 17);
+            this.checkboxCurrTo2.TabIndex = 22;
+            this.checkboxCurrTo2.Tag = "PLN";
+            this.checkboxCurrTo2.Text = "Złoty";
+            this.checkboxCurrTo2.UseVisualStyleBackColor = true;
             // 
-            // checkBox11
+            // checkboxCurrTo1
             // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(550, 135);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(48, 17);
-            this.checkBox11.TabIndex = 21;
-            this.checkBox11.Text = "Euro";
-            this.checkBox11.UseVisualStyleBackColor = true;
+            this.checkboxCurrTo1.AutoSize = true;
+            this.checkboxCurrTo1.Location = new System.Drawing.Point(3, 23);
+            this.checkboxCurrTo1.Name = "checkboxCurrTo1";
+            this.checkboxCurrTo1.Size = new System.Drawing.Size(48, 17);
+            this.checkboxCurrTo1.TabIndex = 21;
+            this.checkboxCurrTo1.Tag = "EUR";
+            this.checkboxCurrTo1.Text = "Euro";
+            this.checkboxCurrTo1.UseVisualStyleBackColor = true;
             // 
-            // checkBox12
+            // checkboxCurrTo0
             // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(550, 112);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(47, 17);
-            this.checkBox12.TabIndex = 20;
-            this.checkBox12.Text = "Funt";
-            this.checkBox12.UseVisualStyleBackColor = true;
+            this.checkboxCurrTo0.AutoSize = true;
+            this.checkboxCurrTo0.Location = new System.Drawing.Point(3, 0);
+            this.checkboxCurrTo0.Name = "checkboxCurrTo0";
+            this.checkboxCurrTo0.Size = new System.Drawing.Size(47, 17);
+            this.checkboxCurrTo0.TabIndex = 20;
+            this.checkboxCurrTo0.Tag = "GBF";
+            this.checkboxCurrTo0.Text = "Funt";
+            this.checkboxCurrTo0.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -146,73 +157,79 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Obecna Jednostka";
             // 
-            // checkBox6
+            // checkboxCurrFrom5
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(332, 227);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(86, 17);
-            this.checkBox6.TabIndex = 11;
-            this.checkBox6.Text = "Juan Chiński";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkboxCurrFrom5.AutoSize = true;
+            this.checkboxCurrFrom5.Location = new System.Drawing.Point(3, 115);
+            this.checkboxCurrFrom5.Name = "checkboxCurrFrom5";
+            this.checkboxCurrFrom5.Size = new System.Drawing.Size(86, 17);
+            this.checkboxCurrFrom5.TabIndex = 11;
+            this.checkboxCurrFrom5.Tag = "CNY";
+            this.checkboxCurrFrom5.Text = "Juan Chiński";
+            this.checkboxCurrFrom5.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // checkboxCurrFrom4
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(332, 204);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(114, 17);
-            this.checkBox5.TabIndex = 10;
-            this.checkBox5.Text = "Dolar Amerykański";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkboxCurrFrom4.AutoSize = true;
+            this.checkboxCurrFrom4.Location = new System.Drawing.Point(3, 92);
+            this.checkboxCurrFrom4.Name = "checkboxCurrFrom4";
+            this.checkboxCurrFrom4.Size = new System.Drawing.Size(114, 17);
+            this.checkboxCurrFrom4.TabIndex = 10;
+            this.checkboxCurrFrom4.Tag = "USD";
+            this.checkboxCurrFrom4.Text = "Dolar Amerykański";
+            this.checkboxCurrFrom4.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // checkboxCurrFrom3
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(332, 181);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(112, 17);
-            this.checkBox4.TabIndex = 9;
-            this.checkBox4.Text = "Frank Szwajcarski";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkboxCurrFrom3.AutoSize = true;
+            this.checkboxCurrFrom3.Location = new System.Drawing.Point(3, 69);
+            this.checkboxCurrFrom3.Name = "checkboxCurrFrom3";
+            this.checkboxCurrFrom3.Size = new System.Drawing.Size(112, 17);
+            this.checkboxCurrFrom3.TabIndex = 9;
+            this.checkboxCurrFrom3.Tag = "CHF";
+            this.checkboxCurrFrom3.Text = "Frank Szwajcarski";
+            this.checkboxCurrFrom3.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // checkboxCurrFrom2
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(332, 158);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(51, 17);
-            this.checkBox3.TabIndex = 8;
-            this.checkBox3.Text = "Złoty";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkboxCurrFrom2.AutoSize = true;
+            this.checkboxCurrFrom2.Location = new System.Drawing.Point(3, 46);
+            this.checkboxCurrFrom2.Name = "checkboxCurrFrom2";
+            this.checkboxCurrFrom2.Size = new System.Drawing.Size(51, 17);
+            this.checkboxCurrFrom2.TabIndex = 8;
+            this.checkboxCurrFrom2.Tag = "PLN";
+            this.checkboxCurrFrom2.Text = "Złoty";
+            this.checkboxCurrFrom2.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // checkboxCurrFrom1
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(332, 135);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(48, 17);
-            this.checkBox2.TabIndex = 7;
-            this.checkBox2.Text = "Euro";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkboxCurrFrom1.AutoSize = true;
+            this.checkboxCurrFrom1.Location = new System.Drawing.Point(3, 23);
+            this.checkboxCurrFrom1.Name = "checkboxCurrFrom1";
+            this.checkboxCurrFrom1.Size = new System.Drawing.Size(48, 17);
+            this.checkboxCurrFrom1.TabIndex = 7;
+            this.checkboxCurrFrom1.Tag = "EUR";
+            this.checkboxCurrFrom1.Text = "Euro";
+            this.checkboxCurrFrom1.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // checkboxCurrFrom0
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(332, 112);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(47, 17);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Funt";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkboxCurrFrom0.AutoSize = true;
+            this.checkboxCurrFrom0.Location = new System.Drawing.Point(3, 0);
+            this.checkboxCurrFrom0.Name = "checkboxCurrFrom0";
+            this.checkboxCurrFrom0.Size = new System.Drawing.Size(47, 17);
+            this.checkboxCurrFrom0.TabIndex = 6;
+            this.checkboxCurrFrom0.Tag = "GBP";
+            this.checkboxCurrFrom0.Text = "Funt";
+            this.checkboxCurrFrom0.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textboxCurrencyOutput
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(381, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(252, 38);
-            this.textBox1.TabIndex = 0;
+            this.textboxCurrencyOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textboxCurrencyOutput.Location = new System.Drawing.Point(381, 5);
+            this.textboxCurrencyOutput.Name = "textboxCurrencyOutput";
+            this.textboxCurrencyOutput.Size = new System.Drawing.Size(252, 38);
+            this.textboxCurrencyOutput.TabIndex = 0;
             // 
             // numpad
             // 
@@ -221,30 +238,50 @@
             this.numpad.Size = new System.Drawing.Size(267, 350);
             this.numpad.TabIndex = 28;
             // 
+            // panelCurrencyFrom
+            // 
+            this.panelCurrencyFrom.Controls.Add(this.checkboxCurrFrom0);
+            this.panelCurrencyFrom.Controls.Add(this.checkboxCurrFrom5);
+            this.panelCurrencyFrom.Controls.Add(this.checkboxCurrFrom4);
+            this.panelCurrencyFrom.Controls.Add(this.checkboxCurrFrom3);
+            this.panelCurrencyFrom.Controls.Add(this.checkboxCurrFrom2);
+            this.panelCurrencyFrom.Controls.Add(this.checkboxCurrFrom1);
+            this.panelCurrencyFrom.Location = new System.Drawing.Point(332, 104);
+            this.panelCurrencyFrom.Name = "panelCurrencyFrom";
+            this.panelCurrencyFrom.Size = new System.Drawing.Size(154, 151);
+            this.panelCurrencyFrom.TabIndex = 29;
+            // 
+            // panelCurrencyTo
+            // 
+            this.panelCurrencyTo.Controls.Add(this.checkboxCurrTo0);
+            this.panelCurrencyTo.Controls.Add(this.checkboxCurrTo1);
+            this.panelCurrencyTo.Controls.Add(this.checkboxCurrTo2);
+            this.panelCurrencyTo.Controls.Add(this.checkboxCurrTo3);
+            this.panelCurrencyTo.Controls.Add(this.checkboxCurrTo4);
+            this.panelCurrencyTo.Controls.Add(this.checkboxCurrTo5);
+            this.panelCurrencyTo.Location = new System.Drawing.Point(518, 104);
+            this.panelCurrencyTo.Name = "panelCurrencyTo";
+            this.panelCurrencyTo.Size = new System.Drawing.Size(153, 151);
+            this.panelCurrencyTo.TabIndex = 30;
+            // 
             // PanelCurrencyConverter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panelCurrencyTo);
+            this.Controls.Add(this.panelCurrencyFrom);
             this.Controls.Add(this.numpad);
-            this.Controls.Add(this.button55);
+            this.Controls.Add(this.btnConvertCurrencies);
             this.Controls.Add(this.Wynik);
-            this.Controls.Add(this.checkBox7);
-            this.Controls.Add(this.checkBox8);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.checkBox9);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.checkBox10);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox11);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox12);
-            this.Controls.Add(this.checkBox4);
+            this.Controls.Add(this.textboxCurrencyOutput);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkBox6);
             this.Name = "PanelCurrencyConverter";
             this.Size = new System.Drawing.Size(674, 357);
+            this.panelCurrencyFrom.ResumeLayout(false);
+            this.panelCurrencyFrom.PerformLayout();
+            this.panelCurrencyTo.ResumeLayout(false);
+            this.panelCurrencyTo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,23 +289,25 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button55;
+        private System.Windows.Forms.Button btnConvertCurrencies;
         private System.Windows.Forms.Label Wynik;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox8;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.CheckBox checkBox11;
-        private System.Windows.Forms.CheckBox checkBox12;
+        private System.Windows.Forms.CheckBox checkboxCurrTo4;
+        private System.Windows.Forms.CheckBox checkboxCurrTo3;
+        private System.Windows.Forms.CheckBox checkboxCurrTo2;
+        private System.Windows.Forms.CheckBox checkboxCurrTo1;
+        private System.Windows.Forms.CheckBox checkboxCurrTo0;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox checkboxCurrFrom5;
+        private System.Windows.Forms.CheckBox checkboxCurrFrom4;
+        private System.Windows.Forms.CheckBox checkboxCurrFrom3;
+        private System.Windows.Forms.CheckBox checkboxCurrFrom2;
+        private System.Windows.Forms.CheckBox checkboxCurrFrom1;
+        private System.Windows.Forms.CheckBox checkboxCurrFrom0;
         public NumpadBasic numpad;
+        public System.Windows.Forms.Panel panelCurrencyFrom;
+        public System.Windows.Forms.CheckBox checkboxCurrTo5;
+        public System.Windows.Forms.Panel panelCurrencyTo;
+        public System.Windows.Forms.TextBox textboxCurrencyOutput;
     }
 }

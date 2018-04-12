@@ -100,6 +100,19 @@
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
+            // panelBasic
+            // 
+            this.panelBasic.Location = new System.Drawing.Point(13, 104);
+            this.panelBasic.Name = "panelBasic";
+            this.panelBasic.Size = new System.Drawing.Size(650, 345);
+            this.panelBasic.TabIndex = 16;
+            // 
+            // panelAdvanced
+            // 
+            this.panelAdvanced.Location = new System.Drawing.Point(12, 103);
+            this.panelAdvanced.Name = "panelAdvanced";
+            this.panelAdvanced.Size = new System.Drawing.Size(694, 352);
+            this.panelAdvanced.TabIndex = 17;
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(692, 12);
