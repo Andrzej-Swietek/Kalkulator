@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http;
@@ -10,11 +11,15 @@ using System.Xml;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace kalkulator
 {
     class CurrencyManager
     {
+        const string fileDateFormat = "dd.MM.yyyy HH:mm";
+        TimeSpan updateTime = TimeSpan.FromHours(24);
+
         Dictionary<string, ConvertionData> data;
         HashSet<string> currencies;
 
@@ -38,6 +43,10 @@ namespace kalkulator
 
         public async Task<double> Convert(string from, string to, double amount)
         {
+            if(from == to)
+            {
+                return amount;
+            }
             if (!currencies.Contains(from))
             {
                 throw new CurrencyConvertException(CurrencyConvertException.ErrorCase.UnaviableCurrency, "No currency: " + from);
@@ -47,12 +56,14 @@ namespace kalkulator
                 throw new CurrencyConvertException(CurrencyConvertException.ErrorCase.UnaviableCurrency, "No currency: " + to);
             }
 
-            double? value = TryGetFromData(from, to);
-            if (value.HasValue)
+            ConvertionData value = TryGetFromData(from, to);
+            bool tryToUpdate = false;
+            if (value != null) tryToUpdate = (value.serverUpdateTime != null) ? value.serverUpdateTime + updateTime >= DateTime.Now : value.fetchTime + updateTime >= DateTime.Now;
+            if (value != null && !tryToUpdate)
             {
-                return value.Value * amount;
+                return value.value * amount;
             }
-            else
+            if(value == null || tryToUpdate)
             {
                 if (host_FreeCurrencyConverterApi.aviableCurrencies.Contains(from) && host_FreeCurrencyConverterApi.aviableCurrencies.Contains(to))
                 {
@@ -60,14 +71,15 @@ namespace kalkulator
                     {
                         ConvertionData convertion = await FreeCurrencyConverterApi_GetFromTo(from, to);
                         AddEntry(convertion);
-                        value = convertion.value;
-                        return value.Value * amount;
+                        SaveDataToFile();
+                        value = convertion;
+                        return value.value * amount;
                     }
                     catch (CurrencyConverterInnerException ex)
                     {
                         if (ex.HResult != (int)CurrencyConverterInnerException.ErrorCase.ServerFetchFailature)
                         {
-                            throw new CurrencyConvertException(CurrencyConvertException.ErrorCase.Unknown);
+                            if(!tryToUpdate) throw new CurrencyConvertException(CurrencyConvertException.ErrorCase.Unknown);
                         }
                     }
                 }
@@ -81,34 +93,39 @@ namespace kalkulator
                         {
                             AddEntry(c);
                         }
+                        SaveDataToFile();
                         value = TryGetFromData(from, to);
-
-                        return value.Value * amount;
+                        return value.value * amount;
                     }
                     catch (CurrencyConverterInnerException ex)
                     {
                         if (ex.HResult != (int)CurrencyConverterInnerException.ErrorCase.ServerFetchFailature)
                         {
-                            throw new CurrencyConvertException(CurrencyConvertException.ErrorCase.Unknown);
+                            if (!tryToUpdate) throw new CurrencyConvertException(CurrencyConvertException.ErrorCase.Unknown);
                         }
                     }
                 }
 
-                throw new CurrencyConvertException(CurrencyConvertException.ErrorCase.NoServerAviable); 
+                if (!tryToUpdate) throw new CurrencyConvertException(CurrencyConvertException.ErrorCase.NoServerAviable); 
             }
+
+            if(value != null)
+            {
+                return value.value * amount;
+            }
+            else throw new CurrencyConvertException(CurrencyConvertException.ErrorCase.NoServerAviable);
         }
 
         async Task<ConvertionData> FreeCurrencyConverterApi_GetFromTo(string from, string to)
         {
             string url = string.Format("http://free.currencyconverterapi.com/api/v3/convert?q={0}_{1}&compact=ultra", from, to);
-       
+            HttpClient hc = new HttpClient();
             try
             {
-                //byte[] data = Encoding.ASCII.GetBytes("{\"PLN_EUR\":0.238389}"); //await wc.DownloadDataTaskAsync(url);       
-                //string textData = Encoding.ASCII.GetString(data);
-                HttpClient hc = new HttpClient();
-                string textData = await hc.GetStringAsync(url);
-                
+                HttpResponseMessage httpResponce = await hc.GetAsync(url);
+                if (!httpResponce.IsSuccessStatusCode) throw new CurrencyConverterInnerException(CurrencyConverterInnerException.ErrorCase.ServerFetchFailature);
+                string textData = await httpResponce.Content.ReadAsStringAsync();
+
                 using (StringReader sr = new StringReader(textData))
                 {
                     using (JsonTextReader jsonReader = new JsonTextReader(sr))
@@ -132,38 +149,44 @@ namespace kalkulator
             {
                 throw new CurrencyConverterInnerException(CurrencyConverterInnerException.ErrorCase.ServerFetchFailature);
             }
-            catch(Exception ex)
-            {
-                throw new CurrencyConverterInnerException(CurrencyConverterInnerException.ErrorCase.Unknown);
-            }
         }
         async Task<Dictionary<string, ConvertionData>> EuropeanCentralBank_GetAll()
         {
-            //WebClient wc = new WebClient();
             string url = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
-            //byte[] data = File.ReadAllBytes(@"C:\users\w\desktop\aaa.txt"); //await wc.DownloadDataTaskAsync(url);
-            //string textData = Encoding.ASCII.GetString(data);
             HttpClient hc = new HttpClient();
             try
             {
-                string textData = await hc.GetStringAsync(url);
+                HttpResponseMessage httpResponce = await hc.GetAsync(url);
+                if (!httpResponce.IsSuccessStatusCode) throw new CurrencyConverterInnerException(CurrencyConverterInnerException.ErrorCase.ServerFetchFailature);               
+                string textData = await httpResponce.Content.ReadAsStringAsync();
                 Dictionary<string, double> inValues = new Dictionary<string, double>();
+                DateTime? serverUpdateTime = null;
                 using (StringReader sr = new StringReader(textData))
                 {
-                    XmlReader xmlr = XmlReader.Create(sr);
-                    while (xmlr.Read())
+                    using (XmlReader xmlr = XmlReader.Create(sr))
                     {
-                        if (xmlr.NodeType == XmlNodeType.Element && xmlr.Name == "Cube")
+                        while (xmlr.Read())
                         {
-                            if (xmlr.AttributeCount == 2)
+                            if (xmlr.NodeType == XmlNodeType.Element && xmlr.Name == "Cube")
                             {
-                                xmlr.MoveToFirstAttribute();
-                                xmlr.ReadAttributeValue();
-                                string currency = xmlr.Value;
-                                xmlr.MoveToNextAttribute();
-                                xmlr.ReadAttributeValue();
-                                double value = double.Parse(xmlr.Value.Replace('.', ','));
-                                inValues.Add(currency, value);
+                                if (xmlr.AttributeCount == 2)
+                                {
+                                    xmlr.MoveToFirstAttribute();
+                                    xmlr.ReadAttributeValue();
+                                    string currency = xmlr.Value;
+                                    xmlr.MoveToNextAttribute();
+                                    xmlr.ReadAttributeValue();
+                                    double value = double.Parse(xmlr.Value.Replace('.', ','));
+                                    inValues.Add(currency, value);
+                                }
+                                else if(xmlr.AttributeCount == 1)
+                                {
+                                    xmlr.MoveToFirstAttribute();
+                                    xmlr.ReadAttributeValue();
+                                    string timeStr = xmlr.Value;
+                                    serverUpdateTime = DateTime.ParseExact(timeStr, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                                    serverUpdateTime = serverUpdateTime.Value.Add(new TimeSpan(16, 00, 00));
+                                }
                             }
                         }
                     }
@@ -178,7 +201,8 @@ namespace kalkulator
                 {
                     if (p.Key != baseCurrency)
                     {
-                        outValues.Add(p.Key + '-' + baseCurrency, new ConvertionData(p.Key, baseCurrency, baseCurrencyVal / p.Value, DateTime.Now, null, Hosts.EuropeanCentralBank)); //TODO: możliwe że dają date updata serwera
+                        outValues.Add(p.Key + '-' + baseCurrency, new ConvertionData(p.Key, baseCurrency, baseCurrencyVal / p.Value, 
+                            DateTime.Now, serverUpdateTime, Hosts.EuropeanCentralBank));
                     }
                 }
                 return outValues;
@@ -187,21 +211,19 @@ namespace kalkulator
             {
                 throw new CurrencyConverterInnerException(CurrencyConverterInnerException.ErrorCase.ServerFetchFailature);
             }
-            catch (Exception ex)
-            {
-                throw new CurrencyConverterInnerException(CurrencyConverterInnerException.ErrorCase.Unknown);
-            }
         }
 
-        double? TryGetFromData(string from, string to)
+        ConvertionData TryGetFromData(string from, string to)
         {
             if (data.ContainsKey(from + '-' + to))
             {
-                return data[from + '-' + to].value;
+                return data[from + '-' + to]; //data[from + '-' + to].value;
             }
             else if (data.ContainsKey(to + '-' + from))
             {
-                return 1.0 / data[from + '-' + to].value;
+                ConvertionData d  = new ConvertionData(data[from + '-' + to]);
+                d.value = 1.0 / d.value;
+                return d;
             }
             else
             {
@@ -238,29 +260,60 @@ namespace kalkulator
         }
         void SaveDataToFile()
         {
-            string filePath = Application.UserAppDataPath + "cos tam";
+            string filePath = Application.CommonAppDataPath + @"\currencies.xml";
             using (FileStream fs = File.Open(filePath, FileMode.Create))
             {
-                XmlWriter xmlw = XmlWriter.Create(fs);
-                xmlw.WriteStartDocument();
-                xmlw.WriteStartElement("CurrencyData");
-                foreach(var d in data)
+                using (XmlTextWriter xmlw = new XmlTextWriter(fs, Encoding.UTF8) { Formatting = System.Xml.Formatting.Indented, Indentation = 4 })
                 {
-                    xmlw.WriteStartElement(d.Value.from + '-' + d.Value.to);
-                    xmlw.WriteStartElement("Conversion");
-                    xmlw.WriteAttributeString("From", d.Value.from);
-                    xmlw.WriteAttributeString("To", d.Value.to);
-                    xmlw.WriteAttributeString("Value", d.Value.ToString());
-                    xmlw.WriteAttributeString("FetchTime", d.Value.fetchTime.ToLongDateString());
-                    if (d.Value.serverUpdateTime != null) xmlw.WriteAttributeString("ServerUpdateTime", d.Value.serverUpdateTime.Value.ToLongDateString());
-                    xmlw.WriteAttributeString("FetchServer", d.Value.fetchHost.ToString()); //ale nie koniecznie
-                    xmlw.WriteEndElement(); //CUR-CUR
+                    xmlw.WriteStartDocument();
+                    xmlw.WriteStartElement("CurrencyData");
+                    foreach (var d in data)
+                    {
+                        xmlw.WriteStartElement("Conversion");
+                        xmlw.WriteAttributeString("From", d.Value.from);
+                        xmlw.WriteAttributeString("To", d.Value.to);
+                        xmlw.WriteAttributeString("Value", d.Value.value.ToString());
+                        xmlw.WriteAttributeString("FetchTime", d.Value.fetchTime.ToString(fileDateFormat));
+                        if (d.Value.serverUpdateTime != null) xmlw.WriteAttributeString("ServerUpdateTime", d.Value.serverUpdateTime.Value.ToString(fileDateFormat));
+                        xmlw.WriteAttributeString("FetchServer", ((int)d.Value.fetchHost).ToString());
+                        xmlw.WriteEndElement(); //Conversion
+                    }
+                    xmlw.WriteEndElement();//CurrencyData
+                    xmlw.WriteEndDocument();                   
                 }
-                xmlw.WriteEndElement();//CurrencyData
-                xmlw.WriteEndDocument();
             }
         }
+        public void ReadDataFromFile()
+        {
+            string filePath = Application.CommonAppDataPath + @"\currencies.xml";
+            if (!File.Exists(filePath)) return;
+            using (FileStream fs = File.Open(filePath, FileMode.Open))
+            {
+                using (XmlReader xmlr = XmlReader.Create(fs))
+                {
+                    while(xmlr.Read())
+                    {
+                        if(xmlr.NodeType == XmlNodeType.Element && xmlr.Name == "Conversion")
+                        {
+                            string from = xmlr.GetAttribute("From");
+                            string to = xmlr.GetAttribute("To");
+                            double value = double.Parse(xmlr.GetAttribute("Value"));
+                            int fetchServerInt = int.Parse(xmlr.GetAttribute("FetchServer"));
+                            Hosts fetchServer = (Hosts)fetchServerInt;
+                            DateTime fetchTime = DateTime.ParseExact(xmlr.GetAttribute("FetchTime"), fileDateFormat, CultureInfo.InvariantCulture);
+                            DateTime? serverUpdateTime = xmlr.AttributeCount > 5 ? 
+                                (DateTime?)DateTime.ParseExact(xmlr.GetAttribute("ServerUpdateTime"), fileDateFormat, CultureInfo.InvariantCulture) : null;
 
+                            if (!data.ContainsKey(from + '-' + to))
+                            {
+                                ConvertionData entry = new ConvertionData(from, to, value, fetchTime, serverUpdateTime, fetchServer);
+                                data.Add(from + '-' + to, entry);
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         public enum Hosts
         {
@@ -279,6 +332,16 @@ namespace kalkulator
             public DateTime fetchTime;
             public DateTime? serverUpdateTime;
             public Hosts fetchHost;
+
+            public ConvertionData(ConvertionData other)
+            {
+                from = other.from;
+                to = other.to;
+                value = other.value;
+                fetchTime = other.fetchTime;
+                serverUpdateTime = other.serverUpdateTime;
+                fetchHost = other.fetchHost;
+            }
 
             public ConvertionData(string from, string to, double value, DateTime fetchTime, DateTime? serverUpdateTime, Hosts fetchHost)
             {

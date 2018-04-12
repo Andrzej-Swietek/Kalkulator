@@ -33,6 +33,7 @@ namespace kalkulator
 
             choosablePanels = new Control[] { panelBasic, panelAdvanced, panelCurrencyConverter };
             currencyManager = new CurrencyManager();
+            currencyManager.ReadDataFromFile();
         }
 
         void SwitchToLayout(Control panel)
