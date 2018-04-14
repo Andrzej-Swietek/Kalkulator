@@ -114,6 +114,7 @@
             // 
             // panelFunctionDraw
             // 
+            this.panelFunctionDraw.FunctionString = null;
             this.panelFunctionDraw.Location = new System.Drawing.Point(13, 104);
             this.panelFunctionDraw.Name = "panelFunctionDraw";
             this.panelFunctionDraw.Size = new System.Drawing.Size(776, 404);
@@ -165,8 +166,10 @@
             this.Controls.Add(this.btnLayoutCurrency);
             this.Controls.Add(this.btnLayoutAdvanced);
             this.Controls.Add(this.btnLayoutBasic);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "KALKULATOR EXTREME";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

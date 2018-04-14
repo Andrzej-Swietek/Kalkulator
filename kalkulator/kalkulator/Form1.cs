@@ -14,6 +14,7 @@ namespace kalkulator
     public partial class Form1 : Form
     {
         private Control[] choosablePanels;
+        Control currentPanel;
         CurrencyManager currencyManager;
 
         public Form1()
@@ -45,6 +46,7 @@ namespace kalkulator
                 p.Visible = false;
             }
             panel.Visible = true;
+            currentPanel = panel;
         }
         void Calculate()
         {
@@ -141,6 +143,30 @@ namespace kalkulator
         private void textboxValue_TextChanged(object sender, EventArgs e)
         {
             panelFunctionDraw.FunctionString = textboxValue.Text;
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+            {
+                this.Focus();
+                if (currentPanel is PanelBasic || currentPanel is PanelAdvanced)
+                {
+                    Calculate();
+                }
+                else if (currentPanel is PanelCurrencyConverter)
+                {
+                    ConvertCurrency();
+                }
+                else if (currentPanel is PanelFunctionDraw)
+                {
+                    panelFunctionDraw.DoPaint();
+                }
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+           
         }
     }
 

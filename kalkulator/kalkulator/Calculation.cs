@@ -115,6 +115,7 @@ namespace kalkulator
                                     exprStack.Peek().children.AddLast(new Expression(3, false, true, (this_, left, right) =>
                                     {
                                         right.toRemove = true;//obu ustawiamy true bo ich uzywa
+                                        if (right.value.Value < 0) throw new CalculationException("Pierwiastek kwadratowy z liczby ujemnej!");
                                         return Math.Sqrt(right.value.Value);//linijka z dziaalaniem  podajemy najpierw wykladnik a potem liczbe
                                     }));
 

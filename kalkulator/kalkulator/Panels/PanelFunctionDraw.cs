@@ -21,10 +21,10 @@ namespace kalkulator.Panels
 
         private void btnDraw_Click(object sender, EventArgs e)
         {
-            SetFunction();
+            DoPaint();
         }
 
-        public void SetFunction()
+        public void DoPaint()
         {
             Dictionary<char,double> calcSymbolDir = new Dictionary<char, double>();
             Calcualtion calc = new Calcualtion(FunctionString);
