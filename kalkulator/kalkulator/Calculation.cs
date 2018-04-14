@@ -10,37 +10,45 @@ namespace kalkulator
     class Calcualtion
     {
         string str;
-        IDictionary<char, Func<double>> additionalSymbols = null; 
+        Expression rootExpression;
+        IDictionary<char, double> additionalSymbols; 
 
         public Calcualtion(string str)//konstruktor
         {
             this.str = str;
+            this.additionalSymbols = null;
         }
-        public Calcualtion(string str, IDictionary<char, Func<double>> additionalSymbols)//konstruktor
+        public Calcualtion(string str, IDictionary<char, double> additionalSymbols)//konstruktor
         {
             this.str = str;
             this.additionalSymbols = additionalSymbols;
         }
 
 
-        public double NoWezIOblicz(IDictionary<char, Func<double>> additionalSymbols = null)
+        public double CalculateNew()
         {
-            Expression rootExpr = new Expression();
+            PrepareCalculation();
+            double resoult = rootExpression.EvaluateChildren();
+            return resoult;
+        }
+        public void PrepareCalculation()
+        {
+            rootExpression = new Expression();
             Stack<Expression> exprStack = new Stack<Expression>(); //stos w którym nawiasie lub expreszynie jestesmy
-            exprStack.Push(rootExpr);
+            exprStack.Push(rootExpression);
             ExpressionType lastExprType = ExpressionType.None;
             string textExpr = "";
             char c;
 
             for (int i = 0; i < str.Length;)
-            {              
+            {
                 if (!(char.IsDigit(str[i]) || str[i] == ',' || str[i] == '.' || str[i] == ' '))
                 {
-                    c = str[i];                  
+                    c = str[i];
                     i++;
-                    if(i == str.Length ||  (i < str.Length && !char.IsLetter(str[i]) /* (char.IsDigit(str[i]) || str[i] == ',' || str[i] == '.' || str[i] == ' ')*/))
+                    if (i == str.Length || !char.IsLetter(c) || (i < str.Length && !char.IsLetter(str[i]) /* (char.IsDigit(str[i]) || str[i] == ',' || str[i] == '.' || str[i] == ' ')*/))
                     {
-                        if(string.IsNullOrEmpty(textExpr))
+                        if (string.IsNullOrEmpty(textExpr))
                         {
                             if (false) ;
                             else if (c == '+')
@@ -156,7 +164,7 @@ namespace kalkulator
                             }
                             else if (c == 'π')
                             {
-                                Expression e = new Expression(11, false, false, (left, right, this_) => Math.PI);
+                                Expression e = new Expression(11, false, false, (this_, left, right) => Math.PI);
                                 exprStack.Peek().children.AddLast(e);
                                 lastExprType = ExpressionType.Number;
                             }
@@ -166,13 +174,20 @@ namespace kalkulator
                                 exprStack.Peek().children.AddLast(e);
                                 lastExprType = ExpressionType.Number;
                             }
-                            else if (additionalSymbols != null && additionalSymbols.ContainsKey(c))
+                            else
                             {
-                                Expression e = new Expression(11, false, false, (left, right, this_) => additionalSymbols[c]());
+                                char cc = c;
+                                Expression e = new Expression(11, false, false, (this_, left, right) =>
+                                {                                    
+                                    if (additionalSymbols != null && additionalSymbols.ContainsKey(cc))
+                                    {
+                                        return additionalSymbols[cc];
+                                    }
+                                    else throw new CalculationException("Symbol " + cc + " not known");
+                                });
                                 exprStack.Peek().children.AddLast(e);
                                 lastExprType = ExpressionType.Number;
                             }
-                            else throw new CalculationException("Symbol " + c + " not known");
                         }
                         else
                         {
@@ -322,7 +337,7 @@ namespace kalkulator
                     {
                         textExpr += char.ToLower(c);
                     }
-                }             
+                }
                 else if (str[i] == ' ')
                 {
                     i++;
@@ -333,12 +348,13 @@ namespace kalkulator
                     Expression e = new Expression(n);
                     exprStack.Peek().children.AddLast(e);
                     lastExprType = ExpressionType.Number;
-                }              
-             
-
+                }
             }
-
-            double resoult = rootExpr.EvaluateChildren();
+        }
+        public double Calculate(IDictionary<char, double> additionalSymbols = null)
+        {
+            this.additionalSymbols = additionalSymbols;
+            double resoult = ((Expression)rootExpression.Clone()).EvaluateChildren();
             return resoult;
         }
 
@@ -388,7 +404,7 @@ namespace kalkulator
             TextOperation,
             BracketsExpr
         }
-        class Expression
+        class Expression : ICloneable
         {
             Func<Expression, Expression, Expression, double> f; // w c++ function<Number(Expression*, Expression*, Expression*)> f;
             public int evaluationOrder; //kolejność dzilan np dodawnie 1 mnozenie 2
@@ -406,11 +422,11 @@ namespace kalkulator
                 this.value = value;
                 evaluationOrder = 0;
             }
-            public Expression(int evaluationOrder, bool usesLeft, bool usesRight, Func<Expression, Expression, Expression, double> function)
+            public Expression(int evaluationOrder, bool requiredLeft, bool requiredRight, Func<Expression, Expression, Expression, double> function)
             {
                 this.evaluationOrder = evaluationOrder;
-                this.requiredLeft = usesLeft;
-                this.requiredRight = usesRight;
+                this.requiredLeft = requiredLeft;
+                this.requiredRight = requiredRight;
                 this.f = function;
             }
 
@@ -456,6 +472,17 @@ namespace kalkulator
                     only.Evaluate(only, null, null);
                 }
                 return only.value.Value;
+            }
+
+            public object Clone()
+            {
+                return new Expression(evaluationOrder, requiredLeft, requiredRight, f)
+                {
+                    children = new LinkedList<Expression>(children.Select(c => (Expression)c.Clone())),
+                    value = this.value,
+                    toRemove = this.toRemove
+                };
+
             }
         };
         public class CalculationException : Exception

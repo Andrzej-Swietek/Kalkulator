@@ -149,7 +149,7 @@
             this.button30.Name = "button30";
             this.button30.Size = new System.Drawing.Size(56, 59);
             this.button30.TabIndex = 5;
-            this.button30.Tag = "root";
+            this.button30.Tag = "√";
             this.button30.Text = "√";
             this.button30.UseVisualStyleBackColor = true;
             this.button30.Click += new System.EventHandler(this.btnSymbol_Click);
@@ -303,7 +303,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(56, 59);
             this.button2.TabIndex = 18;
-            this.button2.Tag = "|x|";
+            this.button2.Tag = "|";
             this.button2.Text = "|x|";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.btnSymbol_Click);

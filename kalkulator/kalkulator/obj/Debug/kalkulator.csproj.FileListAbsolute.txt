@@ -47,7 +47,6 @@ C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.cs
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.csproj.CopyComplete
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.exe
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.pdb
-C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.csprojResolveAssemblyReference.cache
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\bin\Debug\currencies.txt
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.NumpadBasic.resources
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelAdvanced.resources
@@ -55,3 +54,5 @@ C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkula
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelCurrencyConverter.resources
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelMatrix.resources
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelMatrix.resources
+C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.FunctionDrawerBox.resources
+C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelFunctionDraw.resources

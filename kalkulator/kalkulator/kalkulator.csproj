@@ -56,6 +56,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panels\FunctionDrawerBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\FunctionDrawerBox.Designer.cs">
+      <DependentUpon>FunctionDrawerBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Panels\NumpadBasic.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -80,6 +86,12 @@
     <Compile Include="Panels\PanelCurrencyConverter.Designer.cs">
       <DependentUpon>PanelCurrencyConverter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Panels\PanelFunctionDraw.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Panels\PanelFunctionDraw.Designer.cs">
+      <DependentUpon>PanelFunctionDraw.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
@@ -92,6 +104,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Panels\FunctionDrawerBox.resx">
+      <DependentUpon>FunctionDrawerBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Panels\NumpadBasic.resx">
       <DependentUpon>NumpadBasic.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\PanelCurrencyConverter.resx">
       <DependentUpon>PanelCurrencyConverter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Panels\PanelFunctionDraw.resx">
+      <DependentUpon>PanelFunctionDraw.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Panels\PanelMatrix.resx">
       <DependentUpon>PanelMatrix.cs</DependentUpon>

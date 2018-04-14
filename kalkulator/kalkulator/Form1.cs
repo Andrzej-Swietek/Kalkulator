@@ -31,10 +31,11 @@ namespace kalkulator
             panelCurrencyConverter.numpad.CommaButtonClicked += (s, e) => SymbolButtonClicked(s, new SymbolButtonClickedEventArgs(","));
             panelCurrencyConverter.ButtonConvertCurrenciesClicked += CurrencyConvertButtonClicked;
 
-            choosablePanels = new Control[] { panelBasic, panelAdvanced, panelCurrencyConverter, panelMatrix };
+            choosablePanels = new Control[] { panelBasic, panelAdvanced, panelCurrencyConverter, panelMatrix, panelFunctionDraw };
             currencyManager = new CurrencyManager();
             currencyManager.ReadDataFromFile();
 
+            SwitchToLayout(panelBasic);
         }
 
         void SwitchToLayout(Control panel)
@@ -52,7 +53,7 @@ namespace kalkulator
             {
                 try
                 {
-                    double resoult = new Calcualtion(textboxValue.Text).NoWezIOblicz();
+                    double resoult = new Calcualtion(textboxValue.Text).CalculateNew();
                     textboxValue.Text = resoult.ToString("0." + new string('#', 8));
                 }
                 catch (Calcualtion.CalculationException ex)
@@ -79,7 +80,7 @@ namespace kalkulator
 
                 try
                 {
-                    amount = new Calcualtion(textboxValue.Text).NoWezIOblicz();
+                    amount = new Calcualtion(textboxValue.Text).CalculateNew();
                     double resoult = await currencyManager.Convert(from, to, amount);
                     panelCurrencyConverter.textboxCurrencyOutput.Text = resoult.ToString("0." + new string('#', 8));
                 }
@@ -101,7 +102,7 @@ namespace kalkulator
         }
         private void SymbolButtonClicked(object sender, SymbolButtonClickedEventArgs e)
         {
-            textboxValue.Text += " " + e.symbol + " ";
+            textboxValue.Text += e.symbol;
         }
         private void EvaluateButtonClicked(object sender, EventArgs e)
         {
@@ -111,7 +112,6 @@ namespace kalkulator
         {
             ConvertCurrency();
         }
-
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
@@ -129,10 +129,18 @@ namespace kalkulator
         {
             SwitchToLayout(panelCurrencyConverter);
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             SwitchToLayout(panelMatrix);
+        }
+        private void btnLayoutFunctionDraw_Click(object sender, EventArgs e)
+        {
+            SwitchToLayout(panelFunctionDraw);
+        }
+
+        private void textboxValue_TextChanged(object sender, EventArgs e)
+        {
+            panelFunctionDraw.FunctionString = textboxValue.Text;
         }
     }
 
