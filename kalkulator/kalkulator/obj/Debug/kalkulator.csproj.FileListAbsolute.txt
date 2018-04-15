@@ -58,3 +58,5 @@ C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Pa
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\bin\Debug\currencies.txt
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.FunctionDrawerBox.resources
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelFunctionDraw.resources
+C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.FunctionDrawerBox.resources
+C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelFunctionDraw.resources
