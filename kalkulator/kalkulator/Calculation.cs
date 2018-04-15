@@ -14,7 +14,7 @@ namespace kalkulator
         Expression rootExpression;
         IDictionary<char, double> additionalSymbols; 
 
-        public Calcualtion(string str)//konstruktor
+        public Calcualtion(string str)//konstruktor 
         {
             this.str = str;
             this.additionalSymbols = null;
