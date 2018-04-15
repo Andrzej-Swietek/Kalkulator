@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnLayoutBasic = new System.Windows.Forms.Button();
             this.btnLayoutAdvanced = new System.Windows.Forms.Button();
             this.btnLayoutCurrency = new System.Windows.Forms.Button();
@@ -166,6 +167,7 @@
             this.Controls.Add(this.btnLayoutCurrency);
             this.Controls.Add(this.btnLayoutAdvanced);
             this.Controls.Add(this.btnLayoutBasic);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "KALKULATOR EXTREME";
