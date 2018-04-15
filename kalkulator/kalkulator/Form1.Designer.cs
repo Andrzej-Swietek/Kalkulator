@@ -86,7 +86,7 @@
             this.btnLayoutMatrix.Size = new System.Drawing.Size(164, 39);
             this.btnLayoutMatrix.TabIndex = 3;
             this.btnLayoutMatrix.Tag = "Macierze";
-            this.btnLayoutMatrix.Text = "Mcierze";
+            this.btnLayoutMatrix.Text = "Macierze";
             this.btnLayoutMatrix.UseVisualStyleBackColor = true;
             this.btnLayoutMatrix.Click += new System.EventHandler(this.button4_Click);
             // 
