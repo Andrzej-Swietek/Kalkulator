@@ -175,6 +175,15 @@ namespace kalkulator
                                 exprStack.Peek().children.AddLast(e);
                                 lastExprType = ExpressionType.Number;
                             }
+                            else if (c == '%')
+                            {
+                                if (lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr) throw new CalculationException("Format error!");//sprawdza czy byla liczba ostatnia anie nic lub znak
+                                exprStack.Peek().children.AddLast(new Expression(1, true, false, (this_, left, right) => {
+                                    left.toRemove = true;//obu ustawiamy true bo ich uzywa
+                                    return left.value.Value/100;//linijka z dziaalaniem
+                                }));
+                                lastExprType = ExpressionType.Operation;//ostatnia wyraz to opercja
+                            }
                             else
                             {
                                 char cc = c;
