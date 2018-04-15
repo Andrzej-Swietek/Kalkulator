@@ -41,6 +41,12 @@
             this.panelCurrencyConverter = new kalkulator.Panels.PanelCurrencyConverter();
             this.panelAdvanced = new kalkulator.Panels.PanelAdvanced();
             this.panelBasic = new kalkulator.Panels.PanelBasic();
+            this.panelNubmerSystems = new System.Windows.Forms.Panel();
+            this.radioNumSystem16 = new System.Windows.Forms.RadioButton();
+            this.radioNumSystem10 = new System.Windows.Forms.RadioButton();
+            this.radioNumSystem8 = new System.Windows.Forms.RadioButton();
+            this.radioNumSystem2 = new System.Windows.Forms.RadioButton();
+            this.panelNubmerSystems.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLayoutBasic
@@ -118,7 +124,7 @@
             this.panelFunctionDraw.FunctionString = null;
             this.panelFunctionDraw.Location = new System.Drawing.Point(13, 104);
             this.panelFunctionDraw.Name = "panelFunctionDraw";
-            this.panelFunctionDraw.Size = new System.Drawing.Size(776, 404);
+            this.panelFunctionDraw.Size = new System.Drawing.Size(777, 392);
             this.panelFunctionDraw.TabIndex = 21;
             // 
             // panelMatrix
@@ -145,22 +151,88 @@
             // 
             // panelBasic
             // 
-            this.panelBasic.Location = new System.Drawing.Point(13, 104);
+            this.panelBasic.Location = new System.Drawing.Point(12, 104);
             this.panelBasic.Name = "panelBasic";
             this.panelBasic.Size = new System.Drawing.Size(650, 345);
             this.panelBasic.TabIndex = 16;
+            // 
+            // panelNubmerSystems
+            // 
+            this.panelNubmerSystems.Controls.Add(this.radioNumSystem16);
+            this.panelNubmerSystems.Controls.Add(this.radioNumSystem10);
+            this.panelNubmerSystems.Controls.Add(this.radioNumSystem8);
+            this.panelNubmerSystems.Controls.Add(this.radioNumSystem2);
+            this.panelNubmerSystems.Location = new System.Drawing.Point(707, 58);
+            this.panelNubmerSystems.Name = "panelNubmerSystems";
+            this.panelNubmerSystems.Size = new System.Drawing.Size(149, 102);
+            this.panelNubmerSystems.TabIndex = 22;
+            // 
+            // radioNumSystem16
+            // 
+            this.radioNumSystem16.AutoSize = true;
+            this.radioNumSystem16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioNumSystem16.Location = new System.Drawing.Point(3, 72);
+            this.radioNumSystem16.Name = "radioNumSystem16";
+            this.radioNumSystem16.Size = new System.Drawing.Size(50, 20);
+            this.radioNumSystem16.TabIndex = 3;
+            this.radioNumSystem16.Tag = "16";
+            this.radioNumSystem16.Text = "hex";
+            this.radioNumSystem16.UseVisualStyleBackColor = true;
+            this.radioNumSystem16.CheckedChanged += new System.EventHandler(this.radioNumberSystem_CheckedChanged);
+            // 
+            // radioNumSystem10
+            // 
+            this.radioNumSystem10.AutoSize = true;
+            this.radioNumSystem10.Checked = true;
+            this.radioNumSystem10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioNumSystem10.Location = new System.Drawing.Point(3, 49);
+            this.radioNumSystem10.Name = "radioNumSystem10";
+            this.radioNumSystem10.Size = new System.Drawing.Size(52, 20);
+            this.radioNumSystem10.TabIndex = 2;
+            this.radioNumSystem10.TabStop = true;
+            this.radioNumSystem10.Tag = "10";
+            this.radioNumSystem10.Text = "dec";
+            this.radioNumSystem10.UseVisualStyleBackColor = true;
+            this.radioNumSystem10.CheckedChanged += new System.EventHandler(this.radioNumberSystem_CheckedChanged);
+            // 
+            // radioNumSystem8
+            // 
+            this.radioNumSystem8.AutoSize = true;
+            this.radioNumSystem8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioNumSystem8.Location = new System.Drawing.Point(3, 26);
+            this.radioNumSystem8.Name = "radioNumSystem8";
+            this.radioNumSystem8.Size = new System.Drawing.Size(47, 20);
+            this.radioNumSystem8.TabIndex = 1;
+            this.radioNumSystem8.Tag = "8";
+            this.radioNumSystem8.Text = "oct";
+            this.radioNumSystem8.UseVisualStyleBackColor = true;
+            this.radioNumSystem8.CheckedChanged += new System.EventHandler(this.radioNumberSystem_CheckedChanged);
+            // 
+            // radioNumSystem2
+            // 
+            this.radioNumSystem2.AutoSize = true;
+            this.radioNumSystem2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.radioNumSystem2.Location = new System.Drawing.Point(3, 3);
+            this.radioNumSystem2.Name = "radioNumSystem2";
+            this.radioNumSystem2.Size = new System.Drawing.Size(47, 20);
+            this.radioNumSystem2.TabIndex = 0;
+            this.radioNumSystem2.Tag = "2";
+            this.radioNumSystem2.Text = "bin";
+            this.radioNumSystem2.UseVisualStyleBackColor = true;
+            this.radioNumSystem2.CheckedChanged += new System.EventHandler(this.radioNumberSystem_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 520);
+            this.Controls.Add(this.panelNubmerSystems);
+            this.Controls.Add(this.panelBasic);
             this.Controls.Add(this.panelFunctionDraw);
             this.Controls.Add(this.panelMatrix);
             this.Controls.Add(this.btnLayoutFunctionDraw);
             this.Controls.Add(this.panelCurrencyConverter);
             this.Controls.Add(this.panelAdvanced);
-            this.Controls.Add(this.panelBasic);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.textboxValue);
             this.Controls.Add(this.btnLayoutMatrix);
@@ -172,6 +244,8 @@
             this.Name = "Form1";
             this.Text = "KALKULATOR EXTREME";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.panelNubmerSystems.ResumeLayout(false);
+            this.panelNubmerSystems.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,6 +265,11 @@
         private System.Windows.Forms.Button btnLayoutFunctionDraw;
         private Panels.PanelMatrix panelMatrix;
         private Panels.PanelFunctionDraw panelFunctionDraw;
+        private System.Windows.Forms.Panel panelNubmerSystems;
+        private System.Windows.Forms.RadioButton radioNumSystem16;
+        private System.Windows.Forms.RadioButton radioNumSystem10;
+        private System.Windows.Forms.RadioButton radioNumSystem8;
+        private System.Windows.Forms.RadioButton radioNumSystem2;
     }
 }
 

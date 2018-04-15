@@ -16,6 +16,7 @@ namespace kalkulator
         private Control[] choosablePanels;
         Control currentPanel;
         CurrencyManager currencyManager;
+        int currentNumerSystem = 10;
 
         public Form1()
         {
@@ -55,7 +56,8 @@ namespace kalkulator
             {
                 try
                 {
-                    double resoult = new Calcualtion(textboxValue.Text).CalculateNew();
+                    double resoult = new Calcualtion(textboxValue.Text)
+                    { numberSystem = currentNumerSystem }.CalculateNew();
                     textboxValue.Text = resoult.ToString("0." + new string('#', 8));
                 }
                 catch (Calcualtion.CalculationException ex)
@@ -139,7 +141,13 @@ namespace kalkulator
         {
             SwitchToLayout(panelFunctionDraw);
         }
-
+        private void radioNumberSystem_CheckedChanged(object sender, EventArgs e)
+        {
+            if(((RadioButton)sender).Checked)
+            {
+                currentNumerSystem = int.Parse((string)((RadioButton)sender).Tag); 
+            }
+        }
         private void textboxValue_TextChanged(object sender, EventArgs e)
         {
             panelFunctionDraw.FunctionString = textboxValue.Text;

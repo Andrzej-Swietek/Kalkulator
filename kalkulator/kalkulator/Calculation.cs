@@ -10,6 +10,7 @@ namespace kalkulator
     class Calcualtion
     {
         string str;
+        public int numberSystem = 10;
         Expression rootExpression;
         IDictionary<char, double> additionalSymbols; 
 
@@ -376,7 +377,7 @@ namespace kalkulator
                 }
                 else if (char.IsDigit(str[i]) || str[i] == ',' || str[i] == '.')
                 {
-                    double n = ProduceNumber(str, ref i);
+                    double n = ProduceNumber(str, ref i, numberSystem);
                     Expression e = new Expression(n);
                     exprStack.Peek().children.AddLast(e);
                     lastExprType = ExpressionType.Number;
@@ -410,7 +411,16 @@ namespace kalkulator
                 if (!fractionPart)
                 {
                     n *= digitSystem;
-                    n += char.GetNumericValue(c);
+                    double digit;
+                    if(numberSystem <= 10)
+                        digit = char.GetNumericValue(c);
+                    else
+                    {
+                        throw new CalculationException("System " + digitSystem + " not supported");
+                    }
+
+                    if (digit >= digitSystem) throw new CalculationException("Invalid digit " + digit + " in " + digitSystem + " number system");
+                    n += digit;
                 }
                 else
                 {
