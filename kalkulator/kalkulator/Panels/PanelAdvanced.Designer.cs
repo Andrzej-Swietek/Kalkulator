@@ -303,7 +303,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(56, 59);
             this.button2.TabIndex = 18;
-            this.button2.Tag = "|";
+            this.button2.Tag = "abs";
             this.button2.Text = "|x|";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.btnSymbol_Click);

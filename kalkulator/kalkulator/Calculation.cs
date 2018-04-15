@@ -349,6 +349,17 @@ namespace kalkulator
                                 }));
                                 lastExprType = ExpressionType.TextOperation;
                             }
+                            else if (textExpr == "abs")
+                            {
+                                if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                              && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                                exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) =>
+                                {
+                                    right.toRemove = true;
+                                    return Math.Abs(right.value.Value);
+                                }));
+                                lastExprType = ExpressionType.TextOperation;
+                            }
                             else throw new CalculationException("Operation " + textExpr + " not known");
 
                             textExpr = "";
