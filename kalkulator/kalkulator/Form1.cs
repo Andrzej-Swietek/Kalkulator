@@ -75,7 +75,7 @@ namespace kalkulator
                 CheckBox fromBox = panelCurrencyConverter.panelCurrencyFrom.Controls.
                     OfType<CheckBox>().SingleOrDefault(c => c.Checked);
                 CheckBox toBox = panelCurrencyConverter.panelCurrencyTo.Controls.
-                    OfType<CheckBox>().SingleOrDefault(c => c.Checked);
+                    OfType<CheckBox>().SingleOrDefault(c => c.Checked);  
 
                 if (fromBox == null || toBox == null) return;
 
