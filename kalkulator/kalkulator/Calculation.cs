@@ -361,7 +361,7 @@ namespace kalkulator
                                 }));
                                 lastExprType = ExpressionType.TextOperation;
                             }
-                            else if (textExpr == "AND")
+                            else if (textExpr == "and")
                             {
                                 if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
                              && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
@@ -372,7 +372,7 @@ namespace kalkulator
                                 }));
                                 lastExprType = ExpressionType.TextOperation;
                             }
-                            else if (textExpr == "OR")
+                            else if (textExpr == "or")
                             {
                                 if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
                             && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
@@ -383,7 +383,7 @@ namespace kalkulator
                                 }));
                                 lastExprType = ExpressionType.TextOperation;
                             }
-                            else if (textExpr == "XOR")
+                            else if (textExpr == "xor")
                             {
                                 if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
                               && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
@@ -394,7 +394,7 @@ namespace kalkulator
                                 }));
                                 lastExprType = ExpressionType.TextOperation;
                             }
-                            else if (textExpr == "NOT")
+                            else if (textExpr == "not")
                             {
                                 if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
                             && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
