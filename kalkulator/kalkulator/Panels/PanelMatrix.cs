@@ -88,7 +88,7 @@ namespace kalkulator.Panels
             {
                 int x = int.Parse(((string)t.Tag).Substring(0, 1));
                 int y = int.Parse(((string)t.Tag).Substring(1, 1));
-                matrixA[x,y] = string.IsNullOrWhiteSpace(t.Text) ? 0 : double.Parse(t.Text);
+                matrixA[x,y] = string.IsNullOrWhiteSpace(t.Text) ? 0 : new Calcualtion(t.Text).CalculateNew();
             }
 
 
@@ -96,7 +96,7 @@ namespace kalkulator.Panels
             {
                 int x = int.Parse(((string)t.Tag).Substring(0, 1));
                 int y = int.Parse(((string)t.Tag).Substring(1, 1));
-                matrixB[x, y] = string.IsNullOrWhiteSpace(t.Text) ? 0 : double.Parse(t.Text);
+                matrixB[x, y] = string.IsNullOrWhiteSpace(t.Text) ? 0 : new Calcualtion(t.Text).CalculateNew();
             }
 
 
