@@ -56,8 +56,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.numpad = new kalkulator.Panels.NumpadBasic();
             this.button6 = new System.Windows.Forms.Button();
+            this.numpad = new kalkulator.Panels.NumpadBasic();
             this.flowLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -369,6 +369,7 @@
             this.button1.Tag = "XOR";
             this.button1.Text = "XOR";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnSymbol_Click);
             // 
             // button4
             // 
@@ -379,6 +380,7 @@
             this.button4.Tag = "OR";
             this.button4.Text = "OR";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.btnSymbol_Click);
             // 
             // button5
             // 
@@ -389,13 +391,7 @@
             this.button5.Tag = "AND";
             this.button5.Text = "AND";
             this.button5.UseVisualStyleBackColor = true;
-            // 
-            // numpad
-            // 
-            this.numpad.Location = new System.Drawing.Point(0, 0);
-            this.numpad.Name = "numpad";
-            this.numpad.Size = new System.Drawing.Size(267, 350);
-            this.numpad.TabIndex = 14;
+            this.button5.Click += new System.EventHandler(this.btnSymbol_Click);
             // 
             // button6
             // 
@@ -406,6 +402,14 @@
             this.button6.Tag = "NOT";
             this.button6.Text = "NOT";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.btnSymbol_Click);
+            // 
+            // numpad
+            // 
+            this.numpad.Location = new System.Drawing.Point(0, 0);
+            this.numpad.Name = "numpad";
+            this.numpad.Size = new System.Drawing.Size(267, 350);
+            this.numpad.TabIndex = 14;
             // 
             // PanelAdvanced
             // 
