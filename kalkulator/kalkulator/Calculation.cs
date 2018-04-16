@@ -361,6 +361,50 @@ namespace kalkulator
                                 }));
                                 lastExprType = ExpressionType.TextOperation;
                             }
+                            else if (textExpr == "AND")
+                            {
+                                if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                             && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                                exprStack.Peek().children.AddLast(new Expression(4, true, true, (this_, left, right) =>
+                                {
+                                   left.toRemove = right.toRemove = true;
+                                    return  Convert.ToInt32(left.value.Value) & Convert.ToInt32(right.value.Value);
+                                }));
+                                lastExprType = ExpressionType.TextOperation;
+                            }
+                            else if (textExpr == "OR")
+                            {
+                                if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                            && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                                exprStack.Peek().children.AddLast(new Expression(4, true, true, (this_, left, right) =>
+                                {
+                                    left.toRemove = right.toRemove = true;
+                                    return Convert.ToInt32(left.value.Value) | Convert.ToInt32(right.value.Value);
+                                }));
+                                lastExprType = ExpressionType.TextOperation;
+                            }
+                            else if (textExpr == "XOR")
+                            {
+                                if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                              && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                                exprStack.Peek().children.AddLast(new Expression(4, true, true, (this_, left, right) =>
+                                {
+                                    left.toRemove = right.toRemove = true;
+                                    return Convert.ToInt32(left.value.Value) ^ Convert.ToInt32(right.value.Value);
+                                }));
+                                lastExprType = ExpressionType.TextOperation;
+                            }
+                            else if (textExpr == "NOT")
+                            {
+                                if (lastExprType != ExpressionType.None && lastExprType != ExpressionType.Number && lastExprType != ExpressionType.BracketsExpr
+                            && lastExprType != ExpressionType.Operation) throw new CalculationException("Format error!");
+                                exprStack.Peek().children.AddLast(new Expression(4, false, true, (this_, left, right) =>
+                                {
+                                   right.toRemove = true;
+                                    return ~( Convert.ToInt32(right.value.Value));
+                                }));
+                                lastExprType = ExpressionType.TextOperation;
+                            }
                             else throw new CalculationException("Operation " + textExpr + " not known");
 
                             textExpr = "";

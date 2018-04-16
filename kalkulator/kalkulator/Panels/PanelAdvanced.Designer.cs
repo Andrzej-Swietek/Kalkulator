@@ -53,7 +53,11 @@
             this.button58 = new System.Windows.Forms.Button();
             this.button59 = new System.Windows.Forms.Button();
             this.button36 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.numpad = new kalkulator.Panels.NumpadBasic();
+            this.button6 = new System.Windows.Forms.Button();
             this.flowLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,10 +86,14 @@
             this.flowLayoutPanel4.Controls.Add(this.button57);
             this.flowLayoutPanel4.Controls.Add(this.button58);
             this.flowLayoutPanel4.Controls.Add(this.button59);
+            this.flowLayoutPanel4.Controls.Add(this.button5);
+            this.flowLayoutPanel4.Controls.Add(this.button4);
+            this.flowLayoutPanel4.Controls.Add(this.button1);
+            this.flowLayoutPanel4.Controls.Add(this.button6);
             this.flowLayoutPanel4.Controls.Add(this.button36);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(289, 6);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(392, 319);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(392, 343);
             this.flowLayoutPanel4.TabIndex = 13;
             // 
             // button25
@@ -343,7 +351,7 @@
             // 
             // button36
             // 
-            this.button36.Location = new System.Drawing.Point(3, 263);
+            this.button36.Location = new System.Drawing.Point(3, 304);
             this.button36.Name = "button36";
             this.button36.Size = new System.Drawing.Size(363, 37);
             this.button36.TabIndex = 9;
@@ -352,12 +360,52 @@
             this.button36.UseVisualStyleBackColor = true;
             this.button36.Click += new System.EventHandler(this.button36_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(127, 263);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(56, 35);
+            this.button1.TabIndex = 24;
+            this.button1.Tag = "XOR";
+            this.button1.Text = "XOR";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(65, 263);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(56, 35);
+            this.button4.TabIndex = 25;
+            this.button4.Tag = "OR";
+            this.button4.Text = "OR";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(3, 263);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(56, 35);
+            this.button5.TabIndex = 26;
+            this.button5.Tag = "AND";
+            this.button5.Text = "AND";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
             // numpad
             // 
             this.numpad.Location = new System.Drawing.Point(0, 0);
             this.numpad.Name = "numpad";
             this.numpad.Size = new System.Drawing.Size(267, 350);
             this.numpad.TabIndex = 14;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(189, 263);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(56, 35);
+            this.button6.TabIndex = 27;
+            this.button6.Tag = "NOT";
+            this.button6.Text = "NOT";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // PanelAdvanced
             // 
@@ -399,5 +447,9 @@
         private System.Windows.Forms.Button button59;
         private System.Windows.Forms.Button button36;
         public NumpadBasic numpad;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button6;
     }
 }
