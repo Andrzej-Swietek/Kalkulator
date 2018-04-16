@@ -27,6 +27,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A61A0992DACD4280B494AD2D8A2C9EFA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_EED3D1A3719F47B6F9B0003F4263465F"
         "OwnerKey" = "8:_35DCF5AC4AC4406E9A11E11E18330B34"
         "MsmSig" = "8:_UNDEFINED"
@@ -143,6 +149,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A61A0992DACD4280B494AD2D8A2C9EFA"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\..\\Desktop\\kalk.ico"
+            "TargetName" = "8:kalk.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_275AF4CD6C1B4E4A9583D0E733080C77"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EED3D1A3719F47B6F9B0003F4263465F"
             {
             "AssemblyRegister" = "3:1"
@@ -242,7 +268,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:KalkulatorExtremeSetup"
         "ProductCode" = "8:{2E0FA0F8-0A84-4959-8677-18AE8F8FB380}"
-        "PackageCode" = "8:{FC003BD7-6304-44E3-9665-4BD8FC1C9215}"
+        "PackageCode" = "8:{73555C71-DA22-4B2C-B1D7-C43AE3A27B9A}"
         "UpgradeCode" = "8:{73A2993E-FD0F-4FAB-A76A-205D63EBE8E3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -373,7 +399,7 @@
             "Target" = "8:_35DCF5AC4AC4406E9A11E11E18330B34"
             "Folder" = "8:_DFCD205748C1421DAE903C5A4BD7C534"
             "WorkingFolder" = "8:_275AF4CD6C1B4E4A9583D0E733080C77"
-            "Icon" = "8:"
+            "Icon" = "8:_A61A0992DACD4280B494AD2D8A2C9EFA"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_EF254FDCE5DF4B3A85F035AF49259D0A"

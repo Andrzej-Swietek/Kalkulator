@@ -23,7 +23,6 @@ C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\bin\Debug\kalkula
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\bin\Debug\kalkulator.pdb
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.csprojResolveAssemblyReference.cache
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Form1.resources
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Properties.Resources.resources
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.csproj.GenerateResource.cache
@@ -60,3 +59,4 @@ C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkula
 C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelFunctionDraw.resources
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.FunctionDrawerBox.resources
 C:\Users\w\Source\Repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.Panels.PanelFunctionDraw.resources
+C:\Users\Andrzej\source\repos\Kalkulator\kalkulator\kalkulator\obj\Debug\kalkulator.csprojResolveAssemblyReference.cache
