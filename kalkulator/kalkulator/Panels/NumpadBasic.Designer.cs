@@ -63,6 +63,7 @@
             // 
             // btnNum1
             // 
+            this.btnNum1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnNum1.Location = new System.Drawing.Point(3, 3);
             this.btnNum1.Name = "btnNum1";
             this.btnNum1.Size = new System.Drawing.Size(80, 80);
@@ -75,6 +76,7 @@
             // 
             // btnNum2
             // 
+            this.btnNum2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnNum2.Location = new System.Drawing.Point(89, 3);
             this.btnNum2.Name = "btnNum2";
             this.btnNum2.Size = new System.Drawing.Size(80, 80);
@@ -87,6 +89,7 @@
             // 
             // btnNum3
             // 
+            this.btnNum3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnNum3.Location = new System.Drawing.Point(175, 3);
             this.btnNum3.Name = "btnNum3";
             this.btnNum3.Size = new System.Drawing.Size(80, 80);
@@ -99,6 +102,7 @@
             // 
             // btnNum4
             // 
+            this.btnNum4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnNum4.Location = new System.Drawing.Point(3, 89);
             this.btnNum4.Name = "btnNum4";
             this.btnNum4.Size = new System.Drawing.Size(80, 80);
@@ -111,6 +115,7 @@
             // 
             // btnNum5
             // 
+            this.btnNum5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnNum5.Location = new System.Drawing.Point(89, 89);
             this.btnNum5.Name = "btnNum5";
             this.btnNum5.Size = new System.Drawing.Size(80, 80);
@@ -123,6 +128,7 @@
             // 
             // btnNum6
             // 
+            this.btnNum6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnNum6.Location = new System.Drawing.Point(175, 89);
             this.btnNum6.Name = "btnNum6";
             this.btnNum6.Size = new System.Drawing.Size(80, 80);
@@ -135,6 +141,7 @@
             // 
             // btnNum7
             // 
+            this.btnNum7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnNum7.Location = new System.Drawing.Point(3, 175);
             this.btnNum7.Name = "btnNum7";
             this.btnNum7.Size = new System.Drawing.Size(80, 80);
@@ -147,6 +154,7 @@
             // 
             // btnNum8
             // 
+            this.btnNum8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnNum8.Location = new System.Drawing.Point(89, 175);
             this.btnNum8.Name = "btnNum8";
             this.btnNum8.Size = new System.Drawing.Size(80, 80);
@@ -159,6 +167,7 @@
             // 
             // btnNum9
             // 
+            this.btnNum9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnNum9.Location = new System.Drawing.Point(175, 175);
             this.btnNum9.Name = "btnNum9";
             this.btnNum9.Size = new System.Drawing.Size(80, 80);
@@ -171,6 +180,7 @@
             // 
             // btnNum0
             // 
+            this.btnNum0.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnNum0.Location = new System.Drawing.Point(3, 261);
             this.btnNum0.Name = "btnNum0";
             this.btnNum0.Size = new System.Drawing.Size(166, 80);
@@ -184,6 +194,7 @@
             // btnComma
             // 
             this.btnComma.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnComma.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnComma.Location = new System.Drawing.Point(175, 261);
             this.btnComma.Name = "btnComma";
             this.btnComma.Size = new System.Drawing.Size(80, 80);

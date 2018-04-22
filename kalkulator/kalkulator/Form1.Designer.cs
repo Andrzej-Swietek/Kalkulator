@@ -75,7 +75,7 @@
             this.btnLayoutCurrency.Name = "btnLayoutCurrency";
             this.btnLayoutCurrency.Size = new System.Drawing.Size(164, 39);
             this.btnLayoutCurrency.TabIndex = 2;
-            this.btnLayoutCurrency.Text = "Przelicznik";
+            this.btnLayoutCurrency.Text = "Waluty";
             this.btnLayoutCurrency.UseVisualStyleBackColor = true;
             this.btnLayoutCurrency.Click += new System.EventHandler(this.btnLayoutCurrency_Click);
             // 
