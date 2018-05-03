@@ -162,9 +162,9 @@
             this.panelNubmerSystems.Controls.Add(this.radioNumSystem10);
             this.panelNubmerSystems.Controls.Add(this.radioNumSystem8);
             this.panelNubmerSystems.Controls.Add(this.radioNumSystem2);
-            this.panelNubmerSystems.Location = new System.Drawing.Point(707, 58);
+            this.panelNubmerSystems.Location = new System.Drawing.Point(692, 58);
             this.panelNubmerSystems.Name = "panelNubmerSystems";
-            this.panelNubmerSystems.Size = new System.Drawing.Size(149, 102);
+            this.panelNubmerSystems.Size = new System.Drawing.Size(164, 116);
             this.panelNubmerSystems.TabIndex = 22;
             // 
             // radioNumSystem16
@@ -225,7 +225,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 459);
+            this.ClientSize = new System.Drawing.Size(871, 474);
             this.Controls.Add(this.panelNubmerSystems);
             this.Controls.Add(this.panelBasic);
             this.Controls.Add(this.panelFunctionDraw);

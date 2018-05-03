@@ -25,7 +25,7 @@ namespace kalkulator.Panels
 
         double JakasFunkcja(double x)
         {
-            return x * x;
+            return x;
         }
 
         private void FunctionDrawerBox_Paint(object sender, PaintEventArgs e)
