@@ -104,6 +104,7 @@ namespace kalkulator.Panels
             {
                 textBoxDet.Visible = true;
                 labelDet.Visible = true;
+                //popraw wyznacznik
                 det =   1 * matrixA[0,0] * ((matrixA[1,1] * matrixA[2,2] * matrixA[3,3]) + (matrixA[1,2] * matrixA[2,3] * matrixA[3,1]) + (matrixA[1,3] * matrixA[2,1] * matrixA[3,2]) - (matrixA[3,1] * matrixA[2,2] * matrixA[1,3]) - (matrixA[3,2] * matrixA[2,3] * matrixA[1,1]) - (matrixA[3,3] * matrixA[2,1] * matrixA[1,2])) +
                                (-1) * matrixA[1,0] * ((matrixA[0,1] * matrixA[2,2] * matrixA[3,3]) + (matrixA[0,2] * matrixA[2,3] * matrixA[3,1]) + (matrixA[0,3] * matrixA[2,1] * matrixA[3,2]) - (matrixA[3,1] * matrixA[2,2] * matrixA[0,3]) - (matrixA[3,2] * matrixA[2,3] * matrixA[0,1]) -  (matrixA[2,1] * matrixA[0,2] * matrixA[3,3])) +
                                 1*matrixA[2,0] * (  (matrixA[0,1] * matrixA[1,2] * matrixA[3,3]) + (matrixA[0,2] * matrixA[1,3] * matrixA[3,1]) + (matrixA[0,3] * matrixA[1,1] * matrixA[3,2]) - (matrixA[0,3] * matrixA[1,2] * matrixA[3,1]) - (matrixA[3,2] * matrixA[1,3] * matrixA[0,1]) -  (matrixA[3,3] * matrixA[1,1] * matrixA[0,2]))  +
