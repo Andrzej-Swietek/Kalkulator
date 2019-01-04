@@ -1,4 +1,4 @@
 # Kalkulator
-Taki tam kalkulator na windowsa
+Najlepszy Kalkulator Na Rynku
 
 Language: .NET C#
